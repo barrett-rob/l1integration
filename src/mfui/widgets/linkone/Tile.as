@@ -34,7 +34,7 @@ package mfui.widgets.linkone
 			this._tile_x = tile_x;
 			this._tile_y = tile_y;
 			this._tile_source = tile_source;
-			this.toolTip = _w + 'x' + _h + '\nlevel:' + _tile_level + ' (' + _tile_x + ':' + _tile_y + ')';
+			this.toolTip = 'level:' + _tile_level + ' (' + _tile_x + ':' + _tile_y + ')' + '\n' + _w + 'x' + _h;
 		}
 		
 		private function _click(e:MouseEvent):void
