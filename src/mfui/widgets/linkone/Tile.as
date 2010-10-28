@@ -21,5 +21,10 @@ package mfui.widgets.linkone
 			this.addElement(_tileImage);
 		}
 		
+		/* TODO: click shows coords */
+		/* TODO: coords resolve to level coords */
+		/* TODO: coords resolve to next level down */
+
+		
 	}
 }

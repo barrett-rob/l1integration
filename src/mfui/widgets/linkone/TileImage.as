@@ -35,6 +35,7 @@ package mfui.widgets.linkone
 		}
 		
 		/* TODO: image load failure */
+		/* TODO: dimensions +- 1px overlap */
 
 	}
 }
