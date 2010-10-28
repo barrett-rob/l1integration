@@ -10,7 +10,13 @@ package mfui.widgets.linkone
 		public static const virtual_height:int = 1024;
 		public static const virtual_width:int = 1024;
 
-		private var _w:int, _h:int, _tile_level:int,  _tile_x:int,  _tile_y:int;
+		public static var tile_level_offset:int = 0;
+		
+		private var _w:int;
+		private var _h:int;
+		private var _tile_x:int;
+		private var _tile_y:int;
+		private var _tile_level:int;
 		private var _tile_source:String;
 		private var _tileImage:TileImage;
 		
@@ -30,7 +36,7 @@ package mfui.widgets.linkone
 		{
 			this.toolTip = _w + 'x' + _h + '\nlevel:' + _tile_level + ' (' + _tile_x + ':' + _tile_y + ')';
 			
-			this._tileImage = new TileImage(_w, _h, _tile_source, _tile_level, _tile_x, _tile_y);
+			this._tileImage = new TileImage(_w, _h, _tile_source, _tile_level + tile_level_offset, _tile_x, _tile_y);
 			this.addElement(_tileImage);
 		}
 		
