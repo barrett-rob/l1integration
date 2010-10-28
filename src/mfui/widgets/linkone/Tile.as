@@ -23,10 +23,10 @@ package mfui.widgets.linkone
 			this._tile_x = tile_x;
 			this._tile_y = tile_y;
 			this._tile_source = tile_source;
-			load();
+			_load();
 		}
 		
-		private function load():void
+		private function _load():void
 		{
 			this._tileImage = new TileImage(_w, _h, _tile_source, _tile_level, _tile_x, _tile_y);
 			this.addElement(_tileImage);
