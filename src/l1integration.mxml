@@ -91,8 +91,7 @@
 				dataProvider="{uris}"
 				labelField="uri"
 				width="33%"
-				>
-			</s:DropDownList>
+				/>
 			<mx:Label
 				text="Level:" />
 			<mx:TextInput

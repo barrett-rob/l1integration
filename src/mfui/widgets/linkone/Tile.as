@@ -28,6 +28,8 @@ package mfui.widgets.linkone
 		
 		private function _load():void
 		{
+			this.toolTip = _w + 'x' + _h + '\nlevel:' + _tile_level + ' (' + _tile_x + ':' + _tile_y + ')';
+			
 			this._tileImage = new TileImage(_w, _h, _tile_source, _tile_level, _tile_x, _tile_y);
 			this.addElement(_tileImage);
 		}
