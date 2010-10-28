@@ -9,26 +9,24 @@ package mfui.widgets.linkone
 		
 		public static const uri_root:String = 'http://a028856:8080/ria/linkone?';
 		
-		private var _w:int, _h:int, _tile_level:int,  _tile_x:int,  _tile_y:int;
-		private var _tile_source:String;
+		private var _tile:Tile;
 		
-		public function TileImage(w:int, h:int, tile_source:String, tile_level:int, tile_x:int, tile_y:int)
+		public function TileImage(tile:Tile)
 		{
 			super();
 			this.addEventListener(Event.COMPLETE, _complete);
-			this.width = this._w = w;
-			this.height = this._h = h;
-			this._tile_level = tile_level;
-			this._tile_x = tile_x;
-			this._tile_y = tile_y;
-			this._tile_source = tile_source;
-			
+			this._tile = tile;
+			this.width = tile._w;
+			this.height = tile._h;
 			_load();
 		}
 		
 		private function _load():void
 		{
-			this.source = uri_root + _tile_source + '&tileLevel=' + _tile_level + '&tilePositionX=' + _tile_x + '&tilePositionY=' + _tile_y;
+			this.source = uri_root + _tile._tile_source 
+				+ '&tileLevel=' + (_tile._tile_level + Tile.tile_level_offset) 
+				+ '&tilePositionX=' + _tile._tile_x 
+				+ '&tilePositionY=' + _tile._tile_y;
 		}
 		
 		

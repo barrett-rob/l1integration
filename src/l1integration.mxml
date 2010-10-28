@@ -28,7 +28,7 @@
 				]                
 			);
 			
-			var zoom_depth:int = 4;
+			var zoom_depth:int = 8;
 			
 			protected function creationComplete(event:FlexEvent):void
 			{

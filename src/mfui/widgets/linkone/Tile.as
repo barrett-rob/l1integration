@@ -14,13 +14,13 @@ package mfui.widgets.linkone
 
 		public static var tile_level_offset:int = 0;
 		
-		private var _w:int;
-		private var _h:int;
-		private var _tile_x:int;
-		private var _tile_y:int;
-		private var _tile_level:int;
-		private var _tile_source:String;
-		private var _tile_image:TileImage;
+		internal var _w:int;
+		internal var _h:int;
+		internal var _tile_x:int;
+		internal var _tile_y:int;
+		internal var _tile_level:int;
+		internal var _tile_source:String;
+		internal var _tile_image:TileImage;
 		
 		public function Tile(w:int, h:int, tile_source:String, tile_level:int, tile_x:int, tile_y:int)
 		{
@@ -34,6 +34,7 @@ package mfui.widgets.linkone
 			this._tile_x = tile_x;
 			this._tile_y = tile_y;
 			this._tile_source = tile_source;
+			this.toolTip = _w + 'x' + _h + '\nlevel:' + _tile_level + ' (' + _tile_x + ':' + _tile_y + ')';
 		}
 		
 		private function _click(e:MouseEvent):void
@@ -46,9 +47,7 @@ package mfui.widgets.linkone
 		
 		private function _load():void
 		{
-			this.toolTip = _w + 'x' + _h + '\nlevel:' + _tile_level + ' (' + _tile_x + ':' + _tile_y + ')';
-			
-			this._tile_image = new TileImage(_w, _h, _tile_source, _tile_level + tile_level_offset, _tile_x, _tile_y);
+			this._tile_image = new TileImage(this);
 			this.addElement(_tile_image);
 		}
 		
