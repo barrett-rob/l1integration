@@ -16,20 +16,18 @@ package mfui.widgets.linkone
 			super();
 			this.addEventListener(Event.COMPLETE, _complete);
 			this._tile = tile;
-			this.width = tile._w;
-			this.height = tile._h;
+			this.width = tile.width;
+			this.height = tile.height;
 			_load();
 		}
 		
 		private function _load():void
 		{
-			this.source = uri_root + _tile._tile_source 
-				+ '&tileLevel=' + (_tile._tile_level + Tile.tile_level_offset) 
-				+ '&tilePositionX=' + _tile._tile_x 
-				+ '&tilePositionY=' + _tile._tile_y;
+			this.source = uri_root + _tile.tile_source 
+				+ '&tileLevel=' + (_tile.tile_level + _tile.tile_level_offset) 
+				+ '&tilePositionX=' + _tile.tile_x 
+				+ '&tilePositionY=' + _tile.tile_y;
 		}
-		
-		
 		
 		private function _complete(e:Event):void
 		{
@@ -51,10 +49,11 @@ package mfui.widgets.linkone
 		/* TODO: image load failure */
 		/* TODO: dimensions +- 1px overlap */
 		
+		internal function discard():void
+		{
+			this.source = null;
+		}
+		
 	}
-	
-	internal function discard():void
-	{
-		this.source = null;
-	}
+
 }

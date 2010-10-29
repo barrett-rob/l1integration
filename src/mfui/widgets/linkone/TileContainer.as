@@ -9,13 +9,12 @@ package mfui.widgets.linkone
 	
 	public class TileContainer extends BorderContainer
 	{
-	
+		
 		public static const virtual_height:int = 1024;
 		public static const virtual_width:int = 1024;
-
+		
 		private var _tile_level_offset:int = 0;
 		private var _tile_source:String = null;
-		
 		private var _top_level_tile:Tile = null;
 		
 		public function TileContainer()
@@ -37,16 +36,26 @@ package mfui.widgets.linkone
 		{
 			this._tile_source = tile_source;
 			this._tile_level_offset = tile_level_offset;
-
+			
 			if (_top_level_tile)
 			{
 				this.removeElement(_top_level_tile);
-					_top_level_tile.discard();
+				_top_level_tile.discard();
 			}
 			
 			/* create new top level tile */
-			_top_level_tile = new Tile(this, this.width, this.height, _tile_source, 0, 0, 0);
+			_top_level_tile = new Tile(this, this.width, this.height, 0, 0, 0);
 			this.addElement(_top_level_tile);
+		}
+		
+		public function get tile_level_offset():int
+		{		
+			return _tile_level_offset;
+		}
+		
+		public function get tile_source():String
+		{		
+			return _tile_source;
 		}
 		
 	}
