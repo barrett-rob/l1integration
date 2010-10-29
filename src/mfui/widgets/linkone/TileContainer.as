@@ -3,35 +3,50 @@ package mfui.widgets.linkone
 	import flash.events.MouseEvent;
 	
 	import mx.controls.Image;
+	import mx.events.FlexEvent;
 	
 	import spark.components.BorderContainer;
 	
-	public class Tile extends BorderContainer
+	public class TileContainer extends BorderContainer
 	{
 	
 		public static const virtual_height:int = 1024;
 		public static const virtual_width:int = 1024;
 
-		public static var tile_level_offset:int = 0;
+		private var _tile_level_offset:int = 0;
+		private var _tile_source:String = null;
 		
-		internal var _w:int;
-		internal var _h:int;
-		internal var _tile_source:String;
+		private var _top_level_tile:Tile = null;
 		
-		public function TileContainer(w:int, h:int, tile_source:String)
+		public function TileContainer()
 		{
 			super();
-			
+			addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
 			this.setStyle('borderStyle', 'none');
-			
-			this.width = this._w = w;
-			this.height = this._h = h;
-			this._tile_source = tile_source;
 		}
 		
-		private function _load():void
+		private function _creationComplete(e:FlexEvent):void
 		{
-			/* create top level tile */
+			/* resize to grpab all space in parent */
+			this.width = this.parent.width;
+			this.height = this.parent.height;
+			this.validateNow();
+		}
+		
+		public function setSource(tile_source:String, tile_level_offset:int):void
+		{
+			this._tile_source = tile_source;
+			this._tile_level_offset = tile_level_offset;
+
+			if (_top_level_tile)
+			{
+				this.removeElement(_top_level_tile);
+					_top_level_tile.discard();
+			}
+			
+			/* create new top level tile */
+			_top_level_tile = new Tile(this, this.width, this.height, _tile_source, 0, 0, 0);
+			this.addElement(_top_level_tile);
 		}
 		
 	}

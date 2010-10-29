@@ -50,6 +50,11 @@ package mfui.widgets.linkone
 		
 		/* TODO: image load failure */
 		/* TODO: dimensions +- 1px overlap */
-
+		
+	}
+	
+	internal function discard():void
+	{
+		this.source = null;
 	}
 }

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
 			   xmlns:s="library://ns.adobe.com/flex/spark" 
-			   xmlns:mx="library://ns.adobe.com/flex/mx" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   xmlns:l1="mfui.widgets.linkone.*"
 			   minWidth="1024" 
 			   minHeight="768"
 			   creationComplete="creationComplete(event)">
@@ -40,36 +41,7 @@
 			
 			protected function go(event:Event):void
 			{
-				var i:int, j:int, k:int, w:int, h:int;
-				for (i = 0; i < images.numChildren; i++)
-				{
-					var c:DisplayObject = images.getChildAt(i);
-					if (c is Image)
-					{
-						Image(c).source = null;
-					}
-					images.removeChild(c);
-				}
-
-				Tile.tile_level_offset = int(levelInput.text);
-				var y_offset:int = 0;
-				
-				for (i = 0; i < zoom_depth; i++)
-				{
-					y_offset = i * Tile.virtual_height;
-					w = Tile.virtual_width / (i + 1);
-					h = Tile.virtual_height / (i + 1);
-					for (j = 0; j <= i; j++)
-					{
-						for (k = 0; k <= i; k++)
-						{
-							var t:Tile = new Tile(w, h, uris[uriDropdown.selectedIndex].uri, i, j, k);
-							t.left = j * w;
-							t.top = y_offset + (k * h);
-							images.addChild(t);
-						}
-					}
-				}
+				tileContainer.setSource(uris[uriDropdown.selectedIndex].uri, int(levelInput.text));
 				images.validateNow();
 			}
 			
@@ -111,6 +83,8 @@
 			layout="absolute"
 			verticalScrollPolicy="auto"
 			>
+			<l1:TileContainer
+				id="tileContainer" />
 		</mx:Panel>
 	</s:VGroup>
 	
