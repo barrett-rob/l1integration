@@ -28,6 +28,8 @@ package mfui.widgets.linkone
 			
 			this.addEventListener(MouseEvent.CLICK, _click);
 			
+			this.setStyle('borderStyle', 'none');
+			
 			this.width = this._w = w;
 			this.height = this._h = h;
 			this._tile_level = tile_level;
