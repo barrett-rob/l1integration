@@ -27,7 +27,7 @@ package mfui.widgets.linkone
 		private function _creationComplete(e:FlexEvent):void
 		{
 			/* resize to grab biggest square in parent */
-			this.width = this.height = Math.min(this.parent.width, this.parent.height);
+			this.width = this.height = Math.min(this.parent.width, this.parent.height) - 10;
 			this.validateNow();
 		}
 		

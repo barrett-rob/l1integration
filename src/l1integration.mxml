@@ -75,17 +75,15 @@
 				click="go(event)" />
 		</s:HGroup>
 		
-		<mx:Panel
+		<s:Panel
 			id="images"
 			title="Image Pyramid"
 			height="100%"
 			width="100%"
-			layout="absolute"
-			verticalScrollPolicy="auto"
 			>
 			<l1:TileContainer
 				id="tileContainer" />
-		</mx:Panel>
+		</s:Panel>
 	</s:VGroup>
 	
 	
