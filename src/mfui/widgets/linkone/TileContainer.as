@@ -26,9 +26,8 @@ package mfui.widgets.linkone
 		
 		private function _creationComplete(e:FlexEvent):void
 		{
-			/* resize to grpab all space in parent */
-			this.width = this.parent.width;
-			this.height = this.parent.height;
+			/* resize to grab biggest square in parent */
+			this.width = this.height = Math.min(this.parent.width, this.parent.height);
 			this.validateNow();
 		}
 		
