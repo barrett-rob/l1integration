@@ -34,17 +34,17 @@ package mfui.widgets.linkone
 			this._tile_x = tile_x;
 			this._tile_y = tile_y;
 			
-			this.toolTip = 'level:' + (_tile_level + _tile_container.tile_level_offset) + ' (' + _tile_x + ':' + _tile_y + ')' + '\n' + w + 'x' + h;
+			this.toolTip = 'level:' + (_tile_level + _tile_container.tile_uri_level_offset) + ' (' + _tile_x + ':' + _tile_y + ')' + '\n' + w + 'x' + h;
 		}
 		
 		public function get tile_source():String
 		{		
-			return _tile_container.tile_source;
+			return _tile_container.tile_uri_source;
 		}
 		
 		public function get tile_level_offset():int
 		{		
-			return _tile_container.tile_level_offset;
+			return _tile_container.tile_uri_level_offset;
 		}
 		
 		public function get tile_level():int

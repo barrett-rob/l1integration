@@ -10,11 +10,11 @@ package mfui.widgets.linkone
 	public class TileContainer extends BorderContainer
 	{
 		
-		public static const virtual_height:int = 1024;
-		public static const virtual_width:int = 1024;
+		public var virtual_tile_size:int = 0;
 		
-		private var _tile_level_offset:int = 0;
-		private var _tile_source:String = null;
+		private var _tile_uri_level_offset:int = 0;
+		private var _tile_uri_source:String = null;
+		
 		private var _top_level_tile:Tile = null;
 		
 		public function TileContainer()
@@ -27,15 +27,18 @@ package mfui.widgets.linkone
 		private function _creationComplete(e:FlexEvent):void
 		{
 			/* resize to grab biggest square in parent */
-			this.width = this.height = Math.min(this.parent.width, this.parent.height) - 10;
+			this.width = this.height = this.virtual_tile_size = Math.min(this.parent.width, this.parent.height) - 10;
 			this.validateNow();
 		}
 		
+		/* TODO: handle resize event */
+		
 		public function setSource(tile_source:String, tile_level_offset:int):void
 		{
-			this._tile_source = tile_source;
-			this._tile_level_offset = tile_level_offset;
+			this._tile_uri_source = tile_source;
+			this._tile_uri_level_offset = tile_level_offset;
 			
+			/* discard any existing tiles */
 			if (_top_level_tile)
 			{
 				this.removeElement(_top_level_tile);
@@ -47,14 +50,14 @@ package mfui.widgets.linkone
 			this.addElement(_top_level_tile);
 		}
 		
-		public function get tile_level_offset():int
+		public function get tile_uri_level_offset():int
 		{		
-			return _tile_level_offset;
+			return _tile_uri_level_offset;
 		}
 		
-		public function get tile_source():String
+		public function get tile_uri_source():String
 		{		
-			return _tile_source;
+			return _tile_uri_source;
 		}
 		
 	}
