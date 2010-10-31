@@ -10,13 +10,13 @@ package mfui.widgets.linkone
 	public class TileContainer extends BorderContainer
 	{
 		
-		public const MAX_TILE_DEPTH:int = 5;
+		public const MAX_TILE_DEPTH:int = 5; /* calculate this rather than guess? */
+		
 		public var virtual_tile_size:int = 0;
 		
 		private var _tile_uri_level_offset:int = 0;
 		private var _tile_uri_source:String = null;
 		private var _levels:Array = null;
-		private var _top_level_tile:Tile = null;
 		
 		public function TileContainer()
 		{
@@ -45,16 +45,16 @@ package mfui.widgets.linkone
 				_levels[i] = [];
 			
 			/* create new top level tile */
-			_levels[0][0] = _top_level_tile = new Tile(this, this.width, this.height, 0, 0, 0);
-			this.addElement(_top_level_tile);
+			_levels[0][0] = new Tile(this, this.width, this.height, 0, 0, 0);
+			this.addElement(_levels[0][0]);
 		}
 		
 		private function _discard_all_levels():void
 		{		
 			/* discard any existing tiles */
 			var i:int, j:int;
-			if (_top_level_tile)
-				this.removeElement(_top_level_tile);
+			if (_levels[0] && _levels[0][0])
+				this.removeElement(_levels[0][0]);
 			if (_levels)
 			{
 				for (i = _levels.length - 1; i >= 0; i--)
