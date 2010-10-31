@@ -23,8 +23,8 @@ package mfui.widgets.linkone
 		
 		private function _load():void
 		{
-			this.source = uri_root + _tile.tile_source 
-				+ '&tileLevel=' + (_tile.tile_level + _tile.tile_level_offset) 
+			this.source = uri_root + _tile.tile_uri_source 
+				+ '&tileLevel=' + (_tile.tile_level + _tile.tile_uri_level_offset) 
 				+ '&tilePositionX=' + _tile.tile_x 
 				+ '&tilePositionY=' + _tile.tile_y;
 		}

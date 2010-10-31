@@ -37,12 +37,12 @@ package mfui.widgets.linkone
 			this.toolTip = 'level:' + (_tile_level + _tile_container.tile_uri_level_offset) + ' (' + _tile_x + ':' + _tile_y + ')' + '\n' + w + 'x' + h;
 		}
 		
-		public function get tile_source():String
+		public function get tile_uri_source():String
 		{		
 			return _tile_container.tile_uri_source;
 		}
 		
-		public function get tile_level_offset():int
+		public function get tile_uri_level_offset():int
 		{		
 			return _tile_container.tile_uri_level_offset;
 		}
