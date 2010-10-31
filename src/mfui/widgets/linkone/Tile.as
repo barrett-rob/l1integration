@@ -65,12 +65,10 @@ package mfui.widgets.linkone
 		private function _click(e:MouseEvent):void
 		{
 			if (!_tile_image)
-			{
-				_load();
-			}
+				_loadImage();
 		}
 		
-		private function _load():void
+		private function _loadImage():void
 		{
 			this._tile_image = new TileImage(this);
 			this.addElement(_tile_image);
