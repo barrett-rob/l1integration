@@ -50,7 +50,7 @@ package mfui.widgets.linkone
 			_create_level(0);
 			
 			/* display top level */
-			this.addElement(_levels[0][0]);
+			_display_level(0);
 		}
 		
 		private function _discard_all_levels():void
@@ -78,13 +78,32 @@ package mfui.widgets.linkone
 			}
 		}
 		
-		private function _create_level(level:int):void
+		private function _create_level(l:int):void
 		{
-			if (level == 0)
+			if (l == 0)
 			{
 				/* top level */
 				_levels[0][0] = new Tile(this, this.width, this.height, 0, 0, 0);
 				return;
+			}
+			/* number of tiles is square of level+1 */
+			var _level:Array = _levels[l];
+			var i:int, j:int;
+			for (i = 0; i > l + 1; i++)
+			{
+				for (j = 0; j < l + 1; j++)
+				{
+					_level.push(new Tile(this, this.width, this.height, l, i, j));
+				}
+			}
+		}
+		
+		private function _display_level(l:int):void
+		{
+			if (l == 0)
+			{
+				/* top level */
+				this.addElement(_levels[0][0]);
 			}
 		}
 		
