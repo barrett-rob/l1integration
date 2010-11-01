@@ -8,10 +8,10 @@ package mfui.widgets.linkone
 	
 	public class Tile extends BorderContainer
 	{
-	
+		
 		public static const virtual_height:int = 1024;
 		public static const virtual_width:int = 1024;
-
+		
 		
 		private var _tile_container:TileContainer;
 		private var _tile_x:int;
@@ -38,16 +38,6 @@ package mfui.widgets.linkone
 			this.toolTip = 'level:' + (_tile_level + _tile_container.tile_uri_level_offset) + ' (' + _tile_x + ':' + _tile_y + ')' + '\n' + w + 'x' + h;
 		}
 		
-		public function get tile_uri_source():String
-		{		
-			return _tile_container.tile_uri_source;
-		}
-		
-		public function get tile_uri_level_offset():int
-		{		
-			return _tile_container.tile_uri_level_offset;
-		}
-		
 		public function get tile_level():int
 		{		
 			return _tile_level;
@@ -67,7 +57,11 @@ package mfui.widgets.linkone
 		{
 			if (_tile_image)
 				return;
-			this._tile_image = new TileImage(this);
+			this._tile_image = new TileImage(this, TileContainer.TILE_URI_ROOT 
+				+ _tile_container.tile_uri_source 
+				+ '&tileLevel=' + (_tile_level + _tile_container.tile_uri_level_offset) 
+				+ '&tilePositionX=' + _tile_x 
+				+ '&tilePositionY=' + _tile_y);
 			this.addElement(_tile_image);
 		}
 		
@@ -86,6 +80,6 @@ package mfui.widgets.linkone
 		
 		/* TODO: coords resolve to level coords */
 		/* TODO: coords resolve to next level down */
-
+		
 	}
 }

@@ -7,26 +7,23 @@ package mfui.widgets.linkone
 	public class TileImage extends Image
 	{
 		
-		public static const uri_root:String = 'http://a028856:8080/ria/linkone?';
-		
 		private var _tile:Tile;
+		private var _image_uri:String;
 		
-		public function TileImage(tile:Tile)
+		public function TileImage(tile:Tile, image_uri:String)
 		{
 			super();
 			this.addEventListener(Event.COMPLETE, _complete);
 			this._tile = tile;
 			this.width = tile.width;
 			this.height = tile.height;
+			this._image_uri = image_uri;
 			_load();
 		}
 		
 		private function _load():void
 		{
-			this.source = uri_root + _tile.tile_uri_source 
-				+ '&tileLevel=' + (_tile.tile_level + _tile.tile_uri_level_offset) 
-				+ '&tilePositionX=' + _tile.tile_x 
-				+ '&tilePositionY=' + _tile.tile_y;
+			this.source = this._image_uri;
 		}
 		
 		private function _complete(e:Event):void
@@ -46,7 +43,7 @@ package mfui.widgets.linkone
 			}
 		}
 		
-		/* TODO: image load failure */
+		/* TODO: handle image load failure */
 		/* TODO: dimensions +- 1px overlap */
 		
 		internal function discard():void
