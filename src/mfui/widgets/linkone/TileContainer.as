@@ -143,7 +143,7 @@ package mfui.widgets.linkone
 				return;
 			
 			this.removeAllElements();
-			trace('displaying level:', l, 'targeting:', p);
+			trace('targeting:', p, 'on level:', l);
 			
 			this._current_level = l;
 			var _level:Array = _levels[l];
@@ -152,7 +152,7 @@ package mfui.widgets.linkone
 				var t:Tile = Tile(_level[i]);
 				if (t.region.containsPoint(p))
 				{
-					trace('found region', t.region);
+					trace(' - found region:', t.region);
 					this.addElement(t);
 					/* create the next level down */
 					_create_level(l + 1);
