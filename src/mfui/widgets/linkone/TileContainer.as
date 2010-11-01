@@ -56,10 +56,10 @@ package mfui.widgets.linkone
 		
 		private function _discard_all_levels():void
 		{		
-			/* discard any existing tiles */
+			this.removeAllElements();
+			
+			/* discard and dispose of references to existing tiles */
 			var i:int, j:int;
-			if (_levels && _levels[0] && _levels[0][0])
-				this.removeElement(_levels[0][0]);
 			if (_levels)
 			{
 				for (i = _levels.length - 1; i >= 0; i--)
