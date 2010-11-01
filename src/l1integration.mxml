@@ -76,6 +76,8 @@
 			width="100%"
 			>
 			<l1:TileContainer
+				height="700"
+				width="800"
 				id="tileContainer" />
 		</s:Panel>
 	</s:VGroup>
