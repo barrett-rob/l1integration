@@ -98,7 +98,9 @@ package mfui.widgets.linkone
 				}
 			}
 			
-			
+			if (l == 0)
+				/* for now.. */
+				Tile(_levels[0][0]).loadImage();
 		}
 		
 		private function _display_level(l:int):void

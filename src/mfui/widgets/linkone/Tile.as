@@ -17,15 +17,16 @@ package mfui.widgets.linkone
 		private var _tile_x:int;
 		private var _tile_y:int;
 		private var _tile_level:int;
-		private var _tile_image:TileImage;
+		
+		private var _tile_image:TileImage = null;
 		
 		public function Tile(tile_container:TileContainer, w:int, h:int, tile_level:int, tile_x:int, tile_y:int)
 		{
 			super();
 			
-			this.addEventListener(MouseEvent.CLICK, _click);
-			
 			this.setStyle('borderStyle', 'none');
+			
+			this.addEventListener(MouseEvent.MOUSE_WHEEL, _mouseWheel);
 			
 			this._tile_container = tile_container;
 			this.width = w;
@@ -62,14 +63,10 @@ package mfui.widgets.linkone
 			return _tile_y;
 		}
 		
-		private function _click(e:MouseEvent):void
+		internal function loadImage():void
 		{
-			if (!_tile_image)
-				_loadImage();
-		}
-		
-		private function _loadImage():void
-		{
+			if (_tile_image)
+				return;
 			this._tile_image = new TileImage(this);
 			this.addElement(_tile_image);
 		}
@@ -79,6 +76,12 @@ package mfui.widgets.linkone
 			if (_tile_image)
 				_tile_image.discard();
 			/* TODO: discard child tiles */
+		}
+		
+		private function _mouseWheel(e:MouseEvent):void
+		{
+			trace('mouse wheel at', e.localX, ':' ,e.localY);
+			return;
 		}
 		
 		/* TODO: coords resolve to level coords */
