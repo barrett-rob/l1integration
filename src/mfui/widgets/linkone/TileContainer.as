@@ -80,22 +80,25 @@ package mfui.widgets.linkone
 		
 		private function _create_level(l:int):void
 		{
-			if (l == 0)
+			if (l >= MAX_TILE_DEPTH)
 			{
-				/* top level */
-				_levels[0][0] = new Tile(this, this.width, this.height, 0, 0, 0);
+				trace('unable to create level:', l, 'max tile depth is:', MAX_TILE_DEPTH);
 				return;
 			}
-			/* number of tiles is square of level+1 */
+			/* number of tiles is square of l+1 */
+			var n:int = l + 1;
+			trace('creating level:', l, 'with', (n * n), 'tiles');
 			var _level:Array = _levels[l];
 			var i:int, j:int;
-			for (i = 0; i > l + 1; i++)
+			for (i = 0; i < n; i++)
 			{
-				for (j = 0; j < l + 1; j++)
+				for (j = 0; j < n; j++)
 				{
 					_level.push(new Tile(this, this.width, this.height, l, i, j));
 				}
 			}
+			
+			
 		}
 		
 		private function _display_level(l:int):void
@@ -105,6 +108,9 @@ package mfui.widgets.linkone
 				/* top level */
 				this.addElement(_levels[0][0]);
 			}
+			
+			/* create the next level down */
+			_create_level(l + 1);
 		}
 		
 		public function get tile_uri_level_offset():int
