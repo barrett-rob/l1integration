@@ -169,7 +169,7 @@ package mfui.widgets.linkone
 				return;
 			
 			/* target point is */
-			var p:Point = new Point(e.localX, e.localX);
+			var p:Point = new Point(e.localX, e.localY);
 			/* target level (up or down) is */
 			var l:int = (e.delta > 0) ? this._current_level + 1 : this._current_level - 1;
 			
