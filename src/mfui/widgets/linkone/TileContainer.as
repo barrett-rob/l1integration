@@ -1,6 +1,7 @@
 package mfui.widgets.linkone
 {
 	import flash.events.MouseEvent;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
 	import mx.controls.Image;
@@ -36,7 +37,7 @@ package mfui.widgets.linkone
 			this.validateNow();
 			MAX_TILE_DEPTH = Math.ceil(Math.log(Math.max(this.virtual_tile_size))/Math.LN2);
 		}
-
+		
 		/* TODO: handle resize event */
 		
 		public function setSource(tile_source:String, tile_level_offset:int):void
@@ -156,5 +157,35 @@ package mfui.widgets.linkone
 			return _tile_uri_source;
 		}
 		
+		internal function display_tile(l:int, p:Point):void
+		{
+			if (l < 0)
+				/* can't scroll further out */
+				return;
+			if (l >= _levels.length)
+				/* can't scroll further in */
+				return;
+			
+			this.removeAllElements();
+			trace('displaying level:', l, 'targeting:', p);
+			
+			this._current_level = l;
+			var _level:Array = _levels[l];
+			for (var i:int = 0; i < _level.length; i++)
+			{
+				var t:Tile = Tile(_level[i]);
+				if (t.region.containsPoint(p))
+				{
+					trace('found region', t.region);
+					this.addElement(t);
+					/* create the next level down */
+					_create_level(l + 1);
+					this.validateNow();
+					return;
+				}
+			}
+			throw new Error('tile not found for target point ' + p + ' on level ' + l);
+		}
 	}
+	
 }

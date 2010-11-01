@@ -1,6 +1,7 @@
 package mfui.widgets.linkone
 {
 	import flash.events.MouseEvent;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
 	import mx.controls.Image;
@@ -86,9 +87,12 @@ package mfui.widgets.linkone
 			if (e.currentTarget != this)
 				return;
 			
-			/* show next level up or down */
+			/* target point is */
+			var p:Point = new Point(e.localX, e.localX);
+			/* target level (up or down) is */
 			var l:int = (e.delta > 0) ? this._tile_level + 1 : this._tile_level - 1;
-			_tile_container.display_level(l);
+			
+			_tile_container.display_tile(l, p);
 			return;
 		}
 		
