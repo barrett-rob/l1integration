@@ -12,8 +12,8 @@ package mfui.widgets.linkone
 	public class Tile extends BorderContainer
 	{
 		
-		public static const virtual_height:int = 1024;
-		public static const virtual_width:int = 1024;
+		public static const virtual_height:int = 1025;
+		public static const virtual_width:int = 1025;
 		
 		
 		private var _tile_container:TileContainer;
