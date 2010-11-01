@@ -77,7 +77,20 @@ package mfui.widgets.linkone
 			if (e.currentTarget != this)
 				return;
 			
-			trace('mouse wheel at', e.localX, ':' ,e.localY, 'delta:', e.delta);
+			var l:int = (e.delta > 0) ? this._tile_level + 1 : this._tile_level - 1;
+			if (l < 0)
+				/* can't scroll further out */
+				return;
+			if (l > _tile_container.MAX_TILE_DEPTH)
+				/* can't scroll further in */
+				return;
+			
+			/* show next level up or down */
+			trace('mouse wheel at', e.localX, ':' ,e.localY,
+				'on level:', _tile_level, 
+				'delta:', e.delta, 
+				'displaying level:', l);
+			_tile_container.display_level(l);
 			return;
 		}
 		

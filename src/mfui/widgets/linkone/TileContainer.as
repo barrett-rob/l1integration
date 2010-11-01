@@ -51,7 +51,7 @@ package mfui.widgets.linkone
 			_create_level(0);
 			
 			/* display top level */
-			_display_level(0);
+			display_level(0);
 		}
 		
 		private function _discard_all_levels():void
@@ -104,7 +104,7 @@ package mfui.widgets.linkone
 				Tile(_levels[0][0]).loadImage();
 		}
 		
-		private function _display_level(l:int):void
+		internal function display_level(l:int):void
 		{
 			if (l == 0)
 			{
