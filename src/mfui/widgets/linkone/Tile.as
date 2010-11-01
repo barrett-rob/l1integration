@@ -32,7 +32,6 @@ package mfui.widgets.linkone
 			this.setStyle('borderStyle', 'none');
 			
 			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
-			this.addEventListener(MouseEvent.MOUSE_WHEEL, _mouseWheel);
 			
 			this._tile_container = tile_container;
 			this._tile_level = tile_level;
@@ -80,20 +79,6 @@ package mfui.widgets.linkone
 		{
 			if (_tile_image)
 				_tile_image.discard();
-		}
-		
-		private function _mouseWheel(e:MouseEvent):void
-		{
-			if (e.currentTarget != this)
-				return;
-			
-			/* target point is */
-			var p:Point = new Point(e.localX, e.localX);
-			/* target level (up or down) is */
-			var l:int = (e.delta > 0) ? this._tile_level + 1 : this._tile_level - 1;
-			
-			_tile_container.display_tile(l, p);
-			return;
 		}
 		
 		/* TODO: coords resolve to level coords */
