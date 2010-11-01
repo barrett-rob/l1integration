@@ -74,7 +74,10 @@ package mfui.widgets.linkone
 		
 		private function _mouseWheel(e:MouseEvent):void
 		{
-			trace('mouse wheel at', e.localX, ':' ,e.localY);
+			if (e.currentTarget != this)
+				return;
+			
+			trace('mouse wheel at', e.localX, ':' ,e.localY, 'delta:', e.delta);
 			return;
 		}
 		
