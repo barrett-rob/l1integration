@@ -100,10 +100,10 @@ package mfui.widgets.linkone
 			{
 				for (j = 0; j < n; j++)
 				{
-					var _width:int = this.width;
-					var _height:int = this.height;
-					var _top:int = 0;
-					var _left:int = 0;
+					var _width:int = this.width / (l + 1);
+					var _left:int = i * _width;
+					var _height:int = this.height / (l + 1);
+					var _top:int = j * _height;
 					
 					var tile:Tile = new Tile(this, _width, _height, l, i, j);
 					
