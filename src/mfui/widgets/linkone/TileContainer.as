@@ -78,6 +78,8 @@ package mfui.widgets.linkone
 					delete _levels[i];
 				}
 			}
+			
+			_current_level = -1;
 		}
 		
 		private function _create_level(l:int):void
@@ -99,13 +101,11 @@ package mfui.widgets.linkone
 			{
 				for (j = 0; j < n; j++)
 				{
-					_level.push(new Tile(this, this.width, this.height, l, i, j));
+					var t:Tile = new Tile(this, this.width, this.height, l, i, j);
+					_level.push(t);
+					t.callLater(t.loadImage);
 				}
 			}
-			
-			if (l == 0)
-				/* for now.. */
-				Tile(_levels[0][0]).loadImage();
 		}
 		
 		internal function display_level(l:int):void

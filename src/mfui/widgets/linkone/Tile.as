@@ -78,11 +78,12 @@ package mfui.widgets.linkone
 			
 			var l:int = (e.delta > 0) ? this._tile_level + 1 : this._tile_level - 1;
 			
-			/* show next level up or down */
+			/* show next level up or down 
 			trace('mouse wheel at', e.localX, ':' ,e.localY,
 				'on level:', _tile_level, 
 				'delta:', e.delta, 
 				'displaying level:', l);
+			*/
 			_tile_container.display_level(l);
 			return;
 		}
