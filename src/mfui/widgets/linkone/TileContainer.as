@@ -124,9 +124,7 @@ package mfui.widgets.linkone
 			this._current_level = l;
 			var _level:Array = _levels[l];
 			for (var i:int = 0; i < _level.length; i++)
-			{
 				this.addElement(_level[i]);
-			}
 			
 			/* create the next level down */
 			_create_level(l + 1);
