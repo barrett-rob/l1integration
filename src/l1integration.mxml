@@ -24,11 +24,11 @@
 			[Bindable]
 			public var uris:ArrayCollection = new ArrayCollection(
 				[
-					{uri:'book=komatsu/D355A-3&page=343A&pictureidentity=1_1'}, 
-					{uri:'book=komatsu/D355A-3&page=222A&pictureidentity=1_1_2_3'},
-					{uri:'book=komatsu/D355A-3&page=~.8&pictureidentity=1'},
-					{uri:'book=logset/6F&page=TOC&pictureidentity=1'},
-					{uri:'book=logset/6F&page=965588A&pictureidentity=1'}
+					{uri:'book=komatsu/D355A-3&page=343A&pictureidentity=1_1', level:'10'}, 
+					{uri:'book=komatsu/D355A-3&page=222A&pictureidentity=1_1_2_3', level:'10'},
+					{uri:'book=komatsu/D355A-3&page=~.8&pictureidentity=1', level:'10'},
+					{uri:'book=logset/6F&page=TOC&pictureidentity=1', level:'10'},
+					{uri:'book=logset/6F&page=965588A&pictureidentity=1', level:'10'}
 				]                
 			);
 			
@@ -36,14 +36,13 @@
 			
 			protected function creationComplete(event:FlexEvent):void
 			{
-				levelInput.text = '10';
 				uriDropdown.selectedIndex = 0;
 			}
 			
 			
 			protected function go(event:Event):void
 			{
-				tileContainer.setSource(uris[uriDropdown.selectedIndex].uri, int(levelInput.text));
+				tileContainer.setSource(uris[uriDropdown.selectedIndex].uri, uris[uriDropdown.selectedIndex].level);
 				images.validateNow();
 			}
 			
@@ -66,15 +65,8 @@
 				dataProvider="{uris}"
 				labelField="uri"
 				width="33%"
+				change="go(event)"
 				/>
-			<mx:Label
-				text="Level:" />
-			<mx:TextInput
-				id="levelInput"
-				width="5%" />
-			<mx:Button
-				label="Go"
-				click="go(event)" />
 		</s:HGroup>
 		
 		<s:Panel
