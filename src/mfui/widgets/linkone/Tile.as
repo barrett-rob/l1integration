@@ -30,6 +30,8 @@ package mfui.widgets.linkone
 			super();
 			
 			this.setStyle('borderStyle', 'none');
+			this.setStyle('borderVisible', 'false');
+			this.setStyle('borderWeight', '0');
 			
 			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
 			

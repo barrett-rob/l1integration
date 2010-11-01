@@ -1,6 +1,7 @@
 package mfui.widgets.linkone
 {
 	import flash.events.Event;
+	import flash.events.HTTPStatusEvent;
 	
 	import mx.controls.Image;
 	
@@ -14,6 +15,7 @@ package mfui.widgets.linkone
 		{
 			super();
 			this.addEventListener(Event.COMPLETE, _complete);
+			this.addEventListener(HTTPStatusEvent.HTTP_STATUS, _http_status);
 			this._tile = tile;
 			this.width = tile.width;
 			this.height = tile.height;
@@ -28,22 +30,29 @@ package mfui.widgets.linkone
 		
 		private function _complete(e:Event):void
 		{
-			if (e.target == this)
+			if (e.currentTarget != this)
+				return;
+
+			if (this.contentWidth < Tile.virtual_height && this.contentHeight < Tile.virtual_height)
 			{
-				if (this.contentWidth < Tile.virtual_height && this.contentHeight < Tile.virtual_height)
-				{
-					trace(this.source, 'w:', this.contentWidth, 'h:', this.contentHeight, 'smaller than virtual tile');
-					var pch:Number = 100 * this.contentHeight / Tile.virtual_height;
-					this.percentHeight = pch;
-					var pcw:Number = 100 * this.contentWidth / Tile.virtual_width;
-					this.percentWidth = pcw;
-				}
-				this.toolTip = _tile.toolTip + '\n(' + this.contentWidth + 'x' + this.contentHeight + ')';
-				this.validateNow();
+				trace(this.source, 'w:', this.contentWidth, 'h:', this.contentHeight, 'smaller than virtual tile');
+				var pch:Number = 100 * this.contentHeight / Tile.virtual_height;
+				this.percentHeight = pch;
+				var pcw:Number = 100 * this.contentWidth / Tile.virtual_width;
+				this.percentWidth = pcw;
 			}
+			this.toolTip = _tile.toolTip + '\n(' + this.contentWidth + 'x' + this.contentHeight + ')';
+			this.validateNow();
 		}
 		
-		/* TODO: handle image load failure */
+		private function _http_status(e:HTTPStatusEvent):void
+		{
+			if (e.currentTarget != this)
+				return;
+			
+			/* TODO: handle image load failure */
+		}
+		
 		/* TODO: dimensions +- 1px overlap */
 		
 		internal function discard():void

@@ -114,10 +114,10 @@ package mfui.widgets.linkone
 					
 					var tile:Tile = new Tile(this, l, i, j);
 					
-					tile.width = this.width;
-					tile.left = 0;
-					tile.height = this.height;
-					tile.top = 0;
+					tile.width = _width;
+					tile.left =_left;
+					tile.height = _height;
+					tile.top = _top;
 					tile.region = new Rectangle(_left, _top, _width, _height);
 					tile.callLater(tile.loadImage);
 					_level.push(tile);
