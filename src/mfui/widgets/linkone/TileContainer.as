@@ -100,9 +100,18 @@ package mfui.widgets.linkone
 			{
 				for (j = 0; j < n; j++)
 				{
-					var t:Tile = new Tile(this, this.width, this.height, l, i, j);
-					_level.push(t);
-					t.callLater(t.loadImage);
+					var w:int = this.width;
+					var h:int = this.height;
+					var top:int = 0;
+					var left:int = 0;
+					var tile:Tile = new Tile(this, w, h, l, i, j);
+					
+					tile.top = top;
+					tile.left = left;
+					
+					_level.push(tile);
+					
+					tile.callLater(tile.loadImage);
 				}
 			}
 		}

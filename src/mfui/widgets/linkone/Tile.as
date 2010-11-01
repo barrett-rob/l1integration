@@ -80,9 +80,9 @@ package mfui.widgets.linkone
 			
 			/* show next level up or down 
 			trace('mouse wheel at', e.localX, ':' ,e.localY,
-				'on level:', _tile_level, 
-				'delta:', e.delta, 
-				'displaying level:', l);
+			'on level:', _tile_level, 
+			'delta:', e.delta, 
+			'displaying level:', l);
 			*/
 			_tile_container.display_level(l);
 			return;
