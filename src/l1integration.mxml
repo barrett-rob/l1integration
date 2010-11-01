@@ -20,6 +20,7 @@
 			import mx.events.FlexEvent;
 			
 			import spark.components.BorderContainer;
+			import spark.events.IndexChangeEvent;
 			
 			[Bindable]
 			public var uris:ArrayCollection = new ArrayCollection(
@@ -32,11 +33,10 @@
 				]                
 			);
 			
-			var zoom_depth:int = 8;
-			
 			protected function creationComplete(event:FlexEvent):void
 			{
 				uriDropdown.selectedIndex = 0;
+				uriDropdown.dispatchEvent(new IndexChangeEvent(IndexChangeEvent.CHANGE));
 			}
 			
 			
