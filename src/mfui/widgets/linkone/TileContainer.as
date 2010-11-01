@@ -83,14 +83,17 @@ package mfui.widgets.linkone
 		private function _create_level(l:int):void
 		{
 			if (l >= MAX_TILE_DEPTH)
-			{
-				trace('unable to create level:', l, 'max tile depth is:', MAX_TILE_DEPTH);
+				/* don't create levels beyond MAX_TILE_DEPTH */
 				return;
-			}
+			
+			var _level:Array = _levels[l];
+			if (_level.length > 0)
+				/* level already exists */
+				return;
+			
 			/* number of tiles is square of l+1 */
 			var n:int = l + 1;
-			trace('creating level:', l, 'with', (n * n), 'tiles');
-			var _level:Array = _levels[l];
+			trace('creating level:', l, '(with', (n * n), 'tiles)');
 			var i:int, j:int;
 			for (i = 0; i < n; i++)
 			{
@@ -117,6 +120,7 @@ package mfui.widgets.linkone
 				/* already positioned on level */
 				return;
 			
+			trace('displaying level:', l);
 			this.removeAllElements();
 			this._current_level = l;
 			var _level:Array = _levels[l];
