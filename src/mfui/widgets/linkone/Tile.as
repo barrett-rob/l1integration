@@ -1,8 +1,10 @@
 package mfui.widgets.linkone
 {
 	import flash.events.MouseEvent;
+	import flash.geom.Rectangle;
 	
 	import mx.controls.Image;
+	import mx.events.FlexEvent;
 	
 	import spark.components.BorderContainer;
 	
@@ -20,22 +22,30 @@ package mfui.widgets.linkone
 		
 		private var _tile_image:TileImage = null;
 		
-		public function Tile(tile_container:TileContainer, w:int, h:int, tile_level:int, tile_x:int, tile_y:int)
+		internal var region:Rectangle = null;
+		
+		public function Tile(tile_container:TileContainer, tile_level:int, tile_x:int, tile_y:int)
 		{
 			super();
 			
 			this.setStyle('borderStyle', 'none');
 			
+			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
 			this.addEventListener(MouseEvent.MOUSE_WHEEL, _mouseWheel);
 			
 			this._tile_container = tile_container;
-			this.width = w;
-			this.height = h;
 			this._tile_level = tile_level;
 			this._tile_x = tile_x;
 			this._tile_y = tile_y;
 			
-			this.toolTip = 'level:' + (_tile_level + _tile_container.tile_uri_level_offset) + ' (' + _tile_x + ':' + _tile_y + ')' + '\n' + w + 'x' + h;
+		}
+		
+		private function _creationComplete(e:FlexEvent):void
+		{
+			this.toolTip = 'level:' 
+				+ (_tile_level + _tile_container.tile_uri_level_offset) 
+				+ ' (' + _tile_x + ':' + _tile_y + ')' 
+				+ '\n' + this.width + 'x' + this.height;
 		}
 		
 		public function get tile_level():int
@@ -76,14 +86,8 @@ package mfui.widgets.linkone
 			if (e.currentTarget != this)
 				return;
 			
+			/* show next level up or down */
 			var l:int = (e.delta > 0) ? this._tile_level + 1 : this._tile_level - 1;
-			
-			/* show next level up or down 
-			trace('mouse wheel at', e.localX, ':' ,e.localY,
-			'on level:', _tile_level, 
-			'delta:', e.delta, 
-			'displaying level:', l);
-			*/
 			_tile_container.display_level(l);
 			return;
 		}

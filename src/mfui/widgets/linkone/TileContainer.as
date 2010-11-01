@@ -1,6 +1,7 @@
 package mfui.widgets.linkone
 {
 	import flash.events.MouseEvent;
+	import flash.geom.Rectangle;
 	
 	import mx.controls.Image;
 	import mx.events.FlexEvent;
@@ -105,10 +106,14 @@ package mfui.widgets.linkone
 					var _height:int = this.height / (l + 1);
 					var _top:int = j * _height;
 					
-					var tile:Tile = new Tile(this, _width, _height, l, i, j);
+					var tile:Tile = new Tile(this, l, i, j);
 					
-					tile.top = _top;
+					tile.width = _width;
 					tile.left = _left;
+					tile.height = _height;
+					tile.top = _top;
+					
+					tile.region = new Rectangle(_left, _top, _width, _height);
 					
 					_level.push(tile);
 					
@@ -138,6 +143,8 @@ package mfui.widgets.linkone
 			
 			/* create the next level down */
 			_create_level(l + 1);
+			
+			this.validateNow();
 		}
 		
 		public function get tile_uri_level_offset():int
