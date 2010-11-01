@@ -160,7 +160,8 @@ package mfui.widgets.linkone
 					return;
 				}
 			}
-			throw new Error('tile not found for target point ' + p + ' on level ' + l);
+			trace('tile not found for target point:', p, 'on level:', l);
+			/* do nothing */
 		}
 		
 		private function _mouseWheel(e:MouseEvent):void
