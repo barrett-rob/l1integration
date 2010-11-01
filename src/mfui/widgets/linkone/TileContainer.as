@@ -18,6 +18,7 @@ package mfui.widgets.linkone
 		private var _tile_uri_level_offset:int = 0;
 		private var _tile_uri_source:String = null;
 		private var _levels:Array = null;
+		private var _current_level:int = -1;
 		
 		public function TileContainer()
 		{
@@ -106,10 +107,22 @@ package mfui.widgets.linkone
 		
 		internal function display_level(l:int):void
 		{
-			if (l == 0)
+			if (l < 0)
+				/* can't scroll further out */
+				return;
+			if (l >= _levels.length)
+				/* can't scroll further in */
+				return;
+			if (l == _current_level)
+				/* already positioned on level */
+				return;
+			
+			this.removeAllElements();
+			this._current_level = l;
+			var _level:Array = _levels[l];
+			for (var i:int = 0; i < _level.length; i++)
 			{
-				/* top level */
-				this.addElement(_levels[0][0]);
+				this.addElement(_level[i]);
 			}
 			
 			/* create the next level down */
