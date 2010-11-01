@@ -40,7 +40,7 @@
 			}
 			
 			
-			protected function go(event:Event):void
+			protected function change(event:Event):void
 			{
 				tileContainer.setSource(uris[uriDropdown.selectedIndex].uri, uris[uriDropdown.selectedIndex].level);
 				images.validateNow();
@@ -64,8 +64,8 @@
 				id="uriDropdown"
 				dataProvider="{uris}"
 				labelField="uri"
-				width="33%"
-				change="go(event)"
+				width="50%"
+				change="change(event)"
 				/>
 		</s:HGroup>
 		
