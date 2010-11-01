@@ -69,7 +69,6 @@ package mfui.widgets.linkone
 		{
 			if (_tile_image)
 				_tile_image.discard();
-			/* TODO: discard child tiles */
 		}
 		
 		private function _mouseWheel(e:MouseEvent):void
