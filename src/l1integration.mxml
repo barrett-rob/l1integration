@@ -26,7 +26,9 @@
 				[
 					{uri:'book=komatsu/D355A-3&page=343A&pictureidentity=1_1'}, 
 					{uri:'book=komatsu/D355A-3&page=222A&pictureidentity=1_1_2_3'},
-					{uri:'book=komatsu/D355A-3&page=~.8&pictureidentity=1'}
+					{uri:'book=komatsu/D355A-3&page=~.8&pictureidentity=1'},
+					{uri:'book=logset/6F&page=TOC&pictureidentity=1'},
+					{uri:'book=logset/6F&page=965588A&pictureidentity=1'}
 				]                
 			);
 			
