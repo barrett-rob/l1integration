@@ -20,6 +20,8 @@ package mfui.widgets.linkone
 		private var _levels:Array = null;
 		private var _current_level:int = -1;
 		
+		private var _callout_container:CalloutContainer;
+		
 		public function TileContainer()
 		{
 			super();
@@ -31,6 +33,8 @@ package mfui.widgets.linkone
 			this.setStyle('borderWeight', '0');
 			
 			this.cacheAsBitmap = true;
+			
+			this._callout_container = new CalloutContainer();
 		}
 		
 		private function _creationComplete(e:FlexEvent):void
