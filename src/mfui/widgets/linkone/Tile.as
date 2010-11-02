@@ -12,10 +12,6 @@ package mfui.widgets.linkone
 	public class Tile extends BorderContainer
 	{
 		
-		public static const virtual_height:int = 1025;
-		public static const virtual_width:int = 1025;
-		
-		
 		private var _tile_container:TileContainer;
 		private var _tile_x:int;
 		private var _tile_y:int;
@@ -23,6 +19,8 @@ package mfui.widgets.linkone
 		
 		private var _tile_image:TileImage = null;
 		
+		internal var virtual_height:int;
+		internal var virtual_width:int;
 		internal var region:Rectangle = null;
 		
 		public function Tile(tile_container:TileContainer, tile_level:int, tile_x:int, tile_y:int)
@@ -37,6 +35,8 @@ package mfui.widgets.linkone
 			this._tile_level = tile_level;
 			this._tile_x = tile_x;
 			this._tile_y = tile_y;
+			
+			this.virtual_height = this.virtual_width = tile_container.VIRTUAL_TILE_SIZE;
 		}
 		
 		public function get tile_level():int

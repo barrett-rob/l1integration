@@ -33,13 +33,14 @@ package mfui.widgets.linkone
 			if (e.currentTarget != this)
 				return;
 
-			if (this.contentWidth < Tile.virtual_height && this.contentHeight < Tile.virtual_height)
+			if (this.contentWidth < _tile.virtual_height && this.contentHeight < _tile.virtual_height)
 			{
-				trace(this.source, 'w:', this.contentWidth, 'h:', this.contentHeight, 'smaller than virtual tile');
-				var pch:Number = 100 * this.contentHeight / Tile.virtual_height;
-				this.percentHeight = pch;
-				var pcw:Number = 100 * this.contentWidth / Tile.virtual_width;
-				this.percentWidth = pcw;
+				trace(this.source, 
+					'(', this.contentWidth, 
+					'x', this.contentHeight, 
+					') is smaller than its virtual tile size. scaling...');
+				this.height = this.height * this.contentHeight / _tile.virtual_height;
+				this.width = this.width * this.contentWidth / _tile.virtual_width;
 			}
 			this.validateNow();
 		}
