@@ -12,7 +12,6 @@ package mfui.widgets.linkone
 			super();
 			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creation_complete);
 			this.setStyle('backgroundColor', '0x000000');
-			this.z = 9999; /* floats */
 		}
 		
 		private function _creation_complete(e:FlexEvent):void
@@ -26,6 +25,7 @@ package mfui.widgets.linkone
 				throw new Error('tile container is already set');
 			this._tile_container = tile_container;
 			this.width = this.height = tile_container.VIRTUAL_TILE_SIZE;
+			this.validateNow();
 		}
 	}
 }
