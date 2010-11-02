@@ -77,6 +77,11 @@ package mfui.widgets.linkone
 			this.addElement(_tile_image);
 		}
 		
+		internal function calc_region():void
+		{
+			
+		}
+		
 		internal function discard():void
 		{
 			if (_tile_image)

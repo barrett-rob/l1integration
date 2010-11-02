@@ -120,7 +120,7 @@ package mfui.widgets.linkone
 					tile.left =_left;
 					tile.height = _height;
 					tile.top = _top;
-					tile.region = new Rectangle(_left, _top, _width, _height);
+
 					tile.callLater(tile.loadImage);
 					_level.push(tile);
 				}
@@ -154,18 +154,12 @@ package mfui.widgets.linkone
 			for (var i:int = 0; i < _level.length; i++)
 			{
 				var t:Tile = Tile(_level[i]);
-				if (t.region.containsPoint(p))
-				{
-					trace(' - found region:', t.region);
-					this.addElement(t);
-					/* create the next level down */
-					_create_level(l + 1);
-					this.validateNow();
-					return;
-				}
+				this.addElement(t);
 			}
-			trace('tile not found for target point:', p, 'on level:', l);
-			/* do nothing */
+			/* create the next level down */
+			_create_level(l + 1);
+			this.validateNow();
+			return;
 		}
 		
 		private function _mouseWheel(e:MouseEvent):void
