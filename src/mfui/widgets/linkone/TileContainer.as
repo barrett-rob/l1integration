@@ -118,19 +118,19 @@ package mfui.widgets.linkone
 			{
 				for (j = 0; j < n; j++)
 				{
-					var _width:int = this.width / (l + 1);
-					var _left:int = i * _width;
-					var _height:int = this.height / (l + 1);
-					var _top:int = j * _height;
+					var _region_width:int = this.width / (l + 1);
+					var _region_left:int = i * _region_width;
+					var _region_height:int = this.height / (l + 1);
+					var _region_top:int = j * _region_height;
 					
 					var tile:Tile = new Tile(this, l, i, j);
 					
-					tile.width = _width;
-					tile.left =_left;
-					tile.height = _height;
-					tile.top = _top;
+					tile.width = _region_width;
+					tile.left =_region_left;
+					tile.height = _region_height;
+					tile.top = _region_top;
 					
-					tile.set_region(_left, _top, _width, _height);
+					tile.set_region(_region_left, _region_top, _region_width, _region_height);
 					
 					tile.callLater(tile.loadImage);
 					_level.push(tile);
