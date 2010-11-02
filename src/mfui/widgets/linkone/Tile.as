@@ -33,21 +33,10 @@ package mfui.widgets.linkone
 			this.setStyle('borderVisible', 'false');
 			this.setStyle('borderWeight', '0');
 			
-			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
-			
 			this._tile_container = tile_container;
 			this._tile_level = tile_level;
 			this._tile_x = tile_x;
 			this._tile_y = tile_y;
-			
-		}
-		
-		private function _creationComplete(e:FlexEvent):void
-		{
-			this.toolTip = 'level:' 
-				+ (_tile_level + _tile_container.tile_uri_level_offset) 
-				+ ' (' + _tile_x + ':' + _tile_y + ')' 
-				+ '\n' + this.width + 'x' + this.height;
 		}
 		
 		public function get tile_level():int

@@ -41,7 +41,6 @@ package mfui.widgets.linkone
 				var pcw:Number = 100 * this.contentWidth / Tile.virtual_width;
 				this.percentWidth = pcw;
 			}
-			this.toolTip = _tile.toolTip + '\n(' + this.contentWidth + 'x' + this.contentHeight + ')';
 			this.validateNow();
 		}
 		
