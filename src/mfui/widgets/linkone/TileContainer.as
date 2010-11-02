@@ -4,12 +4,11 @@ package mfui.widgets.linkone
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
+	import mx.containers.Canvas;
 	import mx.controls.Image;
 	import mx.events.FlexEvent;
 	
-	import spark.components.BorderContainer;
-	
-	public class TileContainer extends BorderContainer
+	public class TileContainer extends Canvas
 	{
 		
 		public static const TILE_URI_ROOT:String = 'http://a028856:8080/ria/linkone?';
@@ -37,7 +36,7 @@ package mfui.widgets.linkone
 		{
 			/* resize to square */
 			this.width = this.height = this.VIRTUAL_TILE_SIZE = Math.min(this.width, this.height);
-			this.validateNow();
+			this.validateSize();
 			MAX_TILE_DEPTH = Math.ceil(Math.log(Math.max(this.VIRTUAL_TILE_SIZE))/Math.LN2);
 		}
 		

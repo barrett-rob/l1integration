@@ -4,12 +4,11 @@ package mfui.widgets.linkone
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
+	import mx.containers.Canvas;
 	import mx.controls.Image;
 	import mx.events.FlexEvent;
 	
-	import spark.components.BorderContainer;
-	
-	public class Tile extends BorderContainer
+	public class Tile extends Canvas
 	{
 		
 		private var _tile_container:TileContainer;
