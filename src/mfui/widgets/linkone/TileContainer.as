@@ -62,6 +62,17 @@ package mfui.widgets.linkone
 			_display_tile(0, new Point(0, 0));
 		}
 		
+		
+		internal function get tile_uri_level_offset():int
+		{		
+			return _tile_uri_level_offset;
+		}
+		
+		internal function get tile_uri_source():String
+		{		
+			return _tile_uri_source;
+		}
+		
 		private function _discard_all_levels():void
 		{		
 			this.removeAllElements();
@@ -118,21 +129,11 @@ package mfui.widgets.linkone
 					tile.left =_left;
 					tile.height = _height;
 					tile.top = _top;
-
+					
 					tile.callLater(tile.loadImage);
 					_level.push(tile);
 				}
 			}
-		}
-		
-		public function get tile_uri_level_offset():int
-		{		
-			return _tile_uri_level_offset;
-		}
-		
-		public function get tile_uri_source():String
-		{		
-			return _tile_uri_source;
 		}
 		
 		private function _display_tile(l:int, p:Point):void
