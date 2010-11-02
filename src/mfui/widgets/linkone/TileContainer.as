@@ -26,9 +26,13 @@ package mfui.widgets.linkone
 		public function TileContainer()
 		{
 			super();
+			
 			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
 			this.addEventListener(MouseEvent.MOUSE_WHEEL, _mouseWheel);
+			
 			this.setStyle('borderStyle', 'none');
+			this.setStyle('borderVisible', 'false');
+			this.setStyle('borderWeight', '0');
 		}
 		
 		private function _creationComplete(e:FlexEvent):void
