@@ -149,22 +149,32 @@ package mfui.widgets.linkone
 			
 			this.removeAllElements();
 			
-			trace('source point is', p, 'on level', this._current_level);
-			var _target:Point = p;
-			trace('target point is', _target, 'on level', l);
+			trace('source coords:', p, 'on level', this._current_level);
+			var _target:Tile = null;
 			
 			this._current_level = l;
 			var _level:Array = _levels[l];
 			for (var i:int = 0; i < _level.length; i++)
 			{
 				var _tile:Tile = Tile(_level[i]);
+				if (_tile.region.containsPoint(p))
+					_target = _tile;
 				this.addElement(_tile);
 			}
+
+			if (_target)
+			{
+				trace('target region:', _target.region, 'on level', l);
+				/* center at target point */
+			}
+			else
+			{
+				trace('target region was not found');
+			}
+
 			/* create the next level down */
 			this.callLater(_create_level, [(l + 1)]);
-
 			this.validateNow();
-			return;
 		}
 		
 	}
