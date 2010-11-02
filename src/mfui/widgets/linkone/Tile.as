@@ -66,9 +66,10 @@ package mfui.widgets.linkone
 			this.addElement(_tile_image);
 		}
 		
-		internal function calc_region():void
+		internal function set_region(w:int, h:int):void
 		{
-			
+			var r:Rectangle = new Rectangle(Number(this.left), Number(this.top), w, h);
+			trace('region for tile (' + _tile_x + ':' + _tile_y + ') on level', tile_level, 'is:', r);
 		}
 		
 		internal function discard():void

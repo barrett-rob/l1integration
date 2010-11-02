@@ -42,6 +42,7 @@ package mfui.widgets.linkone
 				this.height = this.height * this.contentHeight / _tile.virtual_height;
 				this.width = this.width * this.contentWidth / _tile.virtual_width;
 			}
+			_tile.set_region(this.width, this.height);
 		}
 		
 		private function _http_status(e:HTTPStatusEvent):void
