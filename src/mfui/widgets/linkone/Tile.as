@@ -25,10 +25,12 @@ package mfui.widgets.linkone
 		{
 			super();
 			
+			this.addEventListener(MouseEvent.MOUSE_WHEEL, _mouseWheel);
+			
 			this.setStyle('borderStyle', 'solid');
 			this.clipContent = false;
 			this.cacheAsBitmap = true;
-
+			
 			this._tile_container = tile_container;
 			this._tile_level = tile_level;
 			this._tile_x = tile_x;
@@ -76,8 +78,16 @@ package mfui.widgets.linkone
 				_tile_image.discard();
 		}
 		
-		/* TODO: coords resolve to level coords */
-		/* TODO: coords resolve to next level down */
+		private function _mouseWheel(e:MouseEvent):void
+		{
+			if (e.currentTarget != this)
+				return;
+			
+			/* target point is */
+			var p:Point = new Point(e.localX, e.localY);
+			/* display tile */
+			_tile_container.display_tile(e.delta, p);
+		}
 		
 	}
 }

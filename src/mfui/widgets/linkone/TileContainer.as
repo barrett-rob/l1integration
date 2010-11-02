@@ -25,7 +25,6 @@ package mfui.widgets.linkone
 			super();
 			
 			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
-			this.addEventListener(MouseEvent.MOUSE_WHEEL, _mouseWheel);
 			
 			this.setStyle('borderStyle', 'none');
 			this.setStyle('borderVisible', 'false');
@@ -60,7 +59,7 @@ package mfui.widgets.linkone
 			_create_level(0);
 			
 			/* display top level */
-			_display_tile(0, new Point(0, 0));
+			display_tile(0, new Point(0, 0));
 		}
 		
 		
@@ -137,8 +136,10 @@ package mfui.widgets.linkone
 			}
 		}
 		
-		private function _display_tile(l:int, p:Point):void
+		internal function display_tile(delta:int, p:Point):void
 		{
+			var l:int = (delta < 0) ? this._current_level - 1 : this._current_level + 1;
+			
 			if (l < 0)
 				/* can't scroll further out */
 				return;
@@ -163,18 +164,6 @@ package mfui.widgets.linkone
 			return;
 		}
 		
-		private function _mouseWheel(e:MouseEvent):void
-		{
-			if (e.currentTarget != this)
-				return;
-			
-			/* target point is */
-			var p:Point = new Point(e.localX, e.localY);
-			/* target level (up or down) is */
-			var l:int = (e.delta > 0) ? this._current_level + 1 : this._current_level - 1;
-			/* display tile */
-			_display_tile(l, p);
-		}
 	}
 	
 }
