@@ -125,10 +125,10 @@ package mfui.widgets.linkone
 					
 					var tile:Tile = new Tile(this, l, i, j);
 					
-					tile.width = _region_width;
-					tile.left =_region_left;
-					tile.height = _region_height;
-					tile.top = _region_top;
+					tile.width = this.width;
+					tile.left = i * this.width;
+					tile.height = this.height;
+					tile.top = j * this.height;
 					
 					tile.set_region(_region_left, _region_top, _region_width, _region_height);
 					
