@@ -29,8 +29,6 @@ package mfui.widgets.linkone
 			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
 			this.addEventListener(MouseEvent.MOUSE_WHEEL, _mouseWheel);
 			this.setStyle('borderStyle', 'none');
-			this.setStyle('borderVisible', 'false');
-			this.setStyle('borderWeight', '0');
 		}
 		
 		private function _creationComplete(e:FlexEvent):void
@@ -59,7 +57,7 @@ package mfui.widgets.linkone
 			_create_level(0);
 			
 			/* display top level */
-			_display_level(0);
+			_display_tile(0, new Point(0, 0));
 		}
 		
 		private function _discard_all_levels():void
@@ -135,7 +133,7 @@ package mfui.widgets.linkone
 			return _tile_uri_source;
 		}
 		
-		private function _display_level(l:int):void
+		private function _display_tile(l:int, p:Point):void
 		{
 			if (l < 0)
 				/* can't scroll further out */
@@ -143,22 +141,27 @@ package mfui.widgets.linkone
 			if (l >= _levels.length)
 				/* can't scroll further in */
 				return;
-			if (l == _current_level)
-				/* already here */
-				return;
 			
-			trace('displaying level:', l);
 			this.removeAllElements();
-			var _level:Array = _levels[this._current_level = l];
+			trace('targeting:', p, 'on level:', l);
 			
+			this._current_level = l;
+			var _level:Array = _levels[l];
 			for (var i:int = 0; i < _level.length; i++)
 			{
 				var t:Tile = Tile(_level[i]);
-				this.addElement(t);
+				if (t.region.containsPoint(p))
+				{
+					trace(' - found region:', t.region);
+					this.addElement(t);
+					/* create the next level down */
+					_create_level(l + 1);
+					this.validateNow();
+					return;
+				}
 			}
-			/* create the next level down */
-			_create_level(l + 1);
-			this.validateNow();
+			trace('tile not found for target point:', p, 'on level:', l);
+			/* do nothing */
 		}
 		
 		private function _mouseWheel(e:MouseEvent):void
@@ -171,7 +174,7 @@ package mfui.widgets.linkone
 			/* target level (up or down) is */
 			var l:int = (e.delta > 0) ? this._current_level + 1 : this._current_level - 1;
 			
-			_display_level(l);
+			_display_tile(l, p);
 			return;
 		}
 	}
