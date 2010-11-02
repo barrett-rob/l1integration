@@ -30,6 +30,8 @@ package mfui.widgets.linkone
 			this.setStyle('borderStyle', 'none');
 			this.setStyle('borderVisible', 'false');
 			this.setStyle('borderWeight', '0');
+			
+			this.clipContent = false;
 		}
 		
 		private function _creationComplete(e:FlexEvent):void
@@ -76,20 +78,18 @@ package mfui.widgets.linkone
 		{		
 			this.removeAllElements();
 			
-			/* discard and dispose of references to existing tiles */
+			/* delete all tile references */
 			this._current_level = -1;
-			var i:int, j:int;
 			if (_levels)
 			{
-				for (i = _levels.length - 1; i >= 0; i--)
+				for (var i:int = _levels.length - 1; i >= 0; i--)
 				{
 					if (_levels[i] is Array)
 					{
 						var _level:Array = _levels[i];
-						for (j = 0; j < _level.length; j++)
+						for (var j:int = 0; j < _level.length; j++)
 						{
-							if (_level[j] is Tile)
-								Tile(_level[j]).discard();
+							Tile(_level[j]).discard();
 							delete _level[j];
 						}
 					}
@@ -111,7 +111,7 @@ package mfui.widgets.linkone
 			
 			/* number of tiles is square of l+1 */
 			var n:int = l + 1;
-			trace('creating level:', l, '(with', (n * n), 'tiles)');
+			// trace('creating level:', l, '(with', (n * n), 'tiles)');
 			var i:int, j:int;
 			for (i = 0; i < n; i++)
 			{

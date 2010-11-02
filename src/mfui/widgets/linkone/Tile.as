@@ -25,10 +25,9 @@ package mfui.widgets.linkone
 		{
 			super();
 			
-			this.setStyle('borderStyle', 'none');
-			this.setStyle('borderVisible', 'false');
-			this.setStyle('borderWeight', '0');
-			
+			this.setStyle('borderStyle', 'solid');
+			this.clipContent = false;
+
 			this._tile_container = tile_container;
 			this._tile_level = tile_level;
 			this._tile_x = tile_x;
@@ -67,7 +66,7 @@ package mfui.widgets.linkone
 		internal function set_region(x:int, y:int, w:int, h:int):void
 		{
 			this.region = new Rectangle(x, y, w, h);
-			trace('region for tile (' + _tile_x + ':' + _tile_y + ') on level', tile_level, 'is:', this.region);
+			// trace('region for tile (' + _tile_x + ':' + _tile_y + ') on level', tile_level, 'is:', this.region);
 		}
 		
 		internal function discard():void
