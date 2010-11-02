@@ -130,6 +130,8 @@ package mfui.widgets.linkone
 					tile.height = _height;
 					tile.top = _top;
 					
+					tile.set_region(_left, _top, _width, _height);
+					
 					tile.callLater(tile.loadImage);
 					_level.push(tile);
 				}

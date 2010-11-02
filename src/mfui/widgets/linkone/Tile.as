@@ -19,8 +19,7 @@ package mfui.widgets.linkone
 		
 		private var _tile_image:TileImage = null;
 		
-		internal var virtual_height:int;
-		internal var virtual_width:int;
+		internal var virtual_width:int, virtual_height:int;
 		internal var region:Rectangle = null;
 		
 		public function Tile(tile_container:TileContainer, tile_level:int, tile_x:int, tile_y:int)
@@ -66,9 +65,9 @@ package mfui.widgets.linkone
 			this.addElement(_tile_image);
 		}
 		
-		internal function set_region(w:int, h:int):void
+		internal function set_region(x:int, y:int, w:int, h:int):void
 		{
-			this.region = new Rectangle(Number(this.left), Number(this.top), w, h);
+			this.region = new Rectangle(x, y, w, h);
 			trace('region for tile (' + _tile_x + ':' + _tile_y + ') on level', tile_level, 'is:', this.region);
 		}
 		
