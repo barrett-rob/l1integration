@@ -69,7 +69,7 @@
 				/>
 		</s:HGroup>
 		
-		<s:Panel
+		<mx:Panel
 			id="images"
 			title="Image Pyramid"
 			height="100%"
@@ -79,7 +79,10 @@
 				height="700"
 				width="800"
 				id="tileContainer" />
-		</s:Panel>
+			<l1:CalloutContainer
+				tileContainer="{tileContainer}"
+				/>
+		</mx:Panel>
 	</s:VGroup>
 	
 	

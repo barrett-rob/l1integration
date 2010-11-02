@@ -7,21 +7,25 @@ package mfui.widgets.linkone
 	{
 		private var _tile_container:TileContainer;
 		
-		public function CalloutContainer(tile_container:TileContainer)
+		public function CalloutContainer()
 		{
 			super();
-			
 			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creation_complete);
 			this.setStyle('backgroundColor', '0x000000');
 			this.z = 9999; /* floats */
-			
-			this._tile_container = tile_container;
 		}
 		
 		private function _creation_complete(e:FlexEvent):void
 		{
-			this.width = this._tile_container.width;
-			this.height = this._tile_container.height;
+			trace(this, e);
+		}
+		
+		public function set tileContainer(tile_container:TileContainer):void
+		{
+			if (this._tile_container)
+				throw new Error('tile container is already set');
+			this._tile_container = tile_container;
+			this.width = this.height = tile_container.VIRTUAL_TILE_SIZE;
 		}
 	}
 }

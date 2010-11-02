@@ -38,12 +38,11 @@ package mfui.widgets.linkone
 		
 		private function _creationComplete(e:FlexEvent):void
 		{
+			trace(this, e);
 			/* resize to square */
 			this.width = this.height = this.VIRTUAL_TILE_SIZE = Math.min(this.width, this.height);
 			this.validateSize();
 			MAX_TILE_DEPTH = Math.ceil(Math.log(Math.max(this.VIRTUAL_TILE_SIZE))/Math.LN2);
-			
-			this._callout_container = new CalloutContainer(this);
 		}
 		
 		/* TODO: handle resize event */
@@ -177,8 +176,6 @@ package mfui.widgets.linkone
 			this.horizontalScrollPosition = this.verticalScrollPosition = center;
 			
 			/* TODO: center at mouse location? */
-			
-			this.addElement(_callout_container);
 		}
 		
 	}
