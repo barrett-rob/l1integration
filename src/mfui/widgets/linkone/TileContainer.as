@@ -43,7 +43,7 @@ package mfui.widgets.linkone
 			this.validateSize();
 			MAX_TILE_DEPTH = Math.ceil(Math.log(Math.max(this.VIRTUAL_TILE_SIZE))/Math.LN2);
 			
-			//addElement(this._callout_container = new CalloutContainer());
+			this._callout_container = new CalloutContainer(this);
 		}
 		
 		/* TODO: handle resize event */
@@ -160,53 +160,25 @@ package mfui.widgets.linkone
 			_remove_all_tiles();
 			
 			trace('source coords:', p, 'on level', this._current_level);
-			var i:int;
-			var _source:Tile, _target:Tile, _tile:Tile;
-			var _level:Array = _levels[this._current_level];
-			if (_level)
-			{
-				for (i = 0; i < _level.length; i++)
-				{
-					_tile = Tile(_level[i]);
-					if (_tile.region.containsPoint(p))
-					{
-						_source = _tile;
-						break;
-					}
-				}
-			}
 			
-			if (_source)
+			var _level:Array = _levels[this._current_level = l];
+			for (var i:int = 0; i < _level.length; i++)
 			{
-				trace('source region:', _source.region, 'on level', this._current_level);
-			}
-			else
-			{
-				trace('source region was not found');
-			}
-			
-			_level = _levels[this._current_level = l];
-			for (i = 0; i < _level.length; i++)
-			{
-				_tile = Tile(_level[i]);
+				var _tile:Tile = Tile(_level[i]);
 				this.addElement(_tile);
-				if (_tile.region.containsPoint(p))
-					_target = _tile;
 			}
 
 			/* create the next level down */
 			this.callLater(_create_level, [(l + 1)]);
 			this.validateNow();
 			
-			if (_target)
-			{
-				trace('target region:', _target.region, 'on level', l);
-				/* TODO: center at target point */
-			}
-			else
-			{
-				trace('target region was not found');
-			}
+			/* center */
+			var center:int = (l + 1) * VIRTUAL_TILE_SIZE / 2 
+			this.horizontalScrollPosition = this.verticalScrollPosition = center;
+			
+			/* TODO: center at mouse location? */
+			
+			this.addElement(_callout_container);
 		}
 		
 	}
