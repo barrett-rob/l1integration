@@ -146,7 +146,7 @@ package mfui.widgets.linkone
 				return;
 			
 			this.removeAllElements();
-			trace('targeting:', p, 'on level:', l);
+			trace('target point', p, 'on level', l);
 			
 			this._current_level = l;
 			var _level:Array = _levels[l];
@@ -156,7 +156,7 @@ package mfui.widgets.linkone
 				this.addElement(t);
 			}
 			/* create the next level down */
-			_create_level(l + 1);
+			this.callLater(_create_level, [(l + 1)]);
 			this.validateNow();
 			return;
 		}
@@ -170,9 +170,8 @@ package mfui.widgets.linkone
 			var p:Point = new Point(e.localX, e.localY);
 			/* target level (up or down) is */
 			var l:int = (e.delta > 0) ? this._current_level + 1 : this._current_level - 1;
-			
+			/* display tile */
 			_display_tile(l, p);
-			return;
 		}
 	}
 	
