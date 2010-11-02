@@ -34,7 +34,6 @@ package mfui.widgets.linkone
 			
 			this.cacheAsBitmap = true;
 			
-			this._callout_container = new CalloutContainer();
 		}
 		
 		private function _creationComplete(e:FlexEvent):void
@@ -43,6 +42,8 @@ package mfui.widgets.linkone
 			this.width = this.height = this.VIRTUAL_TILE_SIZE = Math.min(this.width, this.height);
 			this.validateSize();
 			MAX_TILE_DEPTH = Math.ceil(Math.log(Math.max(this.VIRTUAL_TILE_SIZE))/Math.LN2);
+			
+			//addElement(this._callout_container = new CalloutContainer());
 		}
 		
 		/* TODO: handle resize event */
@@ -77,9 +78,14 @@ package mfui.widgets.linkone
 			return _tile_uri_source;
 		}
 		
+		private function _remove_all_tiles():void
+		{
+			this.removeAllElements();
+		}
+		
 		private function _discard_all_levels():void
 		{		
-			this.removeAllElements();
+			_remove_all_tiles();
 			
 			/* delete all tile references */
 			this._current_level = -1;
@@ -151,7 +157,7 @@ package mfui.widgets.linkone
 				/* can't scroll further in */
 				return;
 			
-			this.removeAllElements();
+			_remove_all_tiles();
 			
 			trace('source coords:', p, 'on level', this._current_level);
 			var i:int;
