@@ -31,7 +31,7 @@ package mfui.widgets.linkone
 			this.setStyle('borderVisible', 'false');
 			this.setStyle('borderWeight', '0');
 			
-			this.clipContent = false;
+			this.cacheAsBitmap = true;
 		}
 		
 		private function _creationComplete(e:FlexEvent):void
@@ -158,6 +158,7 @@ package mfui.widgets.linkone
 			}
 			/* create the next level down */
 			this.callLater(_create_level, [(l + 1)]);
+
 			this.validateNow();
 			return;
 		}

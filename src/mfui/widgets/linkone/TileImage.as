@@ -14,8 +14,12 @@ package mfui.widgets.linkone
 		public function TileImage(tile:Tile, image_uri:String)
 		{
 			super();
+			
 			this.addEventListener(Event.COMPLETE, _complete);
 			this.addEventListener(HTTPStatusEvent.HTTP_STATUS, _http_status);
+			
+			this.cacheAsBitmap = true;
+			
 			this._tile = tile;
 			this.width = tile.width;
 			this.height = tile.height;

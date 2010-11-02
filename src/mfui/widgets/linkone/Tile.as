@@ -27,6 +27,7 @@ package mfui.widgets.linkone
 			
 			this.setStyle('borderStyle', 'solid');
 			this.clipContent = false;
+			this.cacheAsBitmap = true;
 
 			this._tile_container = tile_container;
 			this._tile_level = tile_level;
