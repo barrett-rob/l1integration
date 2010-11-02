@@ -83,7 +83,7 @@ package mfui.widgets.linkone
 			if (e.currentTarget != this)
 				return;
 			
-			/* target point is */
+			/* source point is */
 			var p:Point = new Point(e.localX, e.localY);
 			/* display tile */
 			_tile_container.display_tile(e.delta, p);

@@ -148,14 +148,17 @@ package mfui.widgets.linkone
 				return;
 			
 			this.removeAllElements();
-			trace('target point', p, 'on level', l);
+			
+			trace('source point is', p, 'on level', this._current_level);
+			var _target:Point = p;
+			trace('target point is', _target, 'on level', l);
 			
 			this._current_level = l;
 			var _level:Array = _levels[l];
 			for (var i:int = 0; i < _level.length; i++)
 			{
-				var t:Tile = Tile(_level[i]);
-				this.addElement(t);
+				var _tile:Tile = Tile(_level[i]);
+				this.addElement(_tile);
 			}
 			/* create the next level down */
 			this.callLater(_create_level, [(l + 1)]);
