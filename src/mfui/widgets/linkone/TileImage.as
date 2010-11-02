@@ -35,10 +35,7 @@ package mfui.widgets.linkone
 
 			if (this.contentWidth < _tile.virtual_height && this.contentHeight < _tile.virtual_height)
 			{
-				trace(this.source, 
-					'(', this.contentWidth, 
-					'x', this.contentHeight, 
-					') is smaller than its virtual tile size. scaling...');
+				/* smaller than virtual tile size. resize to prevent auto scaling up */
 				this.height = this.height * this.contentHeight / _tile.virtual_height;
 				this.width = this.width * this.contentWidth / _tile.virtual_width;
 			}
