@@ -7,6 +7,10 @@
 			   minHeight="768"
 			   creationComplete="creationComplete(event)">
 	<fx:Declarations>
+		<fx:XML id="callout_xml">
+			<root />
+		</fx:XML>
+		<mx:XMLListCollection id="callout_data" source="{callout_xml.pictures.pictureMetadata[0].callouts}" />
 	</fx:Declarations>
 	<fx:Script>
 		<![CDATA[
@@ -14,6 +18,7 @@
 			import mfui.widgets.linkone.TileImage;
 			
 			import mx.collections.ArrayCollection;
+			import mx.collections.XMLListCollection;
 			import mx.controls.Image;
 			import mx.controls.VScrollBar;
 			import mx.core.UIComponent;
@@ -34,8 +39,7 @@
 			);
 			
 			private var loader:URLLoader = new URLLoader();
-			private var callout_xml:XML = new XML(<root />); 
-			
+
 			protected function creationComplete(event:FlexEvent):void
 			{
 				loader.addEventListener(Event.COMPLETE, loaded);
