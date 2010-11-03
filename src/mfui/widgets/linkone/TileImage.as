@@ -36,13 +36,8 @@ package mfui.widgets.linkone
 		{
 			if (e.currentTarget != this)
 				return;
-
-			if (this.contentWidth < _tile.virtual_height && this.contentHeight < _tile.virtual_height)
-			{
-				/* smaller than virtual tile size. resize to prevent auto scaling up */
-				this.height = this.height * this.contentHeight / _tile.virtual_height;
-				this.width = this.width * this.contentWidth / _tile.virtual_width;
-			}
+			
+			trace(_tile.virtual_width + 'x' + _tile.virtual_height + ' (' + this.contentWidth + 'x' + this.contentHeight + ')');
 		}
 		
 		private function _http_status(e:HTTPStatusEvent):void
