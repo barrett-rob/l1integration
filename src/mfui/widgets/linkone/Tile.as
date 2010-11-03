@@ -24,18 +24,14 @@ package mfui.widgets.linkone
 		public function Tile(tile_container:TileContainer, tile_level:int, tile_x:int, tile_y:int)
 		{
 			super();
-			
-			this.addEventListener(MouseEvent.MOUSE_WHEEL, _mouseWheel);
-			
-			this.setStyle('borderStyle', 'solid');
 			this.clipContent = false;
 			this.cacheAsBitmap = true;
+			this.setStyle('borderStyle', 'solid');
 			
 			this._tile_container = tile_container;
 			this._tile_level = tile_level;
 			this._tile_x = tile_x;
 			this._tile_y = tile_y;
-			
 			this.virtual_height = this.virtual_width = tile_container.VIRTUAL_TILE_SIZE;
 		}
 		
@@ -76,17 +72,6 @@ package mfui.widgets.linkone
 		{
 			if (_tile_image)
 				_tile_image.discard();
-		}
-		
-		private function _mouseWheel(e:MouseEvent):void
-		{
-			if (e.currentTarget != this)
-				return;
-			
-			/* source point is */
-			var p:Point = new Point(e.localX, e.localY);
-			/* display tile */
-			_tile_container.display_tile(e.delta, p);
 		}
 		
 	}

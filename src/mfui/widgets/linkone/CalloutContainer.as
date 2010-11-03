@@ -1,6 +1,7 @@
 package mfui.widgets.linkone
 {
 	import flash.events.MouseEvent;
+	import flash.geom.Point;
 	
 	import mx.containers.Canvas;
 	import mx.core.LayoutContainer;
@@ -43,8 +44,10 @@ package mfui.widgets.linkone
 			if (e.currentTarget != this)
 				return;
 			
-			trace('wheel at ' + e.localX + ':' + e.localY);
-			
+			/* source point is */
+			var p:Point = new Point(e.localX, e.localY);
+			/* display tile */
+			_tile_container.display_tile(e.delta, p);
 		}
 		
 		public function set tileContainer(tile_container:TileContainer):void
