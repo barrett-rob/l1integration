@@ -166,22 +166,35 @@ package mfui.widgets.linkone
 			
 			// trace('source point', p, 'on level', this._current_level);
 			
+			var _level_width:int = 0;
+			var _level_height:int = 0;
 			var _level:Array = _levels[this._current_level = l];
 			for (var i:int = 0; i < _level.length; i++)
 			{
 				var _tile:Tile = Tile(_level[i]);
+				if (_tile.tile_x == 0)
+					_level_width += _tile.width;
+				if (_tile.tile_y == 0)
+					_level_height += _tile.height;
 				this.addElement(_tile);
 			}
 
 			/* create the next level down */
 			this.callLater(_create_level, [(l + 1)]);
-			this.validateNow();
 			
 			/* center */
-			// var center:int = (l + 1) * VIRTUAL_TILE_SIZE / 2 
-			// this.horizontalScrollPosition = this.verticalScrollPosition = center;
+			
+			trace(_level_width + 'x' + _level_height);
+			var _left_offset:int = _level_width / 2;
+			for (i = 0; i < _level.length; i++)
+			{
+				_tile = Tile(_level[i]);
+				_tile.left = Number(_tile.left) - _left_offset;
+			}
+			
 			
 			/* TODO: center at mouse location? */
+			this.validateNow();
 		}
 		
 	}
