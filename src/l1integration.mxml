@@ -89,7 +89,6 @@
 				<l1:CalloutContainer
 					height="5"
 					width="5"
-					backgroundColor="0xffcccc"
 					id="calloutContainer"
 					tileContainer="{tileContainer}"
 					/>
