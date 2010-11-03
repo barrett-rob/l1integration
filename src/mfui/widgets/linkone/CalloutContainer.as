@@ -16,8 +16,8 @@ package mfui.widgets.linkone
 			this.left = this.top = 0;
 			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creation_complete);
 			
-			this.setStyle('backgroundColor', '0xffcccc');
-			this.setStyle('backgroundAlpha', '0.5');
+			this.setStyle('backgroundColor', '0xccffcc');
+			this.setStyle('backgroundAlpha', '0.1');
 		}
 		
 		private function _creation_complete(e:FlexEvent):void

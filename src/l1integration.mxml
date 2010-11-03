@@ -76,7 +76,7 @@
 			width="100%"
 			>
 			<mx:Canvas
-				backgroundColor="0xccffcc"
+				backgroundColor="white"
 				height="100%"
 				width="100%"
 				>
