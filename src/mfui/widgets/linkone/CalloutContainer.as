@@ -34,6 +34,8 @@ package mfui.widgets.linkone
 		
 		private function _creation_complete(e:FlexEvent):void
 		{
+			if (e.currentTarget != this)
+				return;
 			trace(this, e);
 		}
 		
@@ -41,8 +43,7 @@ package mfui.widgets.linkone
 		{
 			if (e.currentTarget != this)
 				return;
-			
-			this.addChild(new Callout(e.localX, e.localY, 'foo'));
+			trace(this, e);
 		}
 		
 		private function _wheel(e:MouseEvent):void
@@ -74,7 +75,7 @@ package mfui.widgets.linkone
 			{
 				if (c.localName() == 'rectangularCallout')
 				{
-					
+					this.addChild(new Callout(c));
 				} 
 				else
 				{

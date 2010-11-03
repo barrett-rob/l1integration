@@ -10,25 +10,35 @@ package mfui.widgets.linkone
 	
 	public class Callout extends UIComponent
 	{
-		private var _id:String;
+		private var _id:String, _description:String, _part_number:String;
+		private var _x:int, _y:int;
 		
-		public function Callout(x:int, y:int, id:String)
+		public function Callout(xml:XML)
 		{
 			super();
+			
+			trace(xml);
+			
+			_x = xml.position.x;
+			_y = xml.position.y;
+			_id = xml.displayItemId;
+			_part_number = xml.partNumber;
+			_description = xml.description;
+			
+			this.toolTip = _description + ' (' + _part_number + ')'
+
 			this.graphics.beginFill(0xffaaaa, 0.5);
 			this.graphics.lineStyle(0.5, 0, 0.75);
-			this.graphics.drawCircle(x, y, 15);
-			this.useHandCursor = true;
-			this.mouseChildren = false;
+			this.graphics.drawCircle(_x, _y, 15);
 			
 			var t:UITextField = new UITextField();
-			t.text = this._id = id;
+			t.text = _id;
 			t.width = t.textWidth + 4;
 			t.height = t.textHeight;
 			// t.border = true;
 			// t.borderColor = 0;
-			t.x = x - t.width / 2;
-			t.y = y - t.height / 2;
+			t.x = _x - t.width / 2;
+			t.y = _y - t.height / 2;
 			/* TODO: better derivation of text position */
 			this.addChild(t);
 			
