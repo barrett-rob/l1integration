@@ -4,6 +4,7 @@ package mfui.widgets.linkone
 	import flash.events.MouseEvent;
 	import flash.geom.Point;
 	
+	import mx.collections.XMLListCollection;
 	import mx.containers.Canvas;
 	import mx.core.FlexSprite;
 	import mx.core.LayoutContainer;
@@ -15,6 +16,7 @@ package mfui.widgets.linkone
 	public class CalloutContainer extends LayoutContainer
 	{
 		private var _tile_container:TileContainer;
+		private var _callout_data:XMLListCollection;
 		
 		public function CalloutContainer()
 		{
@@ -51,6 +53,13 @@ package mfui.widgets.linkone
 			var p:Point = new Point(e.localX, e.localY);
 			/* display tile */
 			_tile_container.display_tile(e.delta, p);
+		}
+		
+		public function set calloutData(callout_data:XMLListCollection):void
+		{
+			if (this._callout_data)
+				throw new Error('callout data is already set');
+			this._callout_data = callout_data;
 		}
 		
 		public function set tileContainer(tile_container:TileContainer):void

@@ -52,7 +52,6 @@
 			protected function loaded(event:Event):void
 			{
 				callout_xml.setChildren(new XML(loader.data).children());
-				trace(callout_xml);
 			}
 			
 			
@@ -107,6 +106,7 @@
 					width="5"
 					id="calloutContainer"
 					tileContainer="{tileContainer}"
+					calloutData="{callout_data}"
 					/>
 			</mx:Canvas>
 		</mx:Panel>
