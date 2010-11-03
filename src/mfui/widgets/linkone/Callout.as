@@ -27,11 +27,12 @@ package mfui.widgets.linkone
 			
 			this.toolTip = _description + ' (' + _part_number + ')'
 
-			this.graphics.beginFill(0xffaaaa, 0.5);
-			this.graphics.lineStyle(0.5, 0, 0.75);
+			this.graphics.beginFill(0xffffff, 0.5);
+			this.graphics.lineStyle(0.25, 0, 1);
 			this.graphics.drawCircle(_x, _y, 15);
 			
 			var t:UITextField = new UITextField();
+			t.textColor = 0x1111ff;
 			t.text = _id;
 			t.width = t.textWidth + 4;
 			t.height = t.textHeight;
