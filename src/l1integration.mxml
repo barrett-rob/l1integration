@@ -33,10 +33,22 @@
 				]                
 			);
 			
+			private var loader:URLLoader = new URLLoader();
+			private var callout_xml:XML = new XML(<root />); 
+			
 			protected function creationComplete(event:FlexEvent):void
 			{
+				loader.addEventListener(Event.COMPLETE, loaded);
+				loader.load(new URLRequest('201.xml'));
+				
 				uriDropdown.selectedIndex = 0;
 				uriDropdown.dispatchEvent(new IndexChangeEvent(IndexChangeEvent.CHANGE));
+			}
+				
+			protected function loaded(event:Event):void
+			{
+				callout_xml.setChildren(new XML(loader.data).children());
+				trace(callout_xml);
 			}
 			
 			
