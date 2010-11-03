@@ -8,6 +8,7 @@ package mfui.widgets.linkone
 	import mx.containers.Canvas;
 	import mx.core.FlexSprite;
 	import mx.core.LayoutContainer;
+	import mx.events.CollectionEvent;
 	import mx.events.FlexEvent;
 	import mx.events.ResizeEvent;
 	
@@ -60,6 +61,26 @@ package mfui.widgets.linkone
 			if (this._callout_data)
 				throw new Error('callout data is already set');
 			this._callout_data = callout_data;
+			this._callout_data.addEventListener(CollectionEvent.COLLECTION_CHANGE, _callout_data_change);
+			this._callout_data.dispatchEvent(new CollectionEvent(CollectionEvent.COLLECTION_CHANGE));
+		}
+		
+		private function _callout_data_change(e:CollectionEvent):void
+		{
+			if (e.currentTarget != this._callout_data)
+				return;
+			
+			for each (var c:XML in this._callout_data.children())
+			{
+				if (c.localName() == 'rectangularCallout')
+				{
+					
+				} 
+				else
+				{
+					trace('callout nodes of type', c.localName(), 'not handled');
+				}
+			}
 		}
 		
 		public function set tileContainer(tile_container:TileContainer):void

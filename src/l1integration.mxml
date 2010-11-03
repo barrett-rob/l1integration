@@ -10,7 +10,7 @@
 		<fx:XML id="callout_xml">
 			<root />
 		</fx:XML>
-		<mx:XMLListCollection id="callout_data" source="{callout_xml.pictures.pictureMetadata[0].callouts}" />
+		<mx:XMLListCollection id="callout_data" source="{callout_xml.pictures.pictureMetadata[0].callouts.callout}" />
 	</fx:Declarations>
 	<fx:Script>
 		<![CDATA[
