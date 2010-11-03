@@ -28,9 +28,10 @@ package mfui.widgets.linkone
 			this.layout = "absolute";
 			this.left = this.top = 0;
 			this.cacheAsBitmap = true;
+			this.clipContent = false;
 		}
 		
-		public function setSize(w:int, h:int, t:int):void
+		public function set_size(w:int, h:int, t:int):void
 		{
 			this.width = w;
 			this.height = h;
@@ -50,7 +51,7 @@ package mfui.widgets.linkone
 		
 		/* TODO: handle resize event */
 		
-		public function setSource(tile_source:String, tile_level_offset:int):void
+		public function set_source(tile_source:String, tile_level_offset:int):void
 		{
 			this._tile_uri_source = tile_source;
 			this._tile_uri_level_offset = tile_level_offset;
@@ -134,6 +135,8 @@ package mfui.widgets.linkone
 					var _region_top:int = j * _region_height;
 					
 					var tile:Tile = new Tile(this, l, i, j);
+
+					tile.virtual_height = tile.virtual_width = this.VIRTUAL_TILE_SIZE;
 					
 					tile.width = this.width;
 					tile.left = i * this.width;

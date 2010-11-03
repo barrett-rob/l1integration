@@ -59,8 +59,8 @@
 			protected function change(event:Event):void
 			{
 				var selected:Object = uris[uriDropdown.selectedIndex];
-				tileContainer.setSize(selected.width, selected.height, selected.tileSize);
-				tileContainer.setSource(selected.uri, selected.level);
+				tileContainer.set_size(selected.width, selected.height, selected.tileSize);
+				tileContainer.set_source(selected.uri, selected.level);
 				images.validateNow();
 			}
 			
