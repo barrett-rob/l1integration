@@ -18,6 +18,7 @@ package mfui.widgets.linkone
 			this.left = this.top = 0;
 			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creation_complete);
 			this.addEventListener(MouseEvent.CLICK, _click);
+			this.addEventListener(MouseEvent.MOUSE_WHEEL, _wheel);
 			
 			this.setStyle('backgroundColor', '0xccffcc');
 			this.setStyle('backgroundAlpha', '0.1');
@@ -34,6 +35,15 @@ package mfui.widgets.linkone
 				return;
 			
 			trace('click at ' + e.localX + ':' + e.localY);
+			
+		}
+		
+		private function _wheel(e:MouseEvent):void
+		{
+			if (e.currentTarget != this)
+				return;
+			
+			trace('wheel at ' + e.localX + ':' + e.localY);
 			
 		}
 		
