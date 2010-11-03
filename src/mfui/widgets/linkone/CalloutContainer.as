@@ -1,12 +1,16 @@
 package mfui.widgets.linkone
 {
+	import flash.display.Sprite;
 	import flash.events.MouseEvent;
 	import flash.geom.Point;
 	
 	import mx.containers.Canvas;
+	import mx.core.FlexSprite;
 	import mx.core.LayoutContainer;
 	import mx.events.FlexEvent;
 	import mx.events.ResizeEvent;
+	
+	import spark.primitives.Ellipse;
 	
 	public class CalloutContainer extends LayoutContainer
 	{
@@ -37,6 +41,7 @@ package mfui.widgets.linkone
 			
 			trace('click at ' + e.localX + ':' + e.localY);
 			
+			this.addChild(new Callout(e.localX, e.localY));
 		}
 		
 		private function _wheel(e:MouseEvent):void
