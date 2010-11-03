@@ -7,8 +7,9 @@ package mfui.widgets.linkone
 		public function Callout(x:int, y:int)
 		{
 			super();
-			this.graphics.beginFill(0xffaaaa);
-			this.graphics.drawCircle(x, y, 20);
+			this.graphics.beginFill(0xffaaaa, 0.5);
+			this.graphics.lineStyle(0.5, 0, 0.75);
+			this.graphics.drawCircle(x, y, 15);
 		}
 	}
 }
