@@ -4,11 +4,11 @@ package mfui.widgets.linkone
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
-	import mx.containers.Canvas;
 	import mx.controls.Image;
+	import mx.core.LayoutContainer;
 	import mx.events.FlexEvent;
 	
-	public class TileContainer extends Canvas
+	public class TileContainer extends LayoutContainer
 	{
 		
 		public static const TILE_URI_ROOT:String = 'http://a028856:8080/ria/linkone?';
@@ -25,15 +25,10 @@ package mfui.widgets.linkone
 		public function TileContainer()
 		{
 			super();
-			
-			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
-			
-			this.setStyle('borderStyle', 'none');
-			this.setStyle('borderVisible', 'false');
-			this.setStyle('borderWeight', '0');
-			
+			this.layout = "absolute";
+			this.left = this.top = 0;
 			this.cacheAsBitmap = true;
-			
+			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
 		}
 		
 		private function _creationComplete(e:FlexEvent):void
@@ -43,6 +38,15 @@ package mfui.widgets.linkone
 			this.width = this.height = this.VIRTUAL_TILE_SIZE = Math.min(this.width, this.height);
 			this.validateSize();
 			MAX_TILE_DEPTH = Math.ceil(Math.log(Math.max(this.VIRTUAL_TILE_SIZE))/Math.LN2);
+			
+			this._callout_container.width = this._callout_container.height = this.VIRTUAL_TILE_SIZE;
+		}
+		
+		public function set calloutContainer(callout_container:CalloutContainer):void
+		{
+			if (this._callout_container)
+				throw new Error('callout container is already set');
+			this._callout_container = callout_container;
 		}
 		
 		/* TODO: handle resize event */

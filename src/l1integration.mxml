@@ -75,13 +75,25 @@
 			height="100%"
 			width="100%"
 			>
-			<l1:TileContainer
-				height="700"
-				width="800"
-				id="tileContainer" />
-			<l1:CalloutContainer
-				tileContainer="{tileContainer}"
-				/>
+			<mx:Canvas
+				backgroundColor="0xccffcc"
+				height="100%"
+				width="100%"
+				>
+				<l1:TileContainer
+					height="700"
+					width="800"
+					id="tileContainer"
+					calloutContainer="{calloutContainer}"
+					/>
+				<l1:CalloutContainer
+					height="5"
+					width="5"
+					backgroundColor="0xffcccc"
+					id="calloutContainer"
+					tileContainer="{tileContainer}"
+					/>
+			</mx:Canvas>
 		</mx:Panel>
 	</s:VGroup>
 	
