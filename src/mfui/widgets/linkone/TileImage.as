@@ -38,7 +38,11 @@ package mfui.widgets.linkone
 			if (e.currentTarget != this)
 				return;
 			
-			trace(_tile.level + ': ' + _tile.virtual_width + 'x' + _tile.virtual_height + ' (' + this.contentWidth + 'x' + this.contentHeight + ')');
+			trace(_tile.level + ' (' + _tile.tile_x + ':' + _tile.tile_y + ')' 
+				+ ': ' + _tile.virtual_width + 'x' + _tile.virtual_height 
+				+ ' (' + this.contentWidth + 'x' + this.contentHeight + ')'
+				+ ' (' + this.left + ':' + this.top + ')');
+			
 		}
 		
 		private function _http_status(e:HTTPStatusEvent):void
@@ -57,5 +61,5 @@ package mfui.widgets.linkone
 		}
 		
 	}
-
+	
 }

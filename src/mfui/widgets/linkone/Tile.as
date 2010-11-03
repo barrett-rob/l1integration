@@ -13,11 +13,11 @@ package mfui.widgets.linkone
 	{
 		
 		private var _tile_container:TileContainer;
-		private var _tile_x:int;
-		private var _tile_y:int;
 		private var _tile_image:TileImage = null;
 		
 		internal var level:int;
+		internal var tile_x:int;
+		internal var tile_y:int;
 		internal var virtual_width:int, virtual_height:int;
 		internal var region:Rectangle = null;
 		
@@ -31,8 +31,8 @@ package mfui.widgets.linkone
 			
 			this._tile_container = tile_container;
 			this.level = tile_level;
-			this._tile_x = tile_x;
-			this._tile_y = tile_y;
+			this.tile_x = tile_x;
+			this.tile_y = tile_y;
 		}
 		
 		internal function loadImage():void
@@ -42,8 +42,8 @@ package mfui.widgets.linkone
 			this._tile_image = new TileImage(this, TileContainer.TILE_URI_ROOT 
 				+ _tile_container.tile_uri_source 
 				+ '&tileLevel=' + (level + _tile_container.tile_uri_level_offset) 
-				+ '&tilePositionX=' + _tile_x 
-				+ '&tilePositionY=' + _tile_y);
+				+ '&tilePositionX=' + tile_x 
+				+ '&tilePositionY=' + tile_y);
 			this.addElement(_tile_image);
 		}
 		
