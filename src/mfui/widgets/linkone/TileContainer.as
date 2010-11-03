@@ -162,7 +162,7 @@ package mfui.widgets.linkone
 			
 			_remove_all_tiles();
 			
-			trace('source coords:', p, 'on level', this._current_level);
+			trace('source point', p, 'on level', this._current_level);
 			
 			var _level:Array = _levels[this._current_level = l];
 			for (var i:int = 0; i < _level.length; i++)
