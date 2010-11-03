@@ -35,7 +35,7 @@ package mfui.widgets.linkone
 			this.width = w;
 			this.height = h;
 			
-			MAX_TILE_DEPTH = Math.ceil(Math.log(Math.max(this.VIRTUAL_TILE_SIZE = t))/Math.LN2);
+			this.MAX_TILE_DEPTH = Math.ceil(Math.log(Math.max(this.VIRTUAL_TILE_SIZE = t))/Math.LN2);
 			
 			this._callout_container.width = this.width; 
 			this._callout_container.height = this.height;
@@ -175,8 +175,8 @@ package mfui.widgets.linkone
 			this.validateNow();
 			
 			/* center */
-			var center:int = (l + 1) * VIRTUAL_TILE_SIZE / 2 
-			this.horizontalScrollPosition = this.verticalScrollPosition = center;
+			// var center:int = (l + 1) * VIRTUAL_TILE_SIZE / 2 
+			// this.horizontalScrollPosition = this.verticalScrollPosition = center;
 			
 			/* TODO: center at mouse location? */
 		}
