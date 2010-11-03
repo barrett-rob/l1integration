@@ -121,6 +121,8 @@ package mfui.widgets.linkone
 				/* level already exists */
 				return;
 			
+			var _level_width:int = 0, _level_height:int = 0;
+			
 			/* number of tiles is square of l+1 */
 			var n:int = l + 1;
 			// trace('creating level:', l, '(with', (n * n), 'tiles)');
@@ -134,20 +136,33 @@ package mfui.widgets.linkone
 					var _region_height:int = this.height / (l + 1);
 					var _region_top:int = j * _region_height;
 					
-					var tile:Tile = new Tile(this, l, i, j);
-
-					tile.virtual_height = tile.virtual_width = this.VIRTUAL_TILE_SIZE;
+					var _tile:Tile = new Tile(this, l, i, j);
 					
-					tile.width = this.width;
-					tile.left = i * this.width;
-					tile.height = this.height;
-					tile.top = j * this.height;
+					_tile.virtual_height = _tile.virtual_width = this.VIRTUAL_TILE_SIZE;
 					
-					tile.set_region(_region_left, _region_top, _region_width, _region_height);
+					_tile.width = this.width;
+					_tile.left = i * this.width;
+					_tile.height = this.height;
+					_tile.top = j * this.height;
 					
-					tile.callLater(tile.loadImage);
-					_level.push(tile);
+					_level_width += (i == 0) ? _tile.width : 0;
+					_level_height += (j == 0) ? _tile.height : 0;
+					
+					_tile.set_region(_region_left, _region_top, _region_width, _region_height);
+					
+					_tile.callLater(_tile.loadImage);
+					_level.push(_tile);
 				}
+			}
+			
+			trace(_level_width + 'x' + _level_height);
+			var _left_offset:int = _level_width / 2;
+			var _top_offset:int = _level_height / 2;
+			for (i = 0; i < _level.length; i++)
+			{
+				_tile = Tile(_level[i]);
+				_tile.left = Number(_tile.left) - _left_offset;
+				_tile.top = Number(_tile.top) - _top_offset;
 			}
 		}
 		
@@ -166,32 +181,17 @@ package mfui.widgets.linkone
 			
 			// trace('source point', p, 'on level', this._current_level);
 			
-			var _level_width:int = 0;
-			var _level_height:int = 0;
 			var _level:Array = _levels[this._current_level = l];
 			for (var i:int = 0; i < _level.length; i++)
 			{
 				var _tile:Tile = Tile(_level[i]);
-				if (_tile.tile_x == 0)
-					_level_width += _tile.width;
-				if (_tile.tile_y == 0)
-					_level_height += _tile.height;
 				this.addElement(_tile);
 			}
-
+			
 			/* create the next level down */
 			this.callLater(_create_level, [(l + 1)]);
 			
 			/* center */
-			
-			trace(_level_width + 'x' + _level_height);
-			var _left_offset:int = _level_width / 2;
-			for (i = 0; i < _level.length; i++)
-			{
-				_tile = Tile(_level[i]);
-				_tile.left = Number(_tile.left) - _left_offset;
-			}
-			
 			
 			/* TODO: center at mouse location? */
 			this.validateNow();
