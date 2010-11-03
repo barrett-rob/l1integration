@@ -19,7 +19,7 @@ package mfui.widgets.linkone
 		{
 			super();
 			
-			trace(xml);
+			// trace(xml);
 			
 			_x = xml.position.x;
 			_y = xml.position.y;

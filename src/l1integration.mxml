@@ -30,12 +30,12 @@
 			[Bindable]
 			public var uris:ArrayCollection = new ArrayCollection(
 				[
-					{uri:'book=komatsu/D355A-3&page=201&pictureidentity=1_1_2', level:'10'}, 
-					{uri:'book=komatsu/D355A-3&page=343A&pictureidentity=1_1', level:'10'}, 
-					{uri:'book=komatsu/D355A-3&page=222A&pictureidentity=1_1_2_3', level:'10'},
-					{uri:'book=komatsu/D355A-3&page=~.8&pictureidentity=1', level:'10'},
-					{uri:'book=logset/6F&page=TOC&pictureidentity=1', level:'10'},
-					{uri:'book=logset/6F&page=965588A&pictureidentity=1', level:'10'}
+					{uri:'book=komatsu/D355A-3&page=201&pictureidentity=1_1_2', level:'10', height:'986', width:'856', tileSize:'1024' }, 
+					{uri:'book=komatsu/D355A-3&page=343A&pictureidentity=1_1', level:'10', height:'986', width:'856', tileSize:'1024' }, 
+					{uri:'book=komatsu/D355A-3&page=222A&pictureidentity=1_1_2_3', level:'10', height:'986', width:'856', tileSize:'1024' },
+					{uri:'book=komatsu/D355A-3&page=~.8&pictureidentity=1', level:'10', height:'986', width:'856', tileSize:'1024' },
+					{uri:'book=logset/6F&page=TOC&pictureidentity=1', level:'10', height:'986', width:'856', tileSize:'1024' },
+					{uri:'book=logset/6F&page=965588A&pictureidentity=1', level:'10', height:'986', width:'856', tileSize:'1024' }
 				]                
 			);
 			
@@ -58,7 +58,9 @@
 			
 			protected function change(event:Event):void
 			{
-				tileContainer.setSource(uris[uriDropdown.selectedIndex].uri, uris[uriDropdown.selectedIndex].level);
+				var selected:Object = uris[uriDropdown.selectedIndex];
+				tileContainer.setSize(selected.width, selected.height, selected.tileSize);
+				tileContainer.setSource(selected.uri, selected.level);
 				images.validateNow();
 			}
 			
@@ -97,14 +99,14 @@
 				width="100%"
 				>
 				<l1:TileContainer
-					height="700"
-					width="800"
+					height="100"
+					width="100"
 					id="tileContainer"
 					calloutContainer="{calloutContainer}"
 					/>
 				<l1:CalloutContainer
-					height="5"
-					width="5"
+					height="100"
+					width="100"
 					id="calloutContainer"
 					tileContainer="{tileContainer}"
 					calloutData="{callout_data}"

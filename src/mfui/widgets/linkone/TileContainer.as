@@ -28,18 +28,17 @@ package mfui.widgets.linkone
 			this.layout = "absolute";
 			this.left = this.top = 0;
 			this.cacheAsBitmap = true;
-			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
 		}
 		
-		private function _creationComplete(e:FlexEvent):void
+		public function setSize(w:int, h:int, t:int):void
 		{
-			trace(this, e);
-			/* resize to square */
-			this.width = this.height = this.VIRTUAL_TILE_SIZE = Math.min(this.width, this.height);
-			this.validateSize();
-			MAX_TILE_DEPTH = Math.ceil(Math.log(Math.max(this.VIRTUAL_TILE_SIZE))/Math.LN2);
+			this.width = w;
+			this.height = h;
 			
-			this._callout_container.width = this._callout_container.height = this.VIRTUAL_TILE_SIZE;
+			MAX_TILE_DEPTH = Math.ceil(Math.log(Math.max(this.VIRTUAL_TILE_SIZE = t))/Math.LN2);
+			
+			this._callout_container.width = this.width; 
+			this._callout_container.height = this.height;
 		}
 		
 		public function set calloutContainer(callout_container:CalloutContainer):void
