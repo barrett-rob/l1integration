@@ -39,9 +39,7 @@ package mfui.widgets.linkone
 			if (e.currentTarget != this)
 				return;
 			
-			trace('click at ' + e.localX + ':' + e.localY);
-			
-			this.addChild(new Callout(e.localX, e.localY));
+			this.addChild(new Callout(e.localX, e.localY, 'foo'));
 		}
 		
 		private function _wheel(e:MouseEvent):void
