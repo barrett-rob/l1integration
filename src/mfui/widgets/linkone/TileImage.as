@@ -60,7 +60,7 @@ package mfui.widgets.linkone
 				if (_tile.tile_x == _tile.level_width - 1)
 				{
 					/* another tile beneath and to the right of */
-					_tile.add_tile(0, 1);
+					_tile.add_tile(1, 1);
 				}
 			}
 			

@@ -20,7 +20,7 @@ package mfui.widgets.linkone
 		internal var tile_uri_level_offset:int = 0;
 		internal var tile_uri_source:String = null;
 		
-		private var _levels:Array = null, _level_widths:Array = null;
+		private var _levels:Array = null;
 		private var _current_level:int = -1;
 		
 		public function TileContainer()
@@ -54,8 +54,6 @@ package mfui.widgets.linkone
 			_levels = new Array(MAX_TILE_DEPTH);
 			for (var i:int = 0; i < _levels.length; i++)
 				_levels[i] = [];
-			
-			_level_widths = new Array(_levels.length);
 			
 			/* top level */
 			_create_level(0);
@@ -99,8 +97,6 @@ package mfui.widgets.linkone
 			
 			/* start by creating (l+1)^2 tiles */
 			var _level_width:int = l + 1;
-			_level_widths[l] = _level_width;
-			
 			var i:int, j:int;
 			for (i = 0; i < _level_width; i++)
 			{
@@ -114,13 +110,9 @@ package mfui.widgets.linkone
 			}
 		}
 		
-		internal function grow_more_tiles(level:int, existing_level_width:int):void
+		internal function add_tile(tile_x:int, tile_y:int, level:int):void
 		{
-			if (!_level_widths[level] == existing_level_width)
-				/* level has already grown */
-				return;
-			trace('growing more tiles on level', level);
-			_level_widths[level] = existing_level_width
+			trace('adding tile at (' + tile_x + ':' + tile_y + ') on level ' + level);
 		}
 		
 		internal function display_level(l:int):void
