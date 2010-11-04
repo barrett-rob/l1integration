@@ -75,10 +75,13 @@ package mfui.widgets.linkone
 			if (e.currentTarget != this)
 				return;
 			
-			var virtual_x:int, virtual_y:int;
+			var _virtual_x:Number, _virtual_y:Number;
+			_virtual_x = e.localX;
+			_virtual_y = e.localY;
 			
-			trace('local (' + e.localX + ':' + e.localY + ')')
-			trace('virtual (' + virtual_x + ':' + virtual_y + ')')
+			
+			trace('   local (' + e.localX + ':' + e.localY + ')')
+			trace(' virtual (' + _virtual_x + ':' + _virtual_y + ')')
 		}
 		
 		private function _mouseWheel(e:MouseEvent):void
