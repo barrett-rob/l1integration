@@ -104,7 +104,7 @@ package mfui.widgets.linkone
 				{
 					var tile:Tile = new Tile(this, l, i, j);
 					_level.push(tile);
-					tile.callLater(tile.loadImage);
+					callLater(tile.loadImage);
 				}
 			}
 		}
