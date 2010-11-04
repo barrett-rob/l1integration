@@ -40,14 +40,13 @@ package mfui.widgets.linkone
 			
 			if (this.contentWidth < Tile.virtual_height && this.contentHeight < Tile.virtual_height)
 			{
-				trace(this.source, 'w:', this.contentWidth, 'h:', this.contentHeight, 'smaller than virtual tile');
+				/* image smaller than virtual tile */
 				var pch:Number = 100 * this.contentHeight / Tile.virtual_height;
 				this.percentHeight = pch;
 				var pcw:Number = 100 * this.contentWidth / Tile.virtual_width;
 				this.percentWidth = pcw;
 			}
-			this.toolTip = _tile.toolTip + '\n(' + this.contentWidth + 'x' + this.contentHeight + ')';
-			this.validateNow();
+			this.toolTip = toString();
 		}
 		
 		/* TODO: dimensions +- 1px overlap */
@@ -57,6 +56,10 @@ package mfui.widgets.linkone
 			this.source = null;
 		}
 		
+		public override function toString():String
+		{
+			return this._tile.toString() + '\n(' + this.contentWidth + 'x' + this.contentHeight + ')'; 
+		}
 	}
 	
 }
