@@ -4,11 +4,12 @@ package mfui.widgets.linkone
 	import flash.geom.Rectangle;
 	
 	import mx.controls.Image;
+	import mx.core.LayoutContainer;
 	import mx.events.FlexEvent;
 	
 	import spark.components.BorderContainer;
 	
-	public class TileContainer extends BorderContainer
+	public class TileContainer extends LayoutContainer
 	{
 		
 		public static const TILE_URI_ROOT:String = 'http://a028856:8080/ria/linkone?';
@@ -27,8 +28,9 @@ package mfui.widgets.linkone
 		public function TileContainer()
 		{
 			super();
-			addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
 			this.setStyle('borderStyle', 'solid');
+			this.layout = 'absolute';
+			addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
 		}
 		
 		private function _creationComplete(e:FlexEvent):void

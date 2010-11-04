@@ -4,11 +4,12 @@ package mfui.widgets.linkone
 	import flash.geom.Rectangle;
 	
 	import mx.controls.Image;
+	import mx.core.LayoutContainer;
 	import mx.events.FlexEvent;
 	
 	import spark.components.BorderContainer;
 	
-	public class Tile extends BorderContainer
+	public class Tile extends LayoutContainer
 	{
 		
 		internal var virtual_size:int;
@@ -25,6 +26,8 @@ package mfui.widgets.linkone
 		{
 			super();
 			this.setStyle('borderStyle', 'solid');
+			this.layout = 'absolute';
+			this.clipContent = false;
 			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
 			this.addEventListener(MouseEvent.MOUSE_WHEEL, _mouseWheel);
 			this.addEventListener(MouseEvent.CLICK, _click);
