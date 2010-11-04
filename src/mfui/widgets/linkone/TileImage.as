@@ -27,8 +27,9 @@ package mfui.widgets.linkone
 		{
 			if (e.currentTarget != this)
 				return;
-			
-			trace(e);
+
+			trace(this._image_uri, 'not loaded');
+			this.width = this.height = 0;
 		}
 		
 		private function _complete(e:Event):void
@@ -48,7 +49,6 @@ package mfui.widgets.linkone
 			this.validateNow();
 		}
 		
-		/* TODO: handle image load failure */
 		/* TODO: dimensions +- 1px overlap */
 		
 		internal function discard():void
