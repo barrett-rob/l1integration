@@ -102,46 +102,48 @@ package mfui.widgets.linkone
 			{
 				for (j = 0; j < _level_width; j++)
 				{
-					_create_tile(l, i, j);
+					var _tile:Tile = _create_tile(l, i, j);
+					callLater(_tile.loadImage);
 				}
 			}
 		}
 		
-		private function _create_tile(level:int, tile_x:int, tile_y:int):void
+		private function _create_tile(level:int, tile_x:int, tile_y:int):Tile
 		{
-			var tile:Tile = new Tile(this, level, tile_x, tile_y);
-			tile.virtual_size = this.VIRTUAL_TILE_SIZE;
+			var _tile:Tile = new Tile(this, level, tile_x, tile_y);
+			_tile.virtual_size = this.VIRTUAL_TILE_SIZE;
 			var _level:Array = _levels[level];
-			_level.push(tile);
-			callLater(tile.loadImage);
+			_level.push(_tile);
+			return _tile;
 		}
 		
 		internal function add_tile(level:int, tile_x:int, tile_y:int):void
 		{
-			_create_tile(level, tile_x, tile_y);
+			var _tile:Tile = _create_tile(level, tile_x, tile_y);
 			_set_tile_sizes_and_positions(level);
+			callLater(_tile.loadImage);
 		}
 		
 		private function _set_tile_sizes_and_positions(level:int):void
 		{
-			var i:int, _new_level_width:int;
+			var i:int, _max_xory:int;
 			var _tile:Tile;
 			var _level:Array = _levels[level];
 			/* get new level_width */
 			for (i = 0; i < _level.length; i++)
 			{
 				_tile = Tile(_level[i]);
-				if (_tile.tile_x > _new_level_width)
-					_new_level_width = _tile.tile_x;
-				if (_tile.tile_y > _new_level_width)
-					_new_level_width = _tile.tile_y;
+				if (_tile.tile_x > _max_xory)
+					_max_xory = _tile.tile_x;
+				if (_tile.tile_y > _max_xory)
+					_max_xory = _tile.tile_y;
 			}
-			++_new_level_width;
+			++_max_xory;
 			/* inform tiles */
 			for (i = 0; i < _level.length; i++)
 			{
 				_tile = Tile(_level[i]);
-				_tile.level_width = _new_level_width;
+				_tile.level_width = _max_xory;
 				_tile.set_size_and_position();
 			}
 		}
