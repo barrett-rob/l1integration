@@ -120,32 +120,7 @@ package mfui.widgets.linkone
 		internal function add_tile(level:int, tile_x:int, tile_y:int):void
 		{
 			var _tile:Tile = _create_tile(level, tile_x, tile_y);
-			_set_tile_sizes_and_positions(level);
 			callLater(_tile.loadImage);
-		}
-		
-		private function _set_tile_sizes_and_positions(level:int):void
-		{
-			var i:int, _max_xory:int;
-			var _tile:Tile;
-			var _level:Array = _levels[level];
-			/* get new level_width */
-			for (i = 0; i < _level.length; i++)
-			{
-				_tile = Tile(_level[i]);
-				if (_tile.tile_x > _max_xory)
-					_max_xory = _tile.tile_x;
-				if (_tile.tile_y > _max_xory)
-					_max_xory = _tile.tile_y;
-			}
-			++_max_xory;
-			/* inform tiles */
-			for (i = 0; i < _level.length; i++)
-			{
-				_tile = Tile(_level[i]);
-				_tile.level_width = _max_xory;
-				_tile.set_size_and_position();
-			}
 		}
 		
 		internal function display_level(l:int):void

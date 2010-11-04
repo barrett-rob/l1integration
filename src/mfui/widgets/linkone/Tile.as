@@ -46,11 +46,12 @@ package mfui.widgets.linkone
 			this.top = this.tile_y * this.height;
 			
 			this.region = new Rectangle(Number(this.left), Number(this.top), this.width, this.height);
+			
+			this.toolTip = toString();
 		}
 		
 		private function _creationComplete(e:FlexEvent):void
 		{
-			this.toolTip = toString();
 		}
 		
 		internal function loadImage():void
