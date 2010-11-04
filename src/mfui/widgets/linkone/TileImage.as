@@ -38,12 +38,12 @@ package mfui.widgets.linkone
 			if (e.currentTarget != this)
 				return;
 			
-			if (this.contentWidth < Tile.virtual_height && this.contentHeight < Tile.virtual_height)
+			if (this.contentWidth < _tile.virtual_size && this.contentHeight < _tile.virtual_size)
 			{
 				/* image smaller than virtual tile */
-				var pch:Number = 100 * this.contentHeight / Tile.virtual_height;
+				var pch:Number = 100 * this.contentHeight / _tile.virtual_size;
 				this.percentHeight = pch;
-				var pcw:Number = 100 * this.contentWidth / Tile.virtual_width;
+				var pcw:Number = 100 * this.contentWidth / _tile.virtual_size;
 				this.percentWidth = pcw;
 			}
 			this.toolTip = toString();
