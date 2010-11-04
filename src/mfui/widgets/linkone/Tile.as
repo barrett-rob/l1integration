@@ -102,9 +102,5 @@ package mfui.widgets.linkone
 			_tile_container.display_level(l);
 			return;
 		}
-		
-		/* TODO: coords resolve to level coords */
-		/* TODO: coords resolve to next level down */
-		
 	}
 }
