@@ -12,11 +12,10 @@ package mfui.widgets.linkone
 	{
 		
 		internal var virtual_size:int;
-		
+		internal var level_width:int;
 		internal var tile_level:int;
 		internal var tile_x:int;
 		internal var tile_y:int;
-		internal var level_width;
 		
 		private var _tile_container:TileContainer;
 		private var _tile_image:TileImage = null;
