@@ -16,6 +16,7 @@ package mfui.widgets.linkone
 		internal var tile_level:int;
 		internal var tile_x:int;
 		internal var tile_y:int;
+		internal var level_width;
 		
 		private var _tile_container:TileContainer;
 		private var _tile_image:TileImage = null;
@@ -35,13 +36,13 @@ package mfui.widgets.linkone
 			this.tile_level = tile_level;
 			this.tile_x = tile_x;
 			this.tile_y = tile_y;
-			
-			set_size_and_position(this.tile_level + 1);
+			this.level_width = tile_level + 1
+			set_size_and_position();
 		}
 		
-		internal function set_size_and_position(tile_count:int):void
+		internal function set_size_and_position():void
 		{
-			this.width = this.height = this._tile_container.width / tile_count;
+			this.width = this.height = this._tile_container.width / level_width;
 			this.left = this.tile_x * this.width;
 			this.top = this.tile_y * this.height;
 			
