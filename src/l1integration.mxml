@@ -4,7 +4,7 @@
 			   xmlns:mx="library://ns.adobe.com/flex/mx"
 			   xmlns:l1="mfui.widgets.linkone.*"
 			   minWidth="1024" 
-			   minHeight="768"
+			   minHeight="2048"
 			   creationComplete="creationComplete(event)">
 	<fx:Declarations>
 		<fx:XML id="callout_xml">
