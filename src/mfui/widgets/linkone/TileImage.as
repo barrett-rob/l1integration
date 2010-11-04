@@ -30,6 +30,7 @@ package mfui.widgets.linkone
 
 			trace(this._image_uri, 'not loaded');
 			this.width = this.height = 0;
+			discard();
 		}
 		
 		private function _complete(e:Event):void
