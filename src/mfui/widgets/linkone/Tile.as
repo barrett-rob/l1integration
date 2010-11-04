@@ -38,6 +38,11 @@ package mfui.widgets.linkone
 			this._tile_x = tile_x;
 			this._tile_y = tile_y;
 			
+			set_size_and_position();
+		}
+		
+		internal function set_size_and_position():void
+		{
 			this.width = this._tile_container.width / (this._tile_level + 1);				
 			this.height = this._tile_container.height / (this._tile_level + 1);	
 			this.left = this._tile_x * this.width;
