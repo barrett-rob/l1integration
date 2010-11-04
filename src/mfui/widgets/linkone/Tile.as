@@ -38,6 +38,12 @@ package mfui.widgets.linkone
 			this._tile_x = tile_x;
 			this._tile_y = tile_y;
 			
+			this.width = this._tile_container.width / (this._tile_level + 1);				
+			this.height = this._tile_container.height / (this._tile_level + 1);	
+			this.left = this._tile_x * this.width;
+			this.top = this._tile_y * this.height;
+			
+			this.region = new Rectangle(Number(this.left), Number(this.top), this.width, this.height);
 		}
 		
 		private function _creationComplete(e:FlexEvent):void

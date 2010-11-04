@@ -94,7 +94,7 @@ package mfui.widgets.linkone
 				/* level already exists */
 				return;
 			
-			/* number of tiles is square of l+1 */
+			/* start number of tiles at square of l+1 */
 			var n:int = l + 1;
 			trace('creating level:', l, '(with', (n * n), 'tiles)');
 			var i:int, j:int;
@@ -102,22 +102,8 @@ package mfui.widgets.linkone
 			{
 				for (j = 0; j < n; j++)
 				{
-					var _width:int = this.width / (l + 1);
-					var _left:int = i * _width;
-					var _height:int = this.height / (l + 1);
-					var _top:int = j * _height;
-					
 					var tile:Tile = new Tile(this, l, i, j);
-					
-					tile.width = _width;
-					tile.left = _left;
-					tile.height = _height;
-					tile.top = _top;
-					
-					tile.region = new Rectangle(_left, _top, _width, _height);
-					
 					_level.push(tile);
-					
 					tile.callLater(tile.loadImage);
 				}
 			}
