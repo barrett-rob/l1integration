@@ -16,8 +16,8 @@ package mfui.widgets.linkone
 		internal var tile_level:int;
 		internal var tile_x:int;
 		internal var tile_y:int;
+		internal var tile_container:TileContainer;
 		
-		private var _tile_container:TileContainer;
 		private var _tile_image:TileImage = null;
 		
 		internal var region:Rectangle = null;
@@ -31,7 +31,7 @@ package mfui.widgets.linkone
 			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
 			this.addEventListener(MouseEvent.MOUSE_WHEEL, _mouseWheel);
 			
-			this._tile_container = tile_container;
+			this.tile_container = tile_container;
 			this.tile_level = tile_level;
 			this.tile_x = tile_x;
 			this.tile_y = tile_y;
@@ -41,7 +41,7 @@ package mfui.widgets.linkone
 		
 		internal function set_size_and_position():void
 		{
-			this.width = this.height = this._tile_container.width / level_width;
+			this.width = this.height = this.tile_container.width / level_width;
 			this.left = this.tile_x * this.width;
 			this.top = this.tile_y * this.height;
 			
@@ -58,8 +58,8 @@ package mfui.widgets.linkone
 			if (_tile_image)
 				return;
 			this._tile_image = new TileImage(this, TileContainer.TILE_URI_ROOT 
-				+ _tile_container.tile_uri_source 
-				+ '&tileLevel=' + (tile_level + _tile_container.tile_uri_level_offset) 
+				+ tile_container.tile_uri_source 
+				+ '&tileLevel=' + (tile_level + tile_container.tile_uri_level_offset) 
 				+ '&tilePositionX=' + tile_x 
 				+ '&tilePositionY=' + tile_y);
 			this.addElement(_tile_image);
@@ -78,7 +78,7 @@ package mfui.widgets.linkone
 			
 			/* show next level up or down */
 			var l:int = (e.delta > 0) ? this.tile_level + 1 : this.tile_level - 1;
-			_tile_container.display_level(l);
+			tile_container.display_level(l);
 			return;
 		}
 		
