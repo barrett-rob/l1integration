@@ -26,7 +26,7 @@ package mfui.widgets.linkone
 		{
 			super();
 			
-			this.setStyle('borderStyle', 'none');
+			this.setStyle('borderStyle', 'solid');
 			
 			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
 			this.addEventListener(MouseEvent.MOUSE_WHEEL, _mouseWheel);

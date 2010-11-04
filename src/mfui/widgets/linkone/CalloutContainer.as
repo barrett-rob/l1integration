@@ -36,14 +36,12 @@ package mfui.widgets.linkone
 		{
 			if (e.currentTarget != this)
 				return;
-			trace(this, e);
 		}
 		
 		private function _click(e:MouseEvent):void
 		{
 			if (e.currentTarget != this)
 				return;
-			trace(this, e);
 		}
 		
 		private function _wheel(e:MouseEvent):void

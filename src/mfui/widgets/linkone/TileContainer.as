@@ -94,9 +94,8 @@ package mfui.widgets.linkone
 				/* level already exists */
 				return;
 			
-			/* start number of tiles at square of l+1 */
+			/* start by creating (l+1)^2 tiles */
 			var n:int = l + 1;
-			trace('creating level:', l, '(with', (n * n), 'tiles)');
 			var i:int, j:int;
 			for (i = 0; i < n; i++)
 			{
@@ -122,7 +121,6 @@ package mfui.widgets.linkone
 				/* already positioned on level */
 				return;
 			
-			trace('displaying level:', l);
 			this.removeAllElements();
 			this._current_level = l;
 			var _level:Array = _levels[l];
