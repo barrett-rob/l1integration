@@ -47,6 +47,17 @@ package mfui.widgets.linkone
 				this.percentWidth = pcw;
 			}
 			
+			/* check images on the right and bottom edges */
+			if ((_tile.tile_x == _tile.level_width - 1) && (this.contentWidth > _tile.virtual_size + 1))
+			{
+				trace('there is another tile to the right of');
+				trace(this);
+			}
+			if ((_tile.tile_y == _tile.level_width - 1) && (this.contentHeight > _tile.virtual_size + 1))
+			{
+				trace('there is another tile beneath');
+				trace(this);
+			}
 			
 			this.toolTip = toString();
 		}
@@ -60,7 +71,7 @@ package mfui.widgets.linkone
 		
 		public override function toString():String
 		{
-			return this._tile.toString() + '\n(' + this.contentWidth + 'x' + this.contentHeight + ')'; 
+			return this._tile.toString() + '\nimage (' + this.contentWidth + 'x' + this.contentHeight + ')'; 
 		}
 	}
 	
