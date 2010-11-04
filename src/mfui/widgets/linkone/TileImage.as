@@ -1,6 +1,7 @@
 package mfui.widgets.linkone
 {
 	import flash.events.Event;
+	import flash.events.IOErrorEvent;
 	
 	import mx.controls.Image;
 	
@@ -13,29 +14,38 @@ package mfui.widgets.linkone
 		public function TileImage(tile:Tile, image_uri:String)
 		{
 			super();
-			this.addEventListener(Event.COMPLETE, _complete);
 			this._tile = tile;
 			this.width = tile.width;
 			this.height = tile.height;
 			this._image_uri = image_uri;
+			this.addEventListener(Event.COMPLETE, _complete);
+			this.addEventListener(IOErrorEvent.IO_ERROR, _io_error);
 			this.source = this._image_uri;
+		}
+		
+		private function _io_error(e:IOErrorEvent):void
+		{
+			if (e.currentTarget != this)
+				return;
+			
+			trace(e);
 		}
 		
 		private function _complete(e:Event):void
 		{
-			if (e.target == this)
+			if (e.currentTarget != this)
+				return;
+			
+			if (this.contentWidth < Tile.virtual_height && this.contentHeight < Tile.virtual_height)
 			{
-				if (this.contentWidth < Tile.virtual_height && this.contentHeight < Tile.virtual_height)
-				{
-					trace(this.source, 'w:', this.contentWidth, 'h:', this.contentHeight, 'smaller than virtual tile');
-					var pch:Number = 100 * this.contentHeight / Tile.virtual_height;
-					this.percentHeight = pch;
-					var pcw:Number = 100 * this.contentWidth / Tile.virtual_width;
-					this.percentWidth = pcw;
-				}
-				this.toolTip = _tile.toolTip + '\n(' + this.contentWidth + 'x' + this.contentHeight + ')';
-				this.validateNow();
+				trace(this.source, 'w:', this.contentWidth, 'h:', this.contentHeight, 'smaller than virtual tile');
+				var pch:Number = 100 * this.contentHeight / Tile.virtual_height;
+				this.percentHeight = pch;
+				var pcw:Number = 100 * this.contentWidth / Tile.virtual_width;
+				this.percentWidth = pcw;
 			}
+			this.toolTip = _tile.toolTip + '\n(' + this.contentWidth + 'x' + this.contentHeight + ')';
+			this.validateNow();
 		}
 		
 		/* TODO: handle image load failure */
@@ -47,5 +57,5 @@ package mfui.widgets.linkone
 		}
 		
 	}
-
+	
 }
