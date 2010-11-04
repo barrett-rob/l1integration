@@ -7,6 +7,10 @@
 			   minHeight="768"
 			   creationComplete="creationComplete(event)">
 	<fx:Declarations>
+		<fx:XML id="callout_xml">
+			<root />
+		</fx:XML>
+		<mx:XMLListCollection id="callout_data" source="{callout_xml.pictures.pictureMetadata[0].callouts.callout}" />
 	</fx:Declarations>
 	<fx:Script>
 		<![CDATA[
@@ -14,6 +18,7 @@
 			import mfui.widgets.linkone.TileImage;
 			
 			import mx.collections.ArrayCollection;
+			import mx.collections.XMLListCollection;
 			import mx.controls.Image;
 			import mx.controls.VScrollBar;
 			import mx.core.UIComponent;
@@ -25,24 +30,37 @@
 			[Bindable]
 			public var uris:ArrayCollection = new ArrayCollection(
 				[
-					{uri:'book=komatsu/D355A-3&page=343A&pictureidentity=1_1', level:'10'}, 
-					{uri:'book=komatsu/D355A-3&page=222A&pictureidentity=1_1_2_3', level:'10'},
-					{uri:'book=komatsu/D355A-3&page=~.8&pictureidentity=1', level:'10'},
-					{uri:'book=logset/6F&page=TOC&pictureidentity=1', level:'10'},
-					{uri:'book=logset/6F&page=965588A&pictureidentity=1', level:'10'}
+					{uri:'book=komatsu/D355A-3&page=201&pictureidentity=1_1_2', level:'10', height:'986', width:'856', tileSize:'1024' }, 
+					{uri:'book=komatsu/D355A-3&page=343A&pictureidentity=1_1', level:'10', height:'986', width:'856', tileSize:'1024' }, 
+					{uri:'book=komatsu/D355A-3&page=222A&pictureidentity=1_1_2_3', level:'10', height:'986', width:'856', tileSize:'1024' },
+					{uri:'book=komatsu/D355A-3&page=~.8&pictureidentity=1', level:'10', height:'986', width:'856', tileSize:'1024' },
+					{uri:'book=logset/6F&page=TOC&pictureidentity=1', level:'10', height:'986', width:'856', tileSize:'1024' },
+					{uri:'book=logset/6F&page=965588A&pictureidentity=1', level:'10', height:'986', width:'856', tileSize:'1024' }
 				]                
 			);
 			
+			private var loader:URLLoader = new URLLoader();
+
 			protected function creationComplete(event:FlexEvent):void
 			{
+				loader.addEventListener(Event.COMPLETE, loaded);
+				loader.load(new URLRequest('201.xml'));
+				
 				uriDropdown.selectedIndex = 0;
 				uriDropdown.dispatchEvent(new IndexChangeEvent(IndexChangeEvent.CHANGE));
+			}
+				
+			protected function loaded(event:Event):void
+			{
+				callout_xml.setChildren(new XML(loader.data).children());
 			}
 			
 			
 			protected function change(event:Event):void
 			{
-				tileContainer.setSource(uris[uriDropdown.selectedIndex].uri, uris[uriDropdown.selectedIndex].level);
+				var selected:Object = uris[uriDropdown.selectedIndex];
+				tileContainer.set_size(selected.width, selected.height, selected.tileSize);
+				tileContainer.set_source(selected.uri, selected.level);
 				images.validateNow();
 			}
 			
@@ -69,17 +87,31 @@
 				/>
 		</s:HGroup>
 		
-		<s:Panel
+		<mx:Panel
 			id="images"
 			title="Image Pyramid"
 			height="100%"
 			width="100%"
 			>
-			<l1:TileContainer
-				height="700"
-				width="800"
-				id="tileContainer" />
-		</s:Panel>
+			<mx:Canvas
+				backgroundColor="white"
+				height="100%"
+				width="100%"
+				>
+				<l1:CalloutContainer
+					height="100"
+					width="100"
+					id="calloutContainer"
+					tileContainer="{tileContainer}"
+					calloutData="{callout_data}"
+					/>
+				<l1:TileContainer
+					height="100"
+					width="100"
+					id="tileContainer"
+					/>
+			</mx:Canvas>
+		</mx:Panel>
 	</s:VGroup>
 	
 	

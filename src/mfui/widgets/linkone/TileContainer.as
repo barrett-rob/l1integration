@@ -15,7 +15,7 @@ package mfui.widgets.linkone
 		
 		public var MAX_TILE_DEPTH:int = 6;
 		
-		public var virtual_tile_size:int = 0;
+		public var VIRTUAL_TILE_SIZE:int = 0;
 		
 		private var _tile_uri_level_offset:int = 0;
 		private var _tile_uri_source:String = null;
@@ -26,19 +26,23 @@ package mfui.widgets.linkone
 		{
 			super();
 			addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
-			this.setStyle('borderStyle', 'none');
+			this.setStyle('borderStyle', 'solid');
 		}
 		
 		private function _creationComplete(e:FlexEvent):void
 		{
-			/* resize to square */
-			this.width = this.height = this.virtual_tile_size = Math.min(this.width, this.height);
-			this.validateNow();
 		}
-
-		/* TODO: handle resize event */
 		
-		public function setSource(tile_source:String, tile_level_offset:int):void
+		public function set_size(w:int, h:int, t:int):void
+		{
+			this.width = w;
+			this.height = h;
+			this.VIRTUAL_TILE_SIZE = t;
+		}
+		
+		/* TODO: handle resize event? or disallow resize? */
+		
+		public function set_source(tile_source:String, tile_level_offset:int):void
 		{
 			this._tile_uri_source = tile_source;
 			this._tile_uri_level_offset = tile_level_offset;
