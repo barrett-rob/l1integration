@@ -74,8 +74,7 @@ package mfui.widgets.linkone
 						var _level:Array = _levels[i];
 						for (j = 0; j < _level.length; j++)
 						{
-							if (_level[j] is Tile)
-								Tile(_level[j]).discard();
+							Tile(_level[j]).discard();
 							delete _level[j];
 						}
 					}
