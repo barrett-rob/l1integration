@@ -102,17 +102,23 @@ package mfui.widgets.linkone
 			{
 				for (j = 0; j < _level_width; j++)
 				{
-					var tile:Tile = new Tile(this, l, i, j);
-					tile.virtual_size = this.VIRTUAL_TILE_SIZE;
-					_level.push(tile);
-					callLater(tile.loadImage);
+					_create_tile(l, i, j);
 				}
 			}
 		}
 		
-		internal function add_tile(tile_x:int, tile_y:int, level:int):void
+		private function _create_tile(level:int, tile_x:int, tile_y:int):void
+		{
+			var tile:Tile = new Tile(this, level, tile_x, tile_y);
+			tile.virtual_size = this.VIRTUAL_TILE_SIZE;
+			_levels[level].push(tile);
+			callLater(tile.loadImage);
+		}
+		
+		internal function add_tile(level:int, tile_x:int, tile_y:int):void
 		{
 			trace('adding tile at (' + tile_x + ':' + tile_y + ') on level ' + level);
+			_create_tile(level, tile_x, tile_y);
 		}
 		
 		internal function display_level(l:int):void

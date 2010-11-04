@@ -84,7 +84,7 @@ package mfui.widgets.linkone
 		
 		internal function add_tile(x_plus:int, y_plus:int):void
 		{
-			_tile_container.add_tile(this.tile_x + x_plus, this.tile_y + y_plus, this.tile_level);
+			_tile_container.add_tile(this.tile_level, this.tile_x + x_plus, this.tile_y + y_plus);
 		}
 		
 		public override function toString():String
