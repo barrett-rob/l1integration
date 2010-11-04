@@ -48,20 +48,20 @@ package mfui.widgets.linkone
 			}
 			
 			/* check images on the right and bottom edges */
-			var grow_new_tiles:Boolean = false;
+			var grow_more_tiles:Boolean = false;
 			if ((_tile.tile_x == _tile.level_width - 1) && (this.contentWidth > _tile.virtual_size + 1))
 			{
 				/* another tile to the right of */
-				grow_new_tiles = true;
+				grow_more_tiles = true;
 			}
 			if ((_tile.tile_y == _tile.level_width - 1) && (this.contentHeight > _tile.virtual_size + 1))
 			{
 				/* another tile beneath */
-				grow_new_tiles = true;
+				grow_more_tiles = true;
 			}
 			
-			if (grow_new_tiles)
-				_tile.tile_container.grow_new_tiles();
+			if (grow_more_tiles)
+				callLater(_tile.grow_more_tiles);
 			
 			this.toolTip = toString();
 		}

@@ -110,6 +110,13 @@ package mfui.widgets.linkone
 			}
 		}
 		
+		internal function grow_more_tiles(existing_level_width:int):void
+		{
+			
+			trace('growing more tiles on level', _current_level);
+			
+		}
+		
 		internal function display_level(l:int):void
 		{
 			if (l < 0)
