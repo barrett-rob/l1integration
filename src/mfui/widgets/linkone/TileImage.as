@@ -18,11 +18,6 @@ package mfui.widgets.linkone
 			this.width = tile.width;
 			this.height = tile.height;
 			this._image_uri = image_uri;
-			_load();
-		}
-		
-		private function _load():void
-		{
 			this.source = this._image_uri;
 		}
 		
