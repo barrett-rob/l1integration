@@ -28,7 +28,7 @@ package mfui.widgets.linkone
 			if (e.currentTarget != this)
 				return;
 
-			trace(this._image_uri, 'not loaded');
+			trace(this._image_uri, 'not found');
 			this.width = this.height = 0;
 			discard();
 		}
