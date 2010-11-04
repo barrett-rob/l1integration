@@ -17,8 +17,9 @@ package mfui.widgets.linkone
 		
 		public var VIRTUAL_TILE_SIZE:int = 0;
 		
-		private var _tile_uri_level_offset:int = 0;
-		private var _tile_uri_source:String = null;
+		internal var tile_uri_level_offset:int = 0;
+		internal var tile_uri_source:String = null;
+		
 		private var _levels:Array = null;
 		private var _current_level:int = -1;
 		
@@ -44,8 +45,8 @@ package mfui.widgets.linkone
 		
 		public function set_source(tile_source:String, tile_level_offset:int):void
 		{
-			this._tile_uri_source = tile_source;
-			this._tile_uri_level_offset = tile_level_offset;
+			this.tile_uri_source = tile_source;
+			this.tile_uri_level_offset = tile_level_offset;
 			
 			_discard_all_levels();
 			
@@ -129,16 +130,6 @@ package mfui.widgets.linkone
 			/* create the next level down */
 			_create_level(l + 1);
 		}
-		
-		public function get tile_uri_level_offset():int
-		{		
-			return _tile_uri_level_offset;
-		}
-		
-		public function get tile_uri_source():String
-		{		
-			return _tile_uri_source;
-		}
-		
+	
 	}
 }
