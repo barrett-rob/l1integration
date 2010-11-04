@@ -57,11 +57,6 @@ package mfui.widgets.linkone
 			{
 				/* another tile beneath */
 				_tile.add_tile(0, 1);
-				if ((_tile.tile_x == _tile.level_width - 1) && (this.contentWidth > _tile.virtual_size + 1))
-				{
-					/* another tile beneath and to the right of */
-					_tile.add_tile(1, 1);
-				}
 			}
 			
 			this.toolTip = toString();

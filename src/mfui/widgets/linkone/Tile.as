@@ -16,6 +16,8 @@ package mfui.widgets.linkone
 		internal var tile_x:int;
 		internal var tile_y:int;
 		
+		internal var primary:Boolean = true;
+		
 		private var _tile_container:TileContainer;
 		private var _tile_image:TileImage;
 		
