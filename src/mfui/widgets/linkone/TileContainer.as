@@ -63,7 +63,7 @@ package mfui.widgets.linkone
 		{		
 			this.removeAllElements();
 			
-			/* discard references to existing tiles */
+			/* help the flash gc: discard refs to all tiles */
 			this._current_level = -1;
 			var i:int, j:int;
 			if (_levels)
