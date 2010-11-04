@@ -82,9 +82,9 @@ package mfui.widgets.linkone
 			return;
 		}
 		
-		internal function grow_more_tiles():void
+		internal function add_tile(x_plus:int, y_plus:int):void
 		{
-			_tile_container.grow_more_tiles(this.level_width);
+			_tile_container.add_tile(this.tile_x + x_plus, this.tile_y + y_plus);
 		}
 		
 		public override function toString():String
