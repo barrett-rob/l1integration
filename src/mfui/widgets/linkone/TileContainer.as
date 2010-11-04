@@ -20,7 +20,7 @@ package mfui.widgets.linkone
 		internal var tile_uri_level_offset:int = 0;
 		internal var tile_uri_source:String = null;
 		
-		private var _levels:Array = null;
+		private var _levels:Array = null, _level_widths:Array = null;
 		private var _current_level:int = -1;
 		
 		public function TileContainer()
@@ -54,6 +54,8 @@ package mfui.widgets.linkone
 			_levels = new Array(MAX_TILE_DEPTH);
 			for (var i:int = 0; i < _levels.length; i++)
 				_levels[i] = [];
+			
+			_level_widths = new Array(_levels.length);
 			
 			/* top level */
 			_create_level(0);
@@ -96,11 +98,13 @@ package mfui.widgets.linkone
 				return;
 			
 			/* start by creating (l+1)^2 tiles */
-			var n:int = l + 1;
+			var _level_width:int = l + 1;
+			_level_widths[l] = _level_width;
+			
 			var i:int, j:int;
-			for (i = 0; i < n; i++)
+			for (i = 0; i < _level_width; i++)
 			{
-				for (j = 0; j < n; j++)
+				for (j = 0; j < _level_width; j++)
 				{
 					var tile:Tile = new Tile(this, l, i, j);
 					tile.virtual_size = this.VIRTUAL_TILE_SIZE;

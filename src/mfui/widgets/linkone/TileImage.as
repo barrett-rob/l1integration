@@ -61,7 +61,7 @@ package mfui.widgets.linkone
 			}
 			
 			if (grow_more_tiles)
-				callLater(_tile.grow_more_tiles);
+				_tile.grow_more_tiles();
 			
 			this.toolTip = toString();
 		}
