@@ -128,8 +128,6 @@ package mfui.widgets.linkone
 			
 			/* create the next level down */
 			_create_level(l + 1);
-			
-			this.validateNow();
 		}
 		
 		public function get tile_uri_level_offset():int
