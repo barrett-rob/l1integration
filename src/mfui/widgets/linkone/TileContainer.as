@@ -111,7 +111,8 @@ package mfui.widgets.linkone
 		{
 			var tile:Tile = new Tile(this, level, tile_x, tile_y);
 			tile.virtual_size = this.VIRTUAL_TILE_SIZE;
-			_levels[level].push(tile);
+			var _level:Array = _levels[level];
+			_level.push(tile);
 			callLater(tile.loadImage);
 		}
 		
@@ -135,13 +136,12 @@ package mfui.widgets.linkone
 				if (_tile.tile_y > _new_level_width)
 					_new_level_width = _tile.tile_y;
 			}
+			++_new_level_width;
 			/* inform tiles */
 			for (i = 0; i < _level.length; i++)
 			{
 				_tile = Tile(_level[i]);
-				trace('old level width', _tile.level_width);
 				_tile.level_width = _new_level_width;
-				trace('new level width', _tile.level_width);
 				_tile.set_size_and_position();
 			}
 		}
