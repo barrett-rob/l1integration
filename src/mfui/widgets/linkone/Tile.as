@@ -59,5 +59,10 @@ package mfui.widgets.linkone
 				_tile_image.discard();
 		}
 		
+		public override function toString():String
+		{
+			return 'tile ' + level + ':' + tile_x + ':' + tile_y + ' (' + width + 'x' + height + ')';
+		}
+		
 	}
 }

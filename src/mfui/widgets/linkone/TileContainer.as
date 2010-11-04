@@ -28,7 +28,8 @@ package mfui.widgets.linkone
 			this.layout = "absolute";
 			this.left = this.top = 0;
 			this.cacheAsBitmap = true;
-			this.clipContent = false;
+			this.clipContent = true;
+			this.addEventListener(MouseEvent.MOUSE_WHEEL, _wheel);
 		}
 		
 		public function set_size(w:int, h:int, t:int):void
@@ -144,7 +145,7 @@ package mfui.widgets.linkone
 					_tile.left = i * this.width;
 					_tile.height = this.height;
 					_tile.top = j * this.height;
-					
+
 					_level_width += (i == 0) ? _tile.width : 0;
 					_level_height += (j == 0) ? _tile.height : 0;
 					
@@ -156,8 +157,12 @@ package mfui.widgets.linkone
 			}
 			
 			trace(_level_width + 'x' + _level_height);
-			var _left_offset:int = _level_width / 2;
-			var _top_offset:int = _level_height / 2;
+			
+			return;
+			
+			/* offset tiles about center point */
+			var _left_offset:int = (_level_width - this.width) / 2;
+			var _top_offset:int = (_level_height - this.height) / 2;
 			for (i = 0; i < _level.length; i++)
 			{
 				_tile = Tile(_level[i]);
@@ -172,7 +177,8 @@ package mfui.widgets.linkone
 			
 			if (l < 0)
 				/* can't scroll further out */
-				return;
+				return;			this.addEventListener(MouseEvent.MOUSE_WHEEL, _wheel);
+
 			if (l >= _levels.length)
 				/* can't scroll further in */
 				return;
@@ -197,6 +203,16 @@ package mfui.widgets.linkone
 			this.validateNow();
 		}
 		
+		private function _wheel(e:MouseEvent):void
+		{
+			if (e.currentTarget != this)
+				return;
+			
+			/* source point is */
+			var p:Point = new Point(e.localX, e.localY);
+			/* display tile */
+			display_tile(e.delta, p);
+		}
 	}
 	
 }

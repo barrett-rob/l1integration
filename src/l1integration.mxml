@@ -98,18 +98,18 @@
 				height="100%"
 				width="100%"
 				>
-				<l1:TileContainer
-					height="100"
-					width="100"
-					id="tileContainer"
-					calloutContainer="{calloutContainer}"
-					/>
 				<l1:CalloutContainer
 					height="100"
 					width="100"
 					id="calloutContainer"
 					tileContainer="{tileContainer}"
 					calloutData="{callout_data}"
+					/>
+				<l1:TileContainer
+					height="100"
+					width="100"
+					id="tileContainer"
+					calloutContainer="{calloutContainer}"
 					/>
 			</mx:Canvas>
 		</mx:Panel>

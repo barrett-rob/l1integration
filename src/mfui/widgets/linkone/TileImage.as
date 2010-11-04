@@ -19,10 +19,10 @@ package mfui.widgets.linkone
 			this.addEventListener(HTTPStatusEvent.HTTP_STATUS, _http_status);
 			
 			this.cacheAsBitmap = true;
+			this.maintainAspectRatio = false;
+			this.scaleContent = false;
 			
 			this._tile = tile;
-			this.width = tile.width;
-			this.height = tile.height;
 			this.left = this.top = 0;
 			this._image_uri = image_uri;
 			_load();
@@ -38,12 +38,44 @@ package mfui.widgets.linkone
 			if (e.currentTarget != this)
 				return;
 			
+			/* assume the dimensions of the image */
+			this.width = this.contentWidth;
+			this.height = this.contentHeight;
 			
-			// trace(_tile.level + ' (' + _tile.tile_x + ':' + _tile.tile_y + ')' 
-			//				+ ': ' + _tile.virtual_width + 'x' + _tile.virtual_height 
-			//				+ ' (' + this.contentWidth + 'x' + this.contentHeight + ')'
-			//				+ ' (' + this.left + ':' + this.top + ')');
+			/* proportions of avail w/h */
+			var _pw:Number = this.width / _tile.width;
+			var _ph:Number = this.height / _tile.height;
 			
+			var _cw:int = this.contentWidth, 
+				_ch:int = this.contentHeight,
+				_iw:int = this.width, 
+				_ih:int = this.height, 
+				_tvw:int = _tile.virtual_width, 
+				_tvh:int = _tile.virtual_height,
+				_tw:int = _tile.width, 
+				_th:int = _tile.height;
+
+			trace(_tile);
+			trace(' ' + _tvw + 'x' + _tvh + ' (virtual tile size)');
+			trace('  ' + _cw + 'x' + _ch + ' (image content size)');
+			
+			/* scale */
+			this.scaleContent = true;
+			
+			if (_pw > _ph)
+			{
+				trace('   scale by width');
+				this.width = this.width / _pw;
+				this.height = this.height / _pw;
+			}
+			else
+			{
+				trace('   scale by height');
+				this.width = this.width / _ph;
+				this.height = this.height / _ph;
+			}
+			
+			trace('   ' + this.width + 'x' + this.height + ' (scaled image size)');
 		}
 		
 		private function _http_status(e:HTTPStatusEvent):void
