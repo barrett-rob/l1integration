@@ -42,10 +42,6 @@ package mfui.widgets.linkone
 			this.width = this.contentWidth;
 			this.height = this.contentHeight;
 			
-			/* proportions of avail w/h */
-			var _pw:Number = this.width / _tile.width;
-			var _ph:Number = this.height / _tile.height;
-			
 			var _cw:int = this.contentWidth, 
 				_ch:int = this.contentHeight,
 				_iw:int = this.width, 
@@ -59,9 +55,34 @@ package mfui.widgets.linkone
 			trace(' ' + _tvw + 'x' + _tvh + ' (virtual tile size)');
 			trace('  ' + _cw + 'x' + _ch + ' (image content size)');
 			
-			/* scale */
-			this.scaleContent = true;
 			
+			if (this.width > _tile.width || this.height > _tile.height)
+			{
+				trace('   scale down');
+				_scale_to_tile_size();
+			}
+			else
+			if (this.width < _tile.width && this.height < _tile.height)
+			{
+				if (_tile.level == 0)
+				{
+					trace('   scale up');
+					_scale_to_tile_size();
+				}
+				else
+				{
+					/* leave as-is */
+				}
+			}
+				
+			trace('   ' + this.width + 'x' + this.height + ' (scaled image size)');
+		}
+		
+		private function _scale_to_tile_size():void
+		{
+			this.scaleContent = true;
+			var _pw:Number = this.width / _tile.width;
+			var _ph:Number = this.height / _tile.height;
 			if (_pw > _ph)
 			{
 				trace('   scale by width');
@@ -74,8 +95,6 @@ package mfui.widgets.linkone
 				this.width = this.width / _ph;
 				this.height = this.height / _ph;
 			}
-			
-			trace('   ' + this.width + 'x' + this.height + ' (scaled image size)');
 		}
 		
 		private function _http_status(e:HTTPStatusEvent):void
