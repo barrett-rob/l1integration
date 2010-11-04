@@ -54,10 +54,8 @@ package mfui.widgets.linkone
 			for (var i:int = 0; i < _levels.length; i++)
 				_levels[i] = [];
 			
-			/* create new top level */
+			/* top level */
 			_create_level(0);
-			
-			/* display top level */
 			display_level(0);
 		}
 		
