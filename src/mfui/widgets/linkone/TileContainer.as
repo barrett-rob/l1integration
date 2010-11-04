@@ -13,7 +13,7 @@ package mfui.widgets.linkone
 		
 		public static const TILE_URI_ROOT:String = 'http://a028856:8080/ria/linkone?';
 		
-		public var MAX_TILE_DEPTH:int;
+		public var MAX_TILE_DEPTH:int = 6;
 		
 		public var virtual_tile_size:int = 0;
 		
@@ -34,7 +34,6 @@ package mfui.widgets.linkone
 			/* resize to square */
 			this.width = this.height = this.virtual_tile_size = Math.min(this.width, this.height);
 			this.validateNow();
-			MAX_TILE_DEPTH = Math.ceil(Math.log(Math.max(this.virtual_tile_size))/Math.LN2);
 		}
 
 		/* TODO: handle resize event */
