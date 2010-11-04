@@ -122,8 +122,7 @@ package mfui.widgets.linkone
 				return;
 			
 			this.removeAllElements();
-			this._current_level = l;
-			var _level:Array = _levels[l];
+			var _level:Array = _levels[this._current_level = l];
 			for (var i:int = 0; i < _level.length; i++)
 				this.addElement(_level[i]);
 			
