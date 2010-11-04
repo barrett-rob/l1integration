@@ -103,6 +103,7 @@ package mfui.widgets.linkone
 				for (j = 0; j < n; j++)
 				{
 					var tile:Tile = new Tile(this, l, i, j);
+					tile.virtual_size = this.VIRTUAL_TILE_SIZE;
 					_level.push(tile);
 					callLater(tile.loadImage);
 				}
