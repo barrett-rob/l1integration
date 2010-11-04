@@ -25,12 +25,10 @@ package mfui.widgets.linkone
 		public function Tile(tile_container:TileContainer, tile_level:int, tile_x:int, tile_y:int)
 		{
 			super();
-			
 			this.setStyle('borderStyle', 'solid');
-			
 			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
 			this.addEventListener(MouseEvent.MOUSE_WHEEL, _mouseWheel);
-			
+			this.addEventListener(MouseEvent.CLICK, _click);
 			this._tile_container = tile_container;
 			this.tile_level = tile_level;
 			this.tile_x = tile_x;
@@ -70,6 +68,14 @@ package mfui.widgets.linkone
 		{
 			if (_tile_image)
 				_tile_image.discard();
+		}
+		
+		private function _click(e:MouseEvent):void
+		{
+			if (e.currentTarget != this)
+				return;
+			
+			
 		}
 		
 		private function _mouseWheel(e:MouseEvent):void
