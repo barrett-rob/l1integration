@@ -97,6 +97,7 @@
 				backgroundColor="white"
 				height="100%"
 				width="100%"
+				verticalScrollPolicy="on"
 				>
 				<l1:CalloutContainer
 					height="100"

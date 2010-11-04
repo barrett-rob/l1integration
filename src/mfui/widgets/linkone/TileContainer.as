@@ -30,6 +30,7 @@ package mfui.widgets.linkone
 			super();
 			this.setStyle('borderStyle', 'solid');
 			this.layout = 'absolute';
+			this.clipContent = false;
 			addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
 		}
 		
