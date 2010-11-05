@@ -83,8 +83,7 @@ package mfui.widgets.linkone
 			var _y_offset_all_tiles:Number = _y_offset_this_tile + (_tile.y_pos * _tile.virtual_size);
 			var _y_offset_normalised:Number = _y_offset_all_tiles / _tile.level_width;
 			
-			var p:Point = new Point(_x_offset_normalised, _y_offset_normalised);
-			return p;
+			return new Point(_x_offset_normalised, _y_offset_normalised);
 		}
 		
 		private function _click(e:MouseEvent):void
