@@ -86,6 +86,10 @@ package mfui.widgets.linkone
 			if (e.currentTarget != this)
 				return;
 			
+			trace('level', tile_level, 
+				'w:', _tile_container.get_level_width(tile_level), 
+				'h:', _tile_container.get_level_height(tile_level), 
+				'::', _tile_container.get_level_ratio(tile_level));
 			
 			//			var _x_proportion:Number = e.localX / this.width;
 			//			var _virtual_x:Number = (((_x_proportion + tile_x) * virtual_size) / level_width) / (tile_level + 1);

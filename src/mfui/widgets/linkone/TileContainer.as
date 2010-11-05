@@ -74,6 +74,16 @@ package mfui.widgets.linkone
 			return Rectangle(_dimensions[l]).width;
 		}
 		
+		internal function get_level_height(l:int):Number
+		{
+			return Rectangle(_dimensions[l]).height;
+		}
+		
+		internal function get_level_ratio(l:int):Number
+		{
+			return get_level_width(l) / get_level_height(l);
+		}
+		
 		internal function get_column_count(l:int):Number
 		{
 			return _column_counts[l];
@@ -149,13 +159,14 @@ package mfui.widgets.linkone
 		
 		internal function register_image(tile:Tile, w:Number, h:Number):void
 		{
-			trace('registering image load on', tile);
-			if (tile.tile_x == 0)
-			{
-				Rectangle(_dimensions[tile.tile_level]).width += w;
-			}
 			if (tile.tile_y == 0)
 			{
+				trace('registering image width of', w, 'on', tile);
+				Rectangle(_dimensions[tile.tile_level]).width += w;
+			}
+			if (tile.tile_x == 0)
+			{
+				trace('registering image height of', h, 'on', tile);
 				Rectangle(_dimensions[tile.tile_level]).height += h;
 			}
 		}
