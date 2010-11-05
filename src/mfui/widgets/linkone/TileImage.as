@@ -76,21 +76,11 @@ package mfui.widgets.linkone
 			if (e.currentTarget != this)
 				return;
 			
-			trace('image width:', _dimensions.width);
-			trace('_tile.width:', _tile.width);
+			var _x_offset_this_tile:Number = e.localX;
+			var _x_offset_all_tiles:Number = _x_offset_this_tile + (_tile.x_pos * _tile.virtual_size);
+			var _x_offset_normalised:Number = _x_offset_all_tiles / _tile.level_width;
+			trace('_x_offset_normalised:', _x_offset_normalised);
 			
-			var _image_to_tile_ratio:Number = _dimensions.width / _tile.width;
-			trace('_image_to_tile_ratio:', _image_to_tile_ratio);
-			
-//			var _tile_to_virtual_ratio:Number = _tile.width / _tile.virtual_size;
-//			_tile_to_virtual_ratio = (_tile_to_virtual_ratio > 1) ? 1 : _tile_to_virtual_ratio;
-//			trace('_tile_to_virtual_ratio:', _tile_to_virtual_ratio);
-//			
-//			var _x_offset_this_tile:Number = e.localX;
-//			trace('_x_offset_this_tile:', _x_offset_this_tile);
-//			
-//			var _x_proportion_this_tile:Number = _x_offset_this_tile / this.width;
-//			trace('_x_proportion_this_tile:', _x_proportion_this_tile);
 		}
 		
 		internal function discard():void
