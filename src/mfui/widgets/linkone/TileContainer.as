@@ -161,12 +161,10 @@ package mfui.widgets.linkone
 		{
 			if (tile.tile_y == 0)
 			{
-				trace('registering image width of', w, 'on', tile);
 				Rectangle(_dimensions[tile.tile_level]).width += w;
 			}
 			if (tile.tile_x == 0)
 			{
-				trace('registering image height of', h, 'on', tile);
 				Rectangle(_dimensions[tile.tile_level]).height += h;
 			}
 		}
