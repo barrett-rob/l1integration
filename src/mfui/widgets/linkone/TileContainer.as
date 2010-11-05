@@ -87,6 +87,7 @@ package mfui.widgets.linkone
 		
 		private function _discard_all_levels():void
 		{		
+			this.scrollRect = null;
 			this.removeAllElements();
 			this._current_level = -1;
 			/* help the flash gc: discard refs to all tiles */
