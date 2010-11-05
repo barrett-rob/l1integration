@@ -1,6 +1,7 @@
 package mfui.widgets.linkone
 {
 	import flash.events.MouseEvent;
+	import flash.geom.Rectangle;
 	import flash.text.AntiAliasType;
 	import flash.text.TextField;
 	import flash.text.TextLineMetrics;
@@ -13,9 +14,9 @@ package mfui.widgets.linkone
 	public class Callout extends UIComponent
 	{
 		private var _id:String, _description:String, _part_number:String;
-		private var _x:int, _y:int;
+		private var _x:Number, _y:Number;
 		
-		public function Callout(xml:XML)
+		public function Callout(xml:XML, scaling_factor:Number)
 		{
 			super();
 			
@@ -23,6 +24,11 @@ package mfui.widgets.linkone
 			
 			_x = xml.position.x;
 			_y = xml.position.y;
+			
+			/* scale for level size */
+			_x *= scaling_factor;
+			_y *= scaling_factor;
+			
 			_id = xml.displayItemId;
 			_part_number = xml.partNumber;
 			_description = xml.description;

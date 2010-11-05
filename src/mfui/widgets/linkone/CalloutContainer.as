@@ -3,6 +3,7 @@ package mfui.widgets.linkone
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
 	import flash.geom.Point;
+	import flash.geom.Rectangle;
 	
 	import mx.collections.XMLListCollection;
 	import mx.containers.Canvas;
@@ -17,6 +18,9 @@ package mfui.widgets.linkone
 	public class CalloutContainer extends LayoutContainer
 	{
 		public var tileContainer:TileContainer;
+		
+		private var _default_size:Rectangle;
+		private var _level_size:Rectangle;
 		private var _callout_data:XMLListCollection;
 		
 		public function CalloutContainer()
@@ -38,8 +42,20 @@ package mfui.widgets.linkone
 				return;
 		}
 		
-		public function set_size(w:int, h:int):void
+		public function set_default_size(w:int, h:int):void
 		{
+			this._default_size = new Rectangle(0, 0, w, h);
+			if (!_level_size)
+			{
+				this._level_size = new Rectangle(0, 0, w, h);
+			}
+			this.width = w;
+			this.height = h;
+		}
+		
+		public function set_level_size(w:int, h:int):void
+		{
+			this._level_size = new Rectangle(0, 0, w, h);
 			this.width = w;
 			this.height = h;
 		}
@@ -85,7 +101,7 @@ package mfui.widgets.linkone
 			{
 				if (c.localName() == 'rectangularCallout')
 				{
-					this.addChild(new Callout(c));
+					this.addChild(new Callout(c, 1));
 				} 
 				else
 				{
