@@ -72,28 +72,35 @@ package mfui.widgets.linkone
 		}
 		
 		/* TODO: dimensions +- 1px overlap */
+
+		private function _normalise(_x:Number, _y:Number):Point
+		{
+			var _x_offset_this_tile:Number = _x;
+			var _x_offset_all_tiles:Number = _x_offset_this_tile + (_tile.x_pos * _tile.virtual_size);
+			var _x_offset_normalised:Number = _x_offset_all_tiles / _tile.level_width;
+			
+			var _y_offset_this_tile:Number = _y;
+			var _y_offset_all_tiles:Number = _y_offset_this_tile + (_tile.y_pos * _tile.virtual_size);
+			var _y_offset_normalised:Number = _y_offset_all_tiles / _tile.level_width;
+			
+			var p:Point = new Point(_x_offset_normalised, _y_offset_normalised);
+			return p;
+		}
 		
 		private function _click(e:MouseEvent):void
 		{
 			if (e.currentTarget != this)
 				return;
 			
-			var _x_offset_this_tile:Number = e.localX;
-			var _x_offset_all_tiles:Number = _x_offset_this_tile + (_tile.x_pos * _tile.virtual_size);
-			var _x_offset_normalised:Number = _x_offset_all_tiles / _tile.level_width;
-			
-			var _y_offset_this_tile:Number = e.localY;
-			var _y_offset_all_tiles:Number = _y_offset_this_tile + (_tile.y_pos * _tile.virtual_size);
-			var _y_offset_normalised:Number = _y_offset_all_tiles / _tile.level_width;
-			
-			var p:Point = new Point(_x_offset_normalised, _y_offset_normalised);
-			trace('normalised click at:', p);
+			trace('normalised click at:', _normalise(e.localX, e.localY));
 		}
 		
 		private function _mouseWheel(e:MouseEvent):void
 		{
 			if (e.currentTarget != this)
 				return;
+			
+			trace('normalised wheel at:', _normalise(e.localX, e.localY));
 			
 			/* show next level up or down */
 			var l:int = (e.delta > 0) ? _tile.level + 1 : _tile.level - 1;
