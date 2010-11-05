@@ -12,10 +12,9 @@ package mfui.widgets.linkone
 		
 		public static const TILE_URI_ROOT:String = 'http://a028856:8080/ria/linkone?';
 		
-		public var MAX_TILE_DEPTH:int = 6;
+		public const MAX_TILE_DEPTH:int = 6;
 		
-		public var VIRTUAL_TILE_SIZE:int = 0;
-		
+		internal var virtual_tile_size:int = 0;
 		internal var tile_uri_level_offset:int = 0;
 		internal var tile_uri_source:String = null;
 		
@@ -41,7 +40,7 @@ package mfui.widgets.linkone
 		{
 			this.width = w;
 			this.height = h;
-			this.VIRTUAL_TILE_SIZE = t;
+			this.virtual_tile_size = t;
 		}
 		
 		/* TODO: handle resize event? or disallow resize? */
@@ -144,7 +143,6 @@ package mfui.widgets.linkone
 		private function _create_tile(level:int, tile_x:int, tile_y:int):Tile
 		{
 			var _tile:Tile = new Tile(this, level, tile_x, tile_y);
-			_tile.virtual_size = this.VIRTUAL_TILE_SIZE;
 			var _level:Array = _levels[level];
 			_level.push(_tile);
 			return _tile;

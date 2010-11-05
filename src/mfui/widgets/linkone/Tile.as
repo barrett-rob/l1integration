@@ -10,7 +10,6 @@ package mfui.widgets.linkone
 	public class Tile extends LayoutContainer
 	{
 		
-		internal var virtual_size:int;
 		internal var level:int;
 		internal var x_pos:int;
 		internal var y_pos:int;
@@ -50,6 +49,11 @@ package mfui.widgets.linkone
 		internal function get column_count():int
 		{
 			return this._tile_container.get_column_count(this.level);
+		}
+		
+		internal function get virtual_size():int
+		{
+			return _tile_container.virtual_tile_size;
 		}
 		
 		internal function set_size_and_position():void
