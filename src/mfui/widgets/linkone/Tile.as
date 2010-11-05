@@ -43,9 +43,9 @@ package mfui.widgets.linkone
 			return this._tile_container.get_level_width(this.tile_level);
 		}
 		
-		internal function set_size_and_position(level_width:int):void
+		internal function set_size_and_position(column_count:int):void
 		{
-			this.width = this.height = this._tile_container.width / level_width;
+			this.width = this.height = this._tile_container.width / column_count;
 			this.left = this.tile_x * this.width;
 			this.top = this.tile_y * this.height;
 			
