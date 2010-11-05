@@ -3,6 +3,7 @@ package mfui.widgets.linkone
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
 	import flash.events.MouseEvent;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
 	import mx.controls.Image;
@@ -79,8 +80,13 @@ package mfui.widgets.linkone
 			var _x_offset_this_tile:Number = e.localX;
 			var _x_offset_all_tiles:Number = _x_offset_this_tile + (_tile.x_pos * _tile.virtual_size);
 			var _x_offset_normalised:Number = _x_offset_all_tiles / _tile.level_width;
-			trace('_x_offset_normalised:', _x_offset_normalised);
 			
+			var _y_offset_this_tile:Number = e.localY;
+			var _y_offset_all_tiles:Number = _y_offset_this_tile + (_tile.y_pos * _tile.virtual_size);
+			var _y_offset_normalised:Number = _y_offset_all_tiles / _tile.level_width;
+			
+			var p:Point = new Point(_x_offset_normalised, _y_offset_normalised);
+			trace('normalised click at:', p);
 		}
 		
 		internal function discard():void
