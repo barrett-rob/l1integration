@@ -2,6 +2,7 @@ package mfui.widgets.linkone
 {
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
+	import flash.events.MouseEvent;
 	
 	import mx.controls.Image;
 	
@@ -20,6 +21,7 @@ package mfui.widgets.linkone
 			this._image_uri = image_uri;
 			this.addEventListener(Event.COMPLETE, _complete);
 			this.addEventListener(IOErrorEvent.IO_ERROR, _io_error);
+			this.addEventListener(MouseEvent.CLICK, _click);
 			this.source = this._image_uri;
 		}
 		
@@ -64,6 +66,28 @@ package mfui.widgets.linkone
 		}
 		
 		/* TODO: dimensions +- 1px overlap */
+		
+		private function _click(e:MouseEvent):void
+		{
+			if (e.currentTarget != this)
+				return;
+			
+			trace('this.width:', this.width);
+			trace('_tile.width:', _tile.width);
+			var _image_to_tile_ratio:Number = this.width / _tile.width;
+			_image_to_tile_ratio = (_image_to_tile_ratio > 1) ? 1 : _image_to_tile_ratio;
+			trace('_image_to_tile_ratio:', _image_to_tile_ratio);
+			
+			var _tile_to_virtual_ratio:Number = _tile.width / _tile.virtual_size;
+			_tile_to_virtual_ratio = (_tile_to_virtual_ratio > 1) ? 1 : _tile_to_virtual_ratio;
+			trace('_tile_to_virtual_ratio:', _tile_to_virtual_ratio);
+			
+			var _x_offset_this_tile:Number = e.localX;
+			trace('_x_offset_this_tile:', _x_offset_this_tile);
+			
+			var _x_proportion_this_tile:Number = _x_offset_this_tile / this.width;
+			trace('_x_proportion_this_tile:', _x_proportion_this_tile);
+		}
 		
 		internal function discard():void
 		{

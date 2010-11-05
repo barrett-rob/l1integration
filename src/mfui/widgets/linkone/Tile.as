@@ -30,7 +30,6 @@ package mfui.widgets.linkone
 			this.clipContent = false;
 			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
 			this.addEventListener(MouseEvent.MOUSE_WHEEL, _mouseWheel);
-			this.addEventListener(MouseEvent.CLICK, _click);
 			this._tile_container = tile_container;
 			this.level = level;
 			this.x_pos = tile_x;
@@ -84,28 +83,6 @@ package mfui.widgets.linkone
 		{
 			if (_tile_image)
 				_tile_image.discard();
-		}
-		
-		private function _click(e:MouseEvent):void
-		{
-			if (e.currentTarget != this)
-				return;
-			
-			//			trace('level', level, 
-			//				'w:', _tile_container.get_level_width(level), 
-			//				'h:', _tile_container.get_level_height(level), 
-			//				'::', _tile_container.get_level_ratio(level));
-			
-			var _x_this_tile:Number = (e.localX / this.width) * this.virtual_size;
-			
-			var _x_all_tiles:Number = _x_this_tile + (this.x_pos * this.virtual_size);
-			
-			var _x_virtual:Number = _x_all_tiles / this.level_width;
-			
-			trace('\t local:', e.localX  
-				+ '\t virtual (this tile):', _x_this_tile
-				+ '\t virtual (all tiles):', _x_all_tiles
-				+ '\t virtual:', _x_virtual)
 		}
 		
 		private function _mouseWheel(e:MouseEvent):void
