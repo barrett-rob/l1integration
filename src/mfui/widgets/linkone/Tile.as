@@ -11,9 +11,9 @@ package mfui.widgets.linkone
 	{
 		
 		internal var virtual_size:int;
-		internal var tile_level:int;
-		internal var tile_x:int;
-		internal var tile_y:int;
+		internal var level:int;
+		internal var x_pos:int;
+		internal var y_pos:int;
 		
 		internal var primary:Boolean = true;
 		
@@ -22,7 +22,7 @@ package mfui.widgets.linkone
 		
 		internal var region:Rectangle;
 		
-		public function Tile(tile_container:TileContainer, tile_level:int, tile_x:int, tile_y:int)
+		public function Tile(tile_container:TileContainer, level:int, tile_x:int, tile_y:int)
 		{
 			super();
 			this.setStyle('borderStyle', 'solid');
@@ -32,27 +32,27 @@ package mfui.widgets.linkone
 			this.addEventListener(MouseEvent.MOUSE_WHEEL, _mouseWheel);
 			this.addEventListener(MouseEvent.CLICK, _click);
 			this._tile_container = tile_container;
-			this.tile_level = tile_level;
-			this.tile_x = tile_x;
-			this.tile_y = tile_y;
+			this.level = level;
+			this.x_pos = tile_x;
+			this.y_pos = tile_y;
 			set_size_and_position();
 		}
 		
 		internal function get level_width():int
 		{
-			return this._tile_container.get_level_width(this.tile_level);
+			return this._tile_container.get_level_width(this.level);
 		}
 		
 		internal function get column_count():int
 		{
-			return this._tile_container.get_column_count(this.tile_level);
+			return this._tile_container.get_column_count(this.level);
 		}
 		
 		internal function set_size_and_position():void
 		{
 			this.width = this.height = this._tile_container.width / column_count;
-			this.left = this.tile_x * this.width;
-			this.top = this.tile_y * this.height;
+			this.left = this.x_pos * this.width;
+			this.top = this.y_pos * this.height;
 			
 			this.region = new Rectangle(Number(this.left), Number(this.top), this.width, this.height);
 			
@@ -69,9 +69,9 @@ package mfui.widgets.linkone
 				return;
 			this._tile_image = new TileImage(this, TileContainer.TILE_URI_ROOT 
 				+ _tile_container.tile_uri_source 
-				+ '&tileLevel=' + (tile_level + _tile_container.tile_uri_level_offset) 
-				+ '&tilePositionX=' + tile_x 
-				+ '&tilePositionY=' + tile_y);
+				+ '&tileLevel=' + (level + _tile_container.tile_uri_level_offset) 
+				+ '&tilePositionX=' + x_pos 
+				+ '&tilePositionY=' + y_pos);
 			this.addElement(_tile_image);
 		}
 		
@@ -86,16 +86,16 @@ package mfui.widgets.linkone
 			if (e.currentTarget != this)
 				return;
 			
-			trace('level', tile_level, 
-				'w:', _tile_container.get_level_width(tile_level), 
-				'h:', _tile_container.get_level_height(tile_level), 
-				'::', _tile_container.get_level_ratio(tile_level));
+			trace('level', level, 
+				'w:', _tile_container.get_level_width(level), 
+				'h:', _tile_container.get_level_height(level), 
+				'::', _tile_container.get_level_ratio(level));
 			
 			//			var _x_proportion:Number = e.localX / this.width;
-			//			var _virtual_x:Number = (((_x_proportion + tile_x) * virtual_size) / level_width) / (tile_level + 1);
+			//			var _virtual_x:Number = (((_x_proportion + tile_x) * virtual_size) / level_width) / (level + 1);
 			//			
 			//			var _y_proportion:Number = e.localY / this.height;
-			//			var _virtual_y:Number = (((_y_proportion + tile_y) * virtual_size) / level_width) / (tile_level + 1);
+			//			var _virtual_y:Number = (((_y_proportion + tile_y) * virtual_size) / level_width) / (level + 1);
 			//			
 			//			trace('\t local (' + e.localX + ':' + e.localY + ')' 
 			//				+ '\t virtual (' + _virtual_x + ':' + _virtual_y 
@@ -108,14 +108,14 @@ package mfui.widgets.linkone
 				return;
 			
 			/* show next level up or down */
-			var l:int = (e.delta > 0) ? this.tile_level + 1 : this.tile_level - 1;
+			var l:int = (e.delta > 0) ? this.level + 1 : this.level - 1;
 			_tile_container.display_level(l);
 			return;
 		}
 		
 		internal function add_tile(x_plus:int, y_plus:int):void
 		{
-			_tile_container.add_tile(this.tile_level, this.tile_x + x_plus, this.tile_y + y_plus);
+			_tile_container.add_tile(this.level, this.x_pos + x_plus, this.y_pos + y_plus);
 		}
 		
 		internal function register_image(w:Number, h:Number):void
@@ -125,7 +125,7 @@ package mfui.widgets.linkone
 		
 		public override function toString():String
 		{
-			return 'tile ' + tile_level + ':' + tile_x + ':' + tile_y + ' (' + this.width + 'x' + this.height + ')';
+			return 'tile ' + level + ':' + x_pos + ':' + y_pos + ' (' + this.width + 'x' + this.height + ')';
 		}
 	}
 }

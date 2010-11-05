@@ -159,13 +159,13 @@ package mfui.widgets.linkone
 		
 		internal function register_image(tile:Tile, w:Number, h:Number):void
 		{
-			if (tile.tile_y == 0)
+			if (tile.y_pos == 0)
 			{
-				Rectangle(_dimensions[tile.tile_level]).width += w;
+				Rectangle(_dimensions[tile.level]).width += w;
 			}
-			if (tile.tile_x == 0)
+			if (tile.x_pos == 0)
 			{
-				Rectangle(_dimensions[tile.tile_level]).height += h;
+				Rectangle(_dimensions[tile.level]).height += h;
 			}
 		}
 		
