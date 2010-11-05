@@ -105,7 +105,7 @@ package mfui.widgets.linkone
 			/* show next level up or down */
 			var l:int = (e.delta > 0) ? _tile.level + 1 : _tile.level - 1;
 			_tile.tile_container.display_level(l);
-			_tile.tile_container.center_display(at);
+			_tile.tile_container.center_display(l, at);
 			return;
 		}
 

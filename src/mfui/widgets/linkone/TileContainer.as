@@ -189,9 +189,26 @@ package mfui.widgets.linkone
 			calloutContainer.display_callouts();
 		}
 		
-		internal function center_display(at:Point):void
+		internal function center_display(l:int, at:Point):void
 		{
-			trace('centering display at', at);
+			if (l < 0)
+				/* can't scroll further out */
+				return;
+			if (l >= _levels.length)
+				/* can't scroll further in */
+				return;
+
+			trace('centering level', l, 'at', at);
+			at.x *= get_level_width(l);
+			at.y *= get_level_height(l);
+			trace('centering level', l, 'at', at);
+			var _x:Number = at.x - this.width / 2;
+			if (_x < 0) _x = 0;
+			var _y:Number = at.y - this.height / 2;
+			if (_y < 0) _y = 0;
+			var _scroll_rect:Rectangle = new Rectangle(_x, _y, this.width, this.height);
+			trace('centering display in', _scroll_rect);
+			this.scrollRect = _scroll_rect;
 		}
 		
 	}
