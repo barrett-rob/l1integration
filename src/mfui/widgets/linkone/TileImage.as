@@ -25,6 +25,7 @@ package mfui.widgets.linkone
 			this.addEventListener(Event.COMPLETE, _complete);
 			this.addEventListener(IOErrorEvent.IO_ERROR, _io_error);
 			this.addEventListener(MouseEvent.CLICK, _click);
+			this.addEventListener(MouseEvent.MOUSE_WHEEL, _mouseWheel);
 			this.source = this._image_uri;
 		}
 		
@@ -89,6 +90,17 @@ package mfui.widgets.linkone
 			trace('normalised click at:', p);
 		}
 		
+		private function _mouseWheel(e:MouseEvent):void
+		{
+			if (e.currentTarget != this)
+				return;
+			
+			/* show next level up or down */
+			var l:int = (e.delta > 0) ? _tile.level + 1 : _tile.level - 1;
+			_tile.tile_container.display_level(l);
+			return;
+		}
+
 		internal function discard():void
 		{
 			this.source = null;
