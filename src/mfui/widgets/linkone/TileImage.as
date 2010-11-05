@@ -99,11 +99,13 @@ package mfui.widgets.linkone
 			if (e.currentTarget != this)
 				return;
 			
-			trace('normalised wheel at:', _normalise(e.localX, e.localY));
+			var at:Point = _normalise(e.localX, e.localY);
+			trace('normalised wheel at:', at);
 			
 			/* show next level up or down */
 			var l:int = (e.delta > 0) ? _tile.level + 1 : _tile.level - 1;
 			_tile.tile_container.display_level(l);
+			_tile.tile_container.center_display(at);
 			return;
 		}
 

@@ -1,6 +1,7 @@
 package mfui.widgets.linkone
 {
 	import flash.events.MouseEvent;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
 	import mx.controls.Image;
@@ -186,6 +187,11 @@ package mfui.widgets.linkone
 			/* display callouts */
 			calloutContainer.set_level_size(this.get_level_width(l), this.get_level_height(l));
 			calloutContainer.display_callouts();
+		}
+		
+		internal function center_display(at:Point):void
+		{
+			trace('centering display at', at);
 		}
 		
 	}
