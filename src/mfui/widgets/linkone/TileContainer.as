@@ -5,7 +5,6 @@ package mfui.widgets.linkone
 	
 	import mx.controls.Image;
 	import mx.core.LayoutContainer;
-	import mx.events.FlexEvent;
 	
 	public class TileContainer extends LayoutContainer
 	{
@@ -31,11 +30,6 @@ package mfui.widgets.linkone
 			this.setStyle('borderStyle', 'solid');
 			this.layout = 'absolute';
 			this.clipContent = false;
-			addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
-		}
-		
-		private function _creationComplete(e:FlexEvent):void
-		{
 		}
 		
 		public function set_size(w:int, h:int, t:int):void

@@ -5,7 +5,6 @@ package mfui.widgets.linkone
 	
 	import mx.controls.Image;
 	import mx.core.LayoutContainer;
-	import mx.events.FlexEvent;
 	
 	public class Tile extends LayoutContainer
 	{
@@ -25,7 +24,6 @@ package mfui.widgets.linkone
 			this.setStyle('borderStyle', 'solid');
 			this.layout = 'absolute';
 			this.clipContent = false;
-			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creationComplete);
 			this.addEventListener(MouseEvent.MOUSE_WHEEL, _mouseWheel);
 			this._tile_container = tile_container;
 			this.level = level;
@@ -60,10 +58,6 @@ package mfui.widgets.linkone
 			this.left = this.x_pos * this.width;
 			this.top = this.y_pos * this.height;
 			this.toolTip = toString();
-		}
-		
-		private function _creationComplete(e:FlexEvent):void
-		{
 		}
 		
 		internal function loadImage():void
