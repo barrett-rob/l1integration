@@ -116,7 +116,7 @@ package mfui.widgets.linkone
 		
 		public override function toString():String
 		{
-			return this._tile.toString() + '\nimage (' + this.contentWidth + 'x' + this.contentHeight + ')'; 
+			return this._tile.toString() + '\nimage (' + this.contentWidth + 'x' + this.contentHeight + ')';
 		}
 	}
 	
