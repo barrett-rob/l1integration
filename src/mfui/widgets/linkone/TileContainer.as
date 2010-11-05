@@ -136,14 +136,12 @@ package mfui.widgets.linkone
 		{
 			var _tile:Tile = _create_tile(tile_level, tile_x, tile_y);
 			_tile.primary = false;
-			/* update level width */
-			//			trace(tile_level, ':', tile_y, ':', tile_y);
-			//			var _old_width:int = _level_widths[tile_level];
-			//			trace(' old width', _old_width);
-			//			var _new_width:int = Math.max(tile_x + 1, tile_y + 1, _old_width);
-			//			trace(' new width', _new_width);
-			//			_level_widths[tile_level] = _new_width;
 			callLater(_tile.loadImage);
+		}
+		
+		internal function register_image(tile:Tile, w:Number, h:Number):void
+		{
+			trace('registering image load on', tile);
 		}
 		
 		internal function display_level(l:int):void

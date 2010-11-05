@@ -108,6 +108,11 @@ package mfui.widgets.linkone
 			_tile_container.add_tile(this.tile_level, this.tile_x + x_plus, this.tile_y + y_plus);
 		}
 		
+		internal function register_image(w:Number, h:Number):void
+		{
+			_tile_container.register_image(this, w, h);
+		}
+		
 		public override function toString():String
 		{
 			return 'tile ' + tile_level + ':' + tile_x + ':' + tile_y + ' (' + this.width + 'x' + this.height + ')';

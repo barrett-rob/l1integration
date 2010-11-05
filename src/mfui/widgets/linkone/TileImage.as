@@ -47,6 +47,9 @@ package mfui.widgets.linkone
 				this.percentWidth = pcw;
 			}
 			
+			/* register this image width and height */
+			_tile.register_image(this.contentWidth, this.contentHeight);
+			
 			/* check images on the right and bottom edges */
 			if ((_tile.tile_x == _tile.level_width - 1) && (this.contentWidth > _tile.virtual_size + 1))
 			{
