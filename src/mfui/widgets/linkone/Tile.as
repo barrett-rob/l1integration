@@ -38,9 +38,14 @@ package mfui.widgets.linkone
 			set_size_and_position();
 		}
 		
-		internal function get level_width():int
+		internal function get level_width():Number
 		{
 			return this._tile_container.get_level_width(this.level);
+		}
+		
+		internal function get level_height():Number
+		{
+			return this._tile_container.get_level_height(this.level);
 		}
 		
 		internal function get column_count():int
@@ -86,20 +91,20 @@ package mfui.widgets.linkone
 			if (e.currentTarget != this)
 				return;
 			
-			trace('level', level, 
-				'w:', _tile_container.get_level_width(level), 
-				'h:', _tile_container.get_level_height(level), 
-				'::', _tile_container.get_level_ratio(level));
+			//			trace('level', level, 
+			//				'w:', _tile_container.get_level_width(level), 
+			//				'h:', _tile_container.get_level_height(level), 
+			//				'::', _tile_container.get_level_ratio(level));
 			
-			//			var _x_proportion:Number = e.localX / this.width;
-			//			var _virtual_x:Number = (((_x_proportion + tile_x) * virtual_size) / level_width) / (level + 1);
-			//			
-			//			var _y_proportion:Number = e.localY / this.height;
-			//			var _virtual_y:Number = (((_y_proportion + tile_y) * virtual_size) / level_width) / (level + 1);
-			//			
-			//			trace('\t local (' + e.localX + ':' + e.localY + ')' 
-			//				+ '\t virtual (' + _virtual_x + ':' + _virtual_y 
-			//				+ '\t dimensions (' + this.width + 'x' + this.height + ')')
+			var _x_this_tile:Number = (e.localX / this.width) * this.virtual_size;
+			
+			var _x_all_tiles:Number = _x_this_tile + (this.x_pos * this.virtual_size);
+			
+			var _x_virtual:Number = _x_all_tiles / this.level_width;
+			
+			trace('\t local:', e.localX  
+				+ '\t virtual (this tile):', _x_virtual
+				+ '\t virtual:', _x_virtual)
 		}
 		
 		private function _mouseWheel(e:MouseEvent):void
