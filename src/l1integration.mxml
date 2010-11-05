@@ -103,6 +103,7 @@
 					height="100"
 					width="100"
 					id="tileContainer"
+					calloutContainer="{calloutContainer}"
 					/>
 				<l1:CalloutContainer
 					height="100"

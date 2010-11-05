@@ -16,7 +16,7 @@ package mfui.widgets.linkone
 	
 	public class CalloutContainer extends LayoutContainer
 	{
-		private var _tile_container:TileContainer;
+		public var tileContainer:TileContainer;
 		private var _callout_data:XMLListCollection;
 		
 		public function CalloutContainer()
@@ -36,13 +36,6 @@ package mfui.widgets.linkone
 		{
 			if (e.currentTarget != this)
 				return;
-		}
-		
-		public function set tileContainer(tile_container:TileContainer):void
-		{
-			if (this._tile_container)
-				throw new Error('tile container is already set');
-			this._tile_container = tile_container;
 		}
 		
 		public function set_size(w:int, h:int):void
@@ -81,6 +74,10 @@ package mfui.widgets.linkone
 		{
 			if (e.currentTarget != this._callout_data)
 				return;
+		}
+		
+		internal function display_callouts():void
+		{
 			
 			for each (var c:XML in this._callout_data.children())
 			{
@@ -94,5 +91,7 @@ package mfui.widgets.linkone
 				}
 			}
 		}
+		
+		
 	}
 }

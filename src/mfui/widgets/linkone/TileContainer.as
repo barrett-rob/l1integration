@@ -23,6 +23,8 @@ package mfui.widgets.linkone
 		private var _dimensions:Array = null;
 		private var _current_level:int = -1;
 		
+		public var calloutContainer:CalloutContainer;
+		
 		public function TileContainer()
 		{
 			super();
@@ -186,6 +188,9 @@ package mfui.widgets.linkone
 			
 			/* create the next level down */
 			_create_level(l + 1);
+			
+			/* display callouts */
+			
 		}
 		
 	}
