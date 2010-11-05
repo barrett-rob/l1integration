@@ -69,8 +69,6 @@ package mfui.widgets.linkone
 		
 		internal function get_level_width(l:int):Number
 		{
-			if (!_dimensions[l])
-				return 0;
 			return Rectangle(_dimensions[l]).width;
 		}
 		
