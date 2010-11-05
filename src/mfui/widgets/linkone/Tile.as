@@ -58,7 +58,7 @@ package mfui.widgets.linkone
 		
 		internal function set_size_and_position():void
 		{
-			this.width = this.height = this._tile_container.width / column_count;
+			this.width = this.height = this._tile_container.width;
 			this.left = this.x_pos * this.width;
 			this.top = this.y_pos * this.height;
 			
