@@ -74,11 +74,13 @@ package mfui.widgets.linkone
 		{
 			if (e.currentTarget != this._callout_data)
 				return;
+			display_callouts();
 		}
 		
 		internal function display_callouts():void
 		{
-			
+			trace('displaying callouts');
+			this.removeAllChildren();
 			for each (var c:XML in this._callout_data.children())
 			{
 				if (c.localName() == 'rectangularCallout')

@@ -190,7 +190,7 @@ package mfui.widgets.linkone
 			_create_level(l + 1);
 			
 			/* display callouts */
-			
+			calloutContainer.display_callouts();
 		}
 		
 	}
