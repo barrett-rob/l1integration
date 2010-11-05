@@ -95,7 +95,6 @@ package mfui.widgets.linkone
 		
 		internal function display_callouts():void
 		{
-			trace('displaying callouts');
 			this.removeAllChildren();
 			for each (var c:XML in this._callout_data.children())
 			{
