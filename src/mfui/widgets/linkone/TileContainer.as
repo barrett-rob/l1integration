@@ -58,7 +58,7 @@ package mfui.widgets.linkone
 			for (var i:int = 0; i < _levels.length; i++)
 			{
 				_levels[i] = [];
-				_dimensions[i] = new Object();
+				_dimensions[i] = new Rectangle();
 			}
 			
 			
