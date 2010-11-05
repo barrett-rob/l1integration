@@ -103,7 +103,8 @@ package mfui.widgets.linkone
 			var _x_virtual:Number = _x_all_tiles / this.level_width;
 			
 			trace('\t local:', e.localX  
-				+ '\t virtual (this tile):', _x_virtual
+				+ '\t virtual (this tile):', _x_this_tile
+				+ '\t virtual (all tiles):', _x_all_tiles
 				+ '\t virtual:', _x_virtual)
 		}
 		
