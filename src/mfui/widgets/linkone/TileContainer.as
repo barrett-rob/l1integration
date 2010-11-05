@@ -71,7 +71,7 @@ package mfui.widgets.linkone
 		{
 			if (!_dimensions[l])
 				return 0;
-			return _dimensions[l].width;
+			return Rectangle(_dimensions[l]).width;
 		}
 		
 		private function _discard_all_levels():void
@@ -113,7 +113,7 @@ package mfui.widgets.linkone
 			
 			/* start by creating (l+1)^2 tiles */
 			var _level_width:int = l + 1;
-			_dimensions[l].width = _level_width;
+			Rectangle(_dimensions[l]).width = _level_width;
 			var i:int, j:int;
 			for (i = 0; i < _level_width; i++)
 			{
