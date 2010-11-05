@@ -3,6 +3,7 @@ package mfui.widgets.linkone
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
 	import flash.events.MouseEvent;
+	import flash.geom.Rectangle;
 	
 	import mx.controls.Image;
 	
@@ -11,6 +12,7 @@ package mfui.widgets.linkone
 		
 		private var _tile:Tile;
 		private var _image_uri:String;
+		private var _dimensions:Rectangle;
 		
 		public function TileImage(tile:Tile, image_uri:String)
 		{
@@ -39,6 +41,8 @@ package mfui.widgets.linkone
 		{
 			if (e.currentTarget != this)
 				return;
+			
+			this._dimensions = new Rectangle(0, 0, this.contentWidth, this.contentHeight);
 			
 			if (this.contentWidth < _tile.virtual_size && this.contentHeight < _tile.virtual_size)
 			{
@@ -72,21 +76,21 @@ package mfui.widgets.linkone
 			if (e.currentTarget != this)
 				return;
 			
-			trace('this.width:', this.width);
+			trace('image width:', _dimensions.width);
 			trace('_tile.width:', _tile.width);
-			var _image_to_tile_ratio:Number = this.width / _tile.width;
-			_image_to_tile_ratio = (_image_to_tile_ratio > 1) ? 1 : _image_to_tile_ratio;
+			
+			var _image_to_tile_ratio:Number = _dimensions.width / _tile.width;
 			trace('_image_to_tile_ratio:', _image_to_tile_ratio);
 			
-			var _tile_to_virtual_ratio:Number = _tile.width / _tile.virtual_size;
-			_tile_to_virtual_ratio = (_tile_to_virtual_ratio > 1) ? 1 : _tile_to_virtual_ratio;
-			trace('_tile_to_virtual_ratio:', _tile_to_virtual_ratio);
-			
-			var _x_offset_this_tile:Number = e.localX;
-			trace('_x_offset_this_tile:', _x_offset_this_tile);
-			
-			var _x_proportion_this_tile:Number = _x_offset_this_tile / this.width;
-			trace('_x_proportion_this_tile:', _x_proportion_this_tile);
+//			var _tile_to_virtual_ratio:Number = _tile.width / _tile.virtual_size;
+//			_tile_to_virtual_ratio = (_tile_to_virtual_ratio > 1) ? 1 : _tile_to_virtual_ratio;
+//			trace('_tile_to_virtual_ratio:', _tile_to_virtual_ratio);
+//			
+//			var _x_offset_this_tile:Number = e.localX;
+//			trace('_x_offset_this_tile:', _x_offset_this_tile);
+//			
+//			var _x_proportion_this_tile:Number = _x_offset_this_tile / this.width;
+//			trace('_x_proportion_this_tile:', _x_proportion_this_tile);
 		}
 		
 		internal function discard():void
