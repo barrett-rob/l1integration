@@ -150,6 +150,14 @@ package mfui.widgets.linkone
 		internal function register_image(tile:Tile, w:Number, h:Number):void
 		{
 			trace('registering image load on', tile);
+			if (tile.tile_x == 0)
+			{
+				Rectangle(_dimensions[tile.tile_level]).width += w;
+			}
+			if (tile.tile_y == 0)
+			{
+				Rectangle(_dimensions[tile.tile_level]).height += h;
+			}
 		}
 		
 		internal function display_level(l:int):void
