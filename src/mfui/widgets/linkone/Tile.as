@@ -19,8 +19,6 @@ package mfui.widgets.linkone
 		private var _tile_container:TileContainer;
 		private var _tile_image:TileImage;
 		
-		internal var region:Rectangle;
-		
 		public function Tile(tile_container:TileContainer, level:int, tile_x:int, tile_y:int)
 		{
 			super();
@@ -61,9 +59,6 @@ package mfui.widgets.linkone
 			this.width = this.height = this._tile_container.width;
 			this.left = this.x_pos * this.width;
 			this.top = this.y_pos * this.height;
-			
-			this.region = new Rectangle(Number(this.left), Number(this.top), this.width, this.height);
-			
 			this.toolTip = toString();
 		}
 		
