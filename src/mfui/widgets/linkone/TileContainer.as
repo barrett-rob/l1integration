@@ -20,7 +20,7 @@ package mfui.widgets.linkone
 		internal var tile_uri_source:String = null;
 		
 		private var _levels:Array = null;
-		private var _level_widths:Array = null;
+		private var _dimensions:Array = null;
 		private var _current_level:int = -1;
 		
 		public function TileContainer()
@@ -34,11 +34,6 @@ package mfui.widgets.linkone
 		
 		private function _creationComplete(e:FlexEvent):void
 		{
-		}
-		
-		internal function get_level_width(l:int):int
-		{
-			return _level_widths[l];
 		}
 		
 		public function set_size(w:int, h:int, t:int):void
@@ -59,17 +54,24 @@ package mfui.widgets.linkone
 			
 			/* create new levels array */
 			_levels = new Array(MAX_TILE_DEPTH);
-			_level_widths = new Array(_levels.length);
+			_dimensions = new Array(_levels.length);
 			for (var i:int = 0; i < _levels.length; i++)
 			{
 				_levels[i] = [];
-				_level_widths[i] = 0;
+				_dimensions[i] = new Object();
 			}
 			
 			
 			/* top level */
 			_create_level(0);
 			display_level(0);
+		}
+		
+		internal function get_level_width(l:int):Number
+		{
+			if (!_dimensions[l])
+				return 0;
+			return _dimensions[l].width;
 		}
 		
 		private function _discard_all_levels():void
@@ -95,7 +97,7 @@ package mfui.widgets.linkone
 				}
 			}
 			_levels = null;
-			_level_widths = null;
+			_dimensions = null;
 		}
 		
 		private function _create_level(l:int):void
@@ -111,7 +113,7 @@ package mfui.widgets.linkone
 			
 			/* start by creating (l+1)^2 tiles */
 			var _level_width:int = l + 1;
-			_level_widths[l] = _level_width;
+			_dimensions[l].width = _level_width;
 			var i:int, j:int;
 			for (i = 0; i < _level_width; i++)
 			{
