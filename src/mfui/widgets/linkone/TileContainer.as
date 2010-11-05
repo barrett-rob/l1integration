@@ -20,6 +20,7 @@ package mfui.widgets.linkone
 		internal var tile_uri_source:String = null;
 		
 		private var _levels:Array = null;
+		private var _column_counts:Array = null;
 		private var _dimensions:Array = null;
 		private var _current_level:int = -1;
 		
@@ -55,6 +56,7 @@ package mfui.widgets.linkone
 			/* create new levels array */
 			_levels = new Array(MAX_TILE_DEPTH);
 			_dimensions = new Array(_levels.length);
+			_column_counts = new Array(_levels.length);
 			for (var i:int = 0; i < _levels.length; i++)
 			{
 				_levels[i] = [];
@@ -70,6 +72,11 @@ package mfui.widgets.linkone
 		internal function get_level_width(l:int):Number
 		{
 			return Rectangle(_dimensions[l]).width;
+		}
+		
+		internal function get_column_count(l:int):Number
+		{
+			return _column_counts[l];
 		}
 		
 		private function _discard_all_levels():void
@@ -96,6 +103,7 @@ package mfui.widgets.linkone
 			}
 			_levels = null;
 			_dimensions = null;
+			_column_counts = null;
 		}
 		
 		private function _create_level(l:int):void
@@ -110,12 +118,12 @@ package mfui.widgets.linkone
 				return;
 			
 			/* start by creating (l+1)^2 tiles */
-			var _level_width:int = l + 1;
-			Rectangle(_dimensions[l]).width = _level_width;
+			var _column_count:int = l + 1;
+			_column_counts[l] = _column_count;
 			var i:int, j:int;
-			for (i = 0; i < _level_width; i++)
+			for (i = 0; i < _column_count; i++)
 			{
-				for (j = 0; j < _level_width; j++)
+				for (j = 0; j < _column_count; j++)
 				{
 					var _tile:Tile = _create_tile(l, i, j);
 					callLater(_tile.loadImage);

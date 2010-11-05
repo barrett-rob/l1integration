@@ -35,7 +35,7 @@ package mfui.widgets.linkone
 			this.tile_level = tile_level;
 			this.tile_x = tile_x;
 			this.tile_y = tile_y;
-			set_size_and_position(this.tile_level + 1);
+			set_size_and_position();
 		}
 		
 		internal function get level_width():int
@@ -43,7 +43,12 @@ package mfui.widgets.linkone
 			return this._tile_container.get_level_width(this.tile_level);
 		}
 		
-		internal function set_size_and_position(column_count:int):void
+		internal function get column_count():int
+		{
+			return this._tile_container.get_column_count(this.tile_level);
+		}
+		
+		internal function set_size_and_position():void
 		{
 			this.width = this.height = this._tile_container.width / column_count;
 			this.left = this.tile_x * this.width;
@@ -81,15 +86,16 @@ package mfui.widgets.linkone
 			if (e.currentTarget != this)
 				return;
 			
-			var _x_proportion:Number = e.localX / this.width;
-			var _virtual_x:Number = (((_x_proportion + tile_x) * virtual_size) / level_width) / (tile_level + 1);
 			
-			var _y_proportion:Number = e.localY / this.height;
-			var _virtual_y:Number = (((_y_proportion + tile_y) * virtual_size) / level_width) / (tile_level + 1);
-			
-			trace('\t local (' + e.localX + ':' + e.localY + ')' 
-				+ '\t virtual (' + _virtual_x + ':' + _virtual_y 
-				+ '\t dimensions (' + this.width + 'x' + this.height + ')')
+			//			var _x_proportion:Number = e.localX / this.width;
+			//			var _virtual_x:Number = (((_x_proportion + tile_x) * virtual_size) / level_width) / (tile_level + 1);
+			//			
+			//			var _y_proportion:Number = e.localY / this.height;
+			//			var _virtual_y:Number = (((_y_proportion + tile_y) * virtual_size) / level_width) / (tile_level + 1);
+			//			
+			//			trace('\t local (' + e.localX + ':' + e.localY + ')' 
+			//				+ '\t virtual (' + _virtual_x + ':' + _virtual_y 
+			//				+ '\t dimensions (' + this.width + 'x' + this.height + ')')
 		}
 		
 		private function _mouseWheel(e:MouseEvent):void
