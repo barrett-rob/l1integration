@@ -38,6 +38,19 @@ package mfui.widgets.linkone
 				return;
 		}
 		
+		public function set tileContainer(tile_container:TileContainer):void
+		{
+			if (this._tile_container)
+				throw new Error('tile container is already set');
+			this._tile_container = tile_container;
+		}
+		
+		public function set_size(w:int, h:int):void
+		{
+			this.width = w;
+			this.height = h;
+		}
+		
 		private function _click(e:MouseEvent):void
 		{
 			if (e.currentTarget != this)
@@ -80,13 +93,6 @@ package mfui.widgets.linkone
 					trace('callout nodes of type', c.localName(), 'not handled');
 				}
 			}
-		}
-		
-		public function set tileContainer(tile_container:TileContainer):void
-		{
-			if (this._tile_container)
-				throw new Error('tile container is already set');
-			this._tile_container = tile_container;
 		}
 	}
 }

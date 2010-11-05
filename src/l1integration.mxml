@@ -61,6 +61,7 @@
 				var selected:Object = uris[uriDropdown.selectedIndex];
 				tileContainer.set_size(selected.width, selected.height, selected.tileSize);
 				tileContainer.set_source(selected.uri, selected.level);
+				calloutContainer.set_size(selected.width, selected.height);
 				images.validateNow();
 			}
 			
@@ -98,17 +99,17 @@
 				height="100%"
 				width="100%"
 				>
+				<l1:TileContainer
+					height="100"
+					width="100"
+					id="tileContainer"
+					/>
 				<l1:CalloutContainer
 					height="100"
 					width="100"
 					id="calloutContainer"
 					tileContainer="{tileContainer}"
 					calloutData="{callout_data}"
-					/>
-				<l1:TileContainer
-					height="100"
-					width="100"
-					id="tileContainer"
 					/>
 			</mx:Canvas>
 		</mx:Panel>
