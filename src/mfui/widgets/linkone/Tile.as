@@ -82,10 +82,10 @@ package mfui.widgets.linkone
 				return;
 			
 			var _x_proportion:Number = e.localX / this.width;
-			var _virtual_x:Number = _x_proportion * virtual_size;
+			var _virtual_x:Number = (((_x_proportion + tile_x) * virtual_size) / level_width) / (tile_level + 1);
 			
 			var _y_proportion:Number = e.localY / this.height;
-			var _virtual_y:Number = _y_proportion * virtual_size;
+			var _virtual_y:Number = (((_y_proportion + tile_y) * virtual_size) / level_width) / (tile_level + 1);
 			
 			trace('\t local (' + e.localX + ':' + e.localY + ')' 
 				+ '\t virtual (' + _virtual_x + ':' + _virtual_y 
