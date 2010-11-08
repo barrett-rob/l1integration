@@ -15,7 +15,7 @@ package mfui.widgets.linkone
 	public class Callout extends UIComponent
 	{
 		private var _id:String, _description:String, _part_number:String;
-		private var _x:Number, _y:Number;
+		internal var _x:Number, _y:Number;
 		
 		public function Callout(xml:XML)
 		{
@@ -41,8 +41,6 @@ package mfui.widgets.linkone
 			this.setStyle('fontSize', '9');
 			this.setStyle('fontWeight', 'bold');
 			this.setStyle('textAlign', 'center');
-			
-			draw(new Point(_x, _y));
 			
 			var t:UITextField = new UITextField();
 			t.text = _id;

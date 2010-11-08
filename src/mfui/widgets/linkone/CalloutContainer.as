@@ -95,6 +95,9 @@ package mfui.widgets.linkone
 			this.removeAllChildren();
 			for each (var c:Callout in _callouts)
 			{
+				var _scaled:Point = new Point(c._x, c._y);
+				/* TODO: scale... */
+				c.draw(_scaled);
 				this.addChild(c);
 			}
 			
