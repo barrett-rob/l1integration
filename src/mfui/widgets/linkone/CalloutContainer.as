@@ -17,6 +17,9 @@ package mfui.widgets.linkone
 	
 	public class CalloutContainer extends LayoutContainer
 	{
+		
+		public const CALLOUT_CREATION_COMPLETE:String = 'CALLOUT_CREATION_COMPLETE';
+		
 		public var tileContainer:TileContainer;
 		
 		private var _default_size:Rectangle;

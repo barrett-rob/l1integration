@@ -22,6 +22,7 @@
 			import mx.controls.Image;
 			import mx.controls.VScrollBar;
 			import mx.core.UIComponent;
+			import mx.events.CollectionEvent;
 			import mx.events.FlexEvent;
 			
 			import spark.components.BorderContainer;
@@ -52,11 +53,13 @@
 			protected function ioError(event:IOErrorEvent):void
 			{
 				trace(event.text);
+				callout_xml.setChildren(new XML());
 			}
 			
 			protected function loaded(event:Event):void
 			{
 				callout_xml.setChildren(new XML(loader.data).children());
+				calloutContainer.dispatchEvent(new CollectionEvent(CollectionEvent.COLLECTION_CHANGE));
 			}
 			
 			
@@ -66,9 +69,11 @@
 				
 				loader.load(new URLRequest(selected.xml));
 				
+				calloutContainer.set_default_size(selected.width, selected.height);
+				
 				tileContainer.set_size(selected.width, selected.height, selected.tileSize);
 				tileContainer.set_source(selected.uri, selected.level);
-				calloutContainer.set_default_size(selected.width, selected.height);
+				
 				images.validateNow();
 			}
 			
