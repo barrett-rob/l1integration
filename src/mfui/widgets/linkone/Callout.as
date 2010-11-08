@@ -59,12 +59,12 @@ package mfui.widgets.linkone
 			t.y = _y - t.height / 2;
 
 			this.addChild(t);
-			this.addEventListener(MouseEvent.CLICK, _click);	
+			this.addEventListener(MouseEvent.CLICK, _click);
 		}
 		
 		private function _click(e:MouseEvent):void
 		{
-			if (e.target != this)
+			if (e.currentTarget != this)
 				return;
 			
 			trace('clicked callout ' + this._id + ' at ' + e.localX + ':' + e.localY);

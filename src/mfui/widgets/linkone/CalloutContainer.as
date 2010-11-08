@@ -39,6 +39,9 @@ package mfui.widgets.linkone
 		{
 			if (e.currentTarget != this)
 				return;
+			
+			/* the container itself is not interesting */
+			this.width = this.height = 1;
 		}
 		
 		public function set_default_size(w:int, h:int):void

@@ -106,8 +106,6 @@
 					calloutContainer="{calloutContainer}"
 					/>
 				<l1:CalloutContainer
-					height="100"
-					width="100"
 					id="calloutContainer"
 					tileContainer="{tileContainer}"
 					calloutData="{callout_data}"
