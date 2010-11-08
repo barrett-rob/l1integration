@@ -52,6 +52,7 @@ package mfui.widgets.linkone
 				if (_tile.level == 0)
 				{
 					/* special case, allow tile to scale up */
+					trace();
 				}
 				else
 				{

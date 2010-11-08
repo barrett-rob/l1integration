@@ -71,7 +71,7 @@
 				
 				calloutContainer.set_default_size(selected.width, selected.height);
 				
-				tileContainer.set_size(selected.width, selected.height, selected.tileSize);
+				tileContainer.set_size(selected.width / 1.5, selected.height / 1.5, selected.tileSize);
 				tileContainer.set_source(selected.uri, selected.level);
 				
 				images.validateNow();
@@ -116,6 +116,7 @@
 					width="100"
 					id="tileContainer"
 					calloutContainer="{calloutContainer}"
+					backgroundColor="green"
 					/>
 				<l1:CalloutContainer
 					id="calloutContainer"

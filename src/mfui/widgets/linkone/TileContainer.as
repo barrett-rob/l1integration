@@ -201,13 +201,16 @@ package mfui.widgets.linkone
 				return;
 			
 			var _lw:Number = get_level_width(l);
+			trace('_lw\t', _lw);
+			trace('at.x\t', at.x);
 			at.x *= _lw;
+			trace('at.x\t', at.x);
 			var _x:Number;
-			if (at.x - this.width < 0)
+			if (at.x - (this.width / 2) < 0)
 			{
 				_x = 0;
 			}
-			else if (at.x + this.width > _lw)
+			else if (at.x + (this.width / 2) > _lw)
 			{
 				_x = _lw - this.width;
 			}
@@ -215,15 +218,16 @@ package mfui.widgets.linkone
 			{
 				_x = at.x - (this.width / 2);
 			}
+			trace('_x\t', _x);
 			
 			var _lh:Number = get_level_height(l);
 			at.y *= _lh;
 			var _y:Number;
-			if (at.y - this.height < 0)
+			if (at.y - (this.height / 2) < 0)
 			{
 				_y = 0;
 			}
-			else if (at.y + this.height > _lh)
+			else if (at.y + (this.height / 2) > _lh)
 			{
 				_y = _lh - this.height;
 			}

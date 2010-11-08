@@ -82,7 +82,7 @@ package mfui.widgets.linkone
 					trace('callout nodes of type', c.localName(), 'not handled');
 				}
 			}
-			trace('created', _callouts.length, 'callouts');
+			// trace('created', _callouts.length, 'callouts');
 		}
 		
 		internal function display_callouts(scroll_rect:Rectangle, image_width:Number, image_height:Number):void
@@ -90,7 +90,7 @@ package mfui.widgets.linkone
 			if (!_callouts)
 				return;
 			
-			trace('displaying', _callouts.length, 'callouts');
+			// trace('displaying', _callouts.length, 'callouts');
 			
 			this.removeAllChildren();
 			for each (var c:Callout in _callouts)
