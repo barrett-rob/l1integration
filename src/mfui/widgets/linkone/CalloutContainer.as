@@ -80,12 +80,15 @@ package mfui.widgets.linkone
 					trace('callout nodes of type', c.localName(), 'not handled');
 				}
 			}
+			trace('created', _callouts.length, 'callouts');
 		}
 		
 		internal function display_callouts():void
 		{
 			if (!_callouts)
 				return;
+			
+			trace('displaying', _callouts.length, 'callouts');
 			
 			this.removeAllChildren();
 			for each (var c:Callout in _callouts)
