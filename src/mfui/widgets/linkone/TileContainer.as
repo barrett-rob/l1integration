@@ -67,12 +67,16 @@ package mfui.widgets.linkone
 		
 		internal function get_level_width(l:int):Number
 		{
-			return Rectangle(_dimensions[l]).width;
+			var _w:Number =  Rectangle(_dimensions[l]).width;
+			trace('level', l, 'width is', _w);
+			return _w;
 		}
 		
 		internal function get_level_height(l:int):Number
 		{
-			return Rectangle(_dimensions[l]).height;
+			var _h:Number =  Rectangle(_dimensions[l]).height;
+			trace('level', l, 'height is', _h);
+			return _h;
 		}
 		
 		internal function get_level_ratio(l:int):Number
@@ -202,18 +206,19 @@ package mfui.widgets.linkone
 			// trace('centering level', l, 'at', at);
 			var _lw:Number = get_level_width(l);
 			at.x *= _lw;
-			var _x:Number = at.x - this.width / 2;
+			var _x:Number = at.x - (this.width / 2);
 			if (_x < 0) _x = 0;
+			
 			
 			var _lh:Number = get_level_height(l);
 			at.y *= _lh;
-			var _y:Number = at.y - this.height / 2;
+			var _y:Number = at.y - (this.height / 2);
 			if (_y < 0) _y = 0;
 			
-			trace('centering level', l, 'at', at);
+			trace('  centering level', l, 'at', at);
 			
 			var _scroll_rect:Rectangle = new Rectangle(_x, _y, this.width, this.height);
-			trace('centering display in', _scroll_rect);
+			trace(' displaying level', l, 'in', _scroll_rect);
 			this.scrollRect = _scroll_rect;
 		}
 		
