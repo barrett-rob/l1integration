@@ -21,6 +21,7 @@ package mfui.widgets.linkone
 		
 		private var _default_size:Rectangle;
 		private var _callout_data:XMLListCollection;
+		private var _callouts:Array;
 		
 		public function CalloutContainer()
 		{
@@ -83,23 +84,38 @@ package mfui.widgets.linkone
 		{
 			if (e.currentTarget != this._callout_data)
 				return;
+			
+			create_callouts();
 			display_callouts();
 		}
 		
-		internal function display_callouts():void
+		internal function create_callouts():void
 		{
-			this.removeAllChildren();
+			_callouts = new Array();
 			for each (var c:XML in this._callout_data.children())
 			{
 				if (c.localName() == 'rectangularCallout')
 				{
-					this.addChild(new Callout(c, 1));
+					_callouts.push((new Callout(c, 1)));
 				} 
 				else
 				{
 					trace('callout nodes of type', c.localName(), 'not handled');
 				}
 			}
+		}
+		
+		internal function display_callouts():void
+		{
+			if (!_callouts)
+				return;
+			
+			this.removeAllChildren();
+			for each (var c:Callout in _callouts)
+			{
+				this.addChild(c);
+			}
+			
 		}
 		
 		
