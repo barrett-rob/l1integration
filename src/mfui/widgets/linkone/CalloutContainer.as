@@ -96,7 +96,7 @@ package mfui.widgets.linkone
 			{
 				if (c.localName() == 'rectangularCallout')
 				{
-					_callouts.push((new Callout(c, 1)));
+					_callouts.push((new Callout(c)));
 				} 
 				else
 				{
