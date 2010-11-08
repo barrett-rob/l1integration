@@ -68,14 +68,14 @@ package mfui.widgets.linkone
 		internal function get_level_width(l:int):Number
 		{
 			var _w:Number =  Rectangle(_dimensions[l]).width;
-			trace('level', l, 'width is', _w);
+			// trace('level', l, 'width is', _w);
 			return _w;
 		}
 		
 		internal function get_level_height(l:int):Number
 		{
 			var _h:Number =  Rectangle(_dimensions[l]).height;
-			trace('level', l, 'height is', _h);
+			// trace('level', l, 'height is', _h);
 			return _h;
 		}
 		
@@ -202,23 +202,42 @@ package mfui.widgets.linkone
 			if (l >= _levels.length)
 				/* can't scroll further in */
 				return;
-
-			// trace('centering level', l, 'at', at);
+			
 			var _lw:Number = get_level_width(l);
 			at.x *= _lw;
-			var _x:Number = at.x - (this.width / 2);
-			if (_x < 0) _x = 0;
-			
+			var _x:Number;
+			if (at.x - this.width < 0)
+			{
+				_x = 0;
+			}
+			else if (at.x + this.width > _lw)
+			{
+				_x = _lw - this.width;
+			}
+			else
+			{
+				_x = at.x - (this.width / 2);
+			}
 			
 			var _lh:Number = get_level_height(l);
 			at.y *= _lh;
-			var _y:Number = at.y - (this.height / 2);
-			if (_y < 0) _y = 0;
+			var _y:Number;
+			if (at.y - this.height < 0)
+			{
+				_y = 0;
+			}
+			else if (at.y + this.height > _lh)
+			{
+				_y = _lh - this.height;
+			}
+			else
+			{
+				_y = at.y - (this.height / 2);
+			}
 			
-			trace('  centering level', l, 'at', at);
+			/* TODO: rough as.. fix these numbers up */
 			
 			var _scroll_rect:Rectangle = new Rectangle(_x, _y, this.width, this.height);
-			trace(' displaying level', l, 'in', _scroll_rect);
 			this.scrollRect = _scroll_rect;
 		}
 		
