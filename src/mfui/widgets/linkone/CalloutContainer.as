@@ -63,7 +63,6 @@ package mfui.widgets.linkone
 				return;
 			
 			create_callouts();
-			display_callouts();
 		}
 		
 		internal function create_callouts():void
@@ -83,7 +82,7 @@ package mfui.widgets.linkone
 			trace('created', _callouts.length, 'callouts');
 		}
 		
-		internal function display_callouts():void
+		internal function display_callouts(/* scroll_rect:Rectangle, image_width:Number, image_height:Number */):void
 		{
 			if (!_callouts)
 				return;

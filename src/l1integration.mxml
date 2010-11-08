@@ -30,12 +30,12 @@
 			[Bindable]
 			public var uris:ArrayCollection = new ArrayCollection(
 				[
-					{uri:'book=komatsu/D355A-3&page=201&pictureidentity=1_1_2', level:'10', height:'986', width:'856', tileSize:'1024' }, 
-					{uri:'book=komatsu/D355A-3&page=343A&pictureidentity=1_1', level:'10', height:'986', width:'856', tileSize:'1024' }, 
-					{uri:'book=komatsu/D355A-3&page=222A&pictureidentity=1_1_2_3', level:'10', height:'986', width:'856', tileSize:'1024' },
-					{uri:'book=komatsu/D355A-3&page=~.8&pictureidentity=1', level:'10', height:'986', width:'856', tileSize:'1024' },
-					{uri:'book=logset/6F&page=TOC&pictureidentity=1', level:'10', height:'986', width:'856', tileSize:'1024' },
-					{uri:'book=logset/6F&page=965588A&pictureidentity=1', level:'10', height:'986', width:'856', tileSize:'1024' }
+					{uri:'book=komatsu/D355A-3&page=201&pictureidentity=1_1_2', level:'10', height:'986', width:'856', tileSize:'1024', xml:'201.xml' }, 
+					{uri:'book=komatsu/D355A-3&page=343A&pictureidentity=1_1', level:'10', height:'986', width:'856', tileSize:'1024', xml:'343A.xml' }, 
+					{uri:'book=komatsu/D355A-3&page=222A&pictureidentity=1_1_2_3', level:'10', height:'986', width:'856', tileSize:'1024', xml:'222A.xml' },
+					{uri:'book=komatsu/D355A-3&page=~.8&pictureidentity=1', level:'10', height:'986', width:'856', tileSize:'1024', xml:'~.8.xml' },
+					{uri:'book=logset/6F&page=TOC&pictureidentity=1', level:'10', height:'986', width:'856', tileSize:'1024', xml:'TOC.xml' },
+					{uri:'book=logset/6F&page=965588A&pictureidentity=1', level:'10', height:'986', width:'856', tileSize:'1024', xml:'965588A.xml' }
 				]                
 			);
 			
@@ -44,12 +44,16 @@
 			protected function creationComplete(event:FlexEvent):void
 			{
 				loader.addEventListener(Event.COMPLETE, loaded);
-				loader.load(new URLRequest('201.xml'));
-				
+				loader.addEventListener(IOErrorEvent.IO_ERROR, ioError);
 				uriDropdown.selectedIndex = 0;
 				uriDropdown.dispatchEvent(new IndexChangeEvent(IndexChangeEvent.CHANGE));
 			}
-				
+			
+			protected function ioError(event:IOErrorEvent):void
+			{
+				trace(event.text);
+			}
+			
 			protected function loaded(event:Event):void
 			{
 				callout_xml.setChildren(new XML(loader.data).children());
@@ -59,6 +63,9 @@
 			protected function change(event:Event):void
 			{
 				var selected:Object = uris[uriDropdown.selectedIndex];
+				
+				loader.load(new URLRequest(selected.xml));
+				
 				tileContainer.set_size(selected.width, selected.height, selected.tileSize);
 				tileContainer.set_source(selected.uri, selected.level);
 				calloutContainer.set_default_size(selected.width, selected.height);

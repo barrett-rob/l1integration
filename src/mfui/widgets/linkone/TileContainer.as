@@ -189,8 +189,6 @@ package mfui.widgets.linkone
 			/* create the next level down */
 			_create_level(l + 1);
 			
-			/* display callouts */
-			calloutContainer.display_callouts();
 		}
 		
 		internal function center_display(l:int, at:Point):void
@@ -238,6 +236,8 @@ package mfui.widgets.linkone
 			
 			var _scroll_rect:Rectangle = new Rectangle(_x, _y, this.width, this.height);
 			this.scrollRect = _scroll_rect;
+			
+			callLater(calloutContainer.display_callouts);
 		}
 		
 	}
