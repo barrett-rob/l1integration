@@ -29,8 +29,6 @@ package mfui.widgets.linkone
 			this.layout = "absolute";
 			this.left = this.top = 0;
 			this.addEventListener(FlexEvent.CREATION_COMPLETE, _creation_complete);
-			this.addEventListener(MouseEvent.CLICK, _click);
-			this.addEventListener(MouseEvent.MOUSE_WHEEL, _wheel);
 			
 			this.setStyle('backgroundColor', '0xccffcc');
 			this.setStyle('backgroundAlpha', '0.1');
@@ -48,23 +46,6 @@ package mfui.widgets.linkone
 		public function set_default_size(w:int, h:int):void
 		{
 			this._default_size = new Rectangle(0, 0, w, h);
-		}
-		
-		public function set_level_size(w:int, h:int):void
-		{
-		}
-		
-		private function _click(e:MouseEvent):void
-		{
-			if (e.currentTarget != this)
-				return;
-		}
-		
-		private function _wheel(e:MouseEvent):void
-		{
-			if (e.currentTarget != this)
-				return;
-			
 		}
 		
 		public function set calloutData(callout_data:XMLListCollection):void
