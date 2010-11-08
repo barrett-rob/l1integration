@@ -49,16 +49,8 @@ package mfui.widgets.linkone
 			if (this.contentWidth < _tile.virtual_size && this.contentHeight < _tile.virtual_size)
 			{
 				/* image smaller than virtual tile */
-				if (_tile.level == 0)
-				{
-					/* special case, allow tile to scale up */
-					trace();
-				}
-				else
-				{
-					this.width = this.width * (this.contentWidth / _tile.virtual_size)
-					this.height = this.height * (this.contentHeight / _tile.virtual_size)
-				}
+				this.width = this.width * (this.contentWidth / _tile.virtual_size)
+				this.height = this.height * (this.contentHeight / _tile.virtual_size)
 			}
 			
 			/* register this image width and height */

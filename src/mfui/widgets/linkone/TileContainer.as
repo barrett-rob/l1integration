@@ -200,6 +200,7 @@ package mfui.widgets.linkone
 				/* can't scroll further in */
 				return;
 			
+			trace('w\t', this.width);
 			var _lw:Number = get_level_width(l);
 			trace('_lw\t', _lw);
 			trace('at.x\t', at.x);
