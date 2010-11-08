@@ -237,7 +237,7 @@ package mfui.widgets.linkone
 			var _scroll_rect:Rectangle = new Rectangle(_x, _y, this.width, this.height);
 			this.scrollRect = _scroll_rect;
 			
-			callLater(calloutContainer.display_callouts);
+			callLater(calloutContainer.display_callouts, [_scroll_rect, _lw, _lh]);
 		}
 		
 	}
