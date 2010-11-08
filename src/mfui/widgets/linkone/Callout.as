@@ -1,6 +1,7 @@
 package mfui.widgets.linkone
 {
 	import flash.events.MouseEvent;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	import flash.text.AntiAliasType;
 	import flash.text.TextField;
@@ -36,14 +37,12 @@ package mfui.widgets.linkone
 			if (_part_number)
 				this.toolTip += 'Part No: ' + _part_number;
 
-			this.graphics.beginFill(0xffffff, 0.75);
-			this.graphics.lineStyle(1, 0, 1);
-			this.graphics.drawCircle(_x, _y, 15);
-			
 			this.setStyle('color', 'blue');
 			this.setStyle('fontSize', '9');
 			this.setStyle('fontWeight', 'bold');
 			this.setStyle('textAlign', 'center');
+			
+			draw(new Point(_x, _y));
 			
 			var t:UITextField = new UITextField();
 			t.text = _id;
@@ -56,6 +55,13 @@ package mfui.widgets.linkone
 
 			this.addChild(t);
 			this.addEventListener(MouseEvent.CLICK, _click);
+		}
+		
+		internal function draw(at:Point):void
+		{
+			this.graphics.beginFill(0xffffff, 0.75);
+			this.graphics.lineStyle(1, 0, 1);
+			this.graphics.drawCircle(at.x, at.y, 15);
 		}
 		
 		private function _click(e:MouseEvent):void
