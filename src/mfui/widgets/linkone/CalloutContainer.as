@@ -20,7 +20,6 @@ package mfui.widgets.linkone
 		public var tileContainer:TileContainer;
 		
 		private var _default_size:Rectangle;
-		private var _level_size:Rectangle;
 		private var _callout_data:XMLListCollection;
 		
 		public function CalloutContainer()
@@ -45,19 +44,10 @@ package mfui.widgets.linkone
 		public function set_default_size(w:int, h:int):void
 		{
 			this._default_size = new Rectangle(0, 0, w, h);
-			if (!_level_size)
-			{
-				this._level_size = new Rectangle(0, 0, w, h);
-			}
-			this.width = w;
-			this.height = h;
 		}
 		
 		public function set_level_size(w:int, h:int):void
 		{
-			this._level_size = new Rectangle(0, 0, w, h);
-			this.width = w;
-			this.height = h;
 		}
 		
 		private function _click(e:MouseEvent):void

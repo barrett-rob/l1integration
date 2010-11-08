@@ -64,7 +64,7 @@ package mfui.widgets.linkone
 		
 		private function _click(e:MouseEvent):void
 		{
-			if (e.currentTarget != this)
+			if (e.target != this)
 				return;
 			
 			trace('clicked callout ' + this._id + ' at ' + e.localX + ':' + e.localY);
