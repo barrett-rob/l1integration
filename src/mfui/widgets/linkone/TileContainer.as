@@ -199,18 +199,19 @@ package mfui.widgets.linkone
 				/* can't scroll further in */
 				return;
 
-			trace('centering level', l, 'at', at);
+			// trace('centering level', l, 'at', at);
 			var _lw:Number = get_level_width(l);
 			at.x *= _lw;
+			var _x:Number = at.x - this.width / 2;
+			if (_x < 0) _x = 0;
+			
 			var _lh:Number = get_level_height(l);
 			at.y *= _lh;
-			trace('centering level', l, 'at', at);
-			var _x:Number = at.x - this.width / 2;
-			if (_x > _lw - this.width) _x = _lw - this.width;
-			if (_x < 0) _x = 0;
 			var _y:Number = at.y - this.height / 2;
-			if (_y > _lh - this.height) _y = _lh - this.height;
 			if (_y < 0) _y = 0;
+			
+			trace('centering level', l, 'at', at);
+			
 			var _scroll_rect:Rectangle = new Rectangle(_x, _y, this.width, this.height);
 			trace('centering display in', _scroll_rect);
 			this.scrollRect = _scroll_rect;

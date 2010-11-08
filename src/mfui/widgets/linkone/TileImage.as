@@ -100,7 +100,7 @@ package mfui.widgets.linkone
 				return;
 			
 			var at:Point = _normalise(e.localX, e.localY);
-			trace('normalised wheel at:', at);
+			// trace('normalised wheel at:', at);
 			
 			/* show next level up or down */
 			var l:int = (e.delta > 0) ? _tile.level + 1 : _tile.level - 1;
