@@ -200,46 +200,11 @@ package mfui.widgets.linkone
 				/* can't scroll further in */
 				return;
 			
-			trace('w\t', this.width);
-			var _lw:Number = get_level_width(l);
-			trace('_lw\t', _lw);
-			trace('at.x\t', at.x);
-			at.x *= _lw;
-			trace('at.x\t', at.x);
-			var _x:Number;
-			if (at.x - (this.width / 2) < 0)
-			{
-				_x = 0;
-			}
-			else if (at.x + (this.width / 2) > _lw)
-			{
-				_x = _lw - this.width;
-			}
-			else
-			{
-				_x = at.x - (this.width / 2);
-			}
-			trace('_x\t', _x);
-			
-			var _lh:Number = get_level_height(l);
-			at.y *= _lh;
-			var _y:Number;
-			if (at.y - (this.height / 2) < 0)
-			{
-				_y = 0;
-			}
-			else if (at.y + (this.height / 2) > _lh)
-			{
-				_y = _lh - this.height;
-			}
-			else
-			{
-				_y = at.y - (this.height / 2);
-			}
-			
 			/* TODO: rough as.. fix these numbers up */
 			
-			var _scroll_rect:Rectangle = new Rectangle(_x, _y, this.width, this.height);
+			var _lw:Number = get_level_width(l);
+			var _lh:Number = get_level_height(l);
+			var _scroll_rect:Rectangle = new Rectangle(0, 0, this.width, this.height);
 			this.scrollRect = _scroll_rect;
 			
 			callLater(calloutContainer.display_callouts, [_scroll_rect, _lw, _lh]);
